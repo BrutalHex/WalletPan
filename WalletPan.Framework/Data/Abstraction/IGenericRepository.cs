@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WalletPan.Framework.Data.Abstraction
 {
-    public interface IGenericRepository<T,Key> where T : class
+    public interface IGenericRepository<T, key> where T : class
     {
         T Add(T t);
         Task<T> AddAsync(T t);
@@ -23,12 +23,12 @@ namespace WalletPan.Framework.Data.Abstraction
         Task<T> FindAsync(Expression<Func<T, bool>> match);
         IQueryable<T> FindBy(Expression<Func<T, bool>> predicate);
         Task<ICollection<T>> FindByAsyn(Expression<Func<T, bool>> predicate);
-        T Get(Key key);
+        T Get( key key);
         IQueryable<T> GetAll();
         Task<ICollection<T>> GetAllAsync();
         IQueryable<T> GetAllIncluding(params Expression<Func<T, object>>[] includeProperties);
-        Task<T> GetAsync(Key key);
-        T Update(T t, Key key);
-        Task<T> UpdateAsync(T t, Key key);
+        Task<T> GetAsync( key key);
+        T Update(T t,  key key);
+        Task<T> UpdateAsync(T t,  key key);
     }
 }

@@ -7,7 +7,7 @@ namespace WalletPan.Framework.Data.Abstraction
     public interface IUnitOfWork
     {
 
-        IGenericRepository<TEntity> GetRepository<TEntity>() where TEntity : class;
+        IGenericRepository<TEntity,Key> GetRepository<TEntity, Key>() where TEntity : class;
 
         int SaveChanges();
         int ExecuteSqlCommand(string sql, params object[] parameters);

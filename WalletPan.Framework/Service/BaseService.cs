@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using LinqKit;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -17,14 +18,14 @@ namespace WalletPan.Framework.Service
     public class BaseService
     {
 
-
+        protected IStringLocalizer Localizer { get; set; }
         public IUnitOfWork UnitOfWork { get; set; }
         public IMapper Mapper { get; set; }
 
         protected virtual ValiditionMessage ValidateModel<T>(T modelToValidate)
         {
             if (modelToValidate == null)
-                return new ValiditionMessage { Success = false, Message = { Zagrostours.Resources.Messages.EmptyInformationRecieved } };
+                return new ValiditionMessage { Success = false, Message = { Localizer["Messages.EmptyInformationRecieved"] } };
 
             var context = new System.ComponentModel.DataAnnotations.ValidationContext(modelToValidate, serviceProvider: null, items: null);
             var validationResults = new List<ValidationResult>();
@@ -52,14 +53,14 @@ namespace WalletPan.Framework.Service
                 {
                     Success = false,
                     Message = new List<string> {
-                  string.IsNullOrEmpty(message) ?   string.Format(resources.Messages.SuccessEntityInsert,
-                    resources.Entity.ResourceManager.GetString(model.GetType().Name)) : message }
+                  string.IsNullOrEmpty(message) ?   string.Format(Localizer["Messages.SuccessEntityInsert"],
+                    Localizer[(model.GetType().Name)]) : message }
                 };
             }
         }
         protected ValiditionMessage NotFoundEntity(string entityName)
         {
-            return new ValiditionMessage { Success = false, Message = new System.Collections.Generic.List<string> { string.Format(Zagrostours.Resources.Messages.EntityNotFound, entityName) } };
+            return new ValiditionMessage { Success = false, Message = new System.Collections.Generic.List<string> { string.Format(Localizer["Messages.EntityNotFound"], entityName) } };
         }
 
         protected async Task<PagedData<DestModel>> CreateFilterableAndSortableQuery<TEntity, DestModel>(IQueryable<TEntity> query, QueryInfo searchRequestInfo, bool hasCustomSort = false) where TEntity : class

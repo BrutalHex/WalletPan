@@ -12,7 +12,7 @@ using WalletPan.Framework.Data.Abstraction;
 namespace WalletPan.Framework.Data
 {
 
-    public abstract class GenericRepository<T> : IGenericRepository<T> where T : class
+    public abstract class GenericRepository<T,key> : IGenericRepository<T, key> where T : class
     {
         protected DbContext _context;
 
@@ -32,14 +32,14 @@ namespace WalletPan.Framework.Data
             return await _context.Set<T>().ToListAsync();
         }
 
-        public virtual T Get(int id)
+        public virtual T Get(key key)
         {
-            return _context.Set<T>().Find(id);
+            return _context.Set<T>().Find(key);
         }
 
-        public virtual async Task<T> GetAsync(int id)
+        public virtual async Task<T> GetAsync(key key)
         {
-            return await _context.Set<T>().FindAsync(id);
+            return await _context.Set<T>().FindAsync(key);
         }
 
         public virtual T Add(T t)
@@ -90,7 +90,7 @@ namespace WalletPan.Framework.Data
             return await _context.SaveChangesAsync();
         }
 
-        public virtual T Update(T t, object key)
+        public virtual T Update(T t, key key)
         {
             if (t == null)
                 return null;
@@ -103,7 +103,7 @@ namespace WalletPan.Framework.Data
             return exist;
         }
 
-        public virtual async Task<T> UpdateAsync(T t, object key)
+        public virtual async Task<T> UpdateAsync(T t, key key)
         {
             if (t == null)
                 return null;

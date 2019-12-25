@@ -7,10 +7,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
+using WalletPan.Data;
+using WalletPan.Framework.Resource;
 
 namespace WalletPan.Web
 {
@@ -28,8 +32,7 @@ namespace WalletPan.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         { 
-            //culture
-            services.AddJsonLocalization(options => options.ResourcesPath = "Resources");
+           
 
             services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
@@ -38,7 +41,7 @@ namespace WalletPan.Web
             services.AddSingleton<IStringLocalizer, JsonStringLocalizer>();
             services.AddLocalization(options => options.ResourcesPath = "");
 
-            services.AddDbContext<TravellerDataBaseContext>
+            services.AddDbContext<WalletPanDataBaseContext>
                (options => options.UseSqlServer(Configuration.GetConnectionString("WalletPanDataBaseContext"), x => x.MigrationsAssembly("WalletPan.Web")));
 
         }

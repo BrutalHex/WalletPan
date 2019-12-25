@@ -22,7 +22,7 @@ where EditDto : IEditDto<key>
 
         key _defaultKeyValue;
 
-        protected  IStringLocalizer Localizer { get; set; }
+      
 
         public CrudService(IGenericRepository<ITEntity, key> repository, key defaultKeyValue)
         {

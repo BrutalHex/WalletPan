@@ -21,7 +21,7 @@ namespace WalletPan.Service
 
         public CryptoCurrencyService(ICryptoCurrencyRepository repository) :base(repository)
         {
-
+            _repository = repository;
         }
 
         protected override ValiditionMessage ValidateModel(INewDto newDto, int key)

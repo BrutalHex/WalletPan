@@ -6,7 +6,7 @@ using WalletPan.Framework.Data.Abstraction;
 
 namespace WalletPan.RepositoryContract
 {
-    public interface ICryptoCurrencyServerRepository: IGenericRepository<CryptoCurrencyServerEntity>
+    public interface ICryptoCurrencyServerRepository: IGenericRepository<CryptoCurrencyServerEntity,int>
     {
 
     }

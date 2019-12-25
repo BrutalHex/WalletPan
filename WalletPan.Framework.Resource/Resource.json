@@ -39,12 +39,28 @@
 
 	},
 	{
-		"Key": "",
+		"Key": "Messages.EmptyInformationRecieved",
 		"LocalizedValue": {
-			"fr-FR": "Entity ncyEntity",
-			"en-US": "CryptoCurrency"
+			"fr-FR": "EmptyInformatio nRecieved EmptyInformat ionRecieved",
+			"en-US": "EmptyInformat          ionRecieved"
+		}
+
+	},
+
+	{
+		"Key": "Messages.SuccessEntityInsert",
+		"LocalizedValue": {
+			"fr-FR": "Success Entity Insert",
+			"en-US": "Success Entity   Insert"
+		}
+
+	},
+	{
+		"Key": "Messages.EntityNotFound",
+		"LocalizedValue": {
+			"fr-FR": "Not Found",
+			"en-US": "Not Found"
 		}
 
 	}
-
 ]

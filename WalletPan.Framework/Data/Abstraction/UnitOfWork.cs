@@ -43,7 +43,7 @@ namespace WalletPan.Framework.Data.Abstraction
             return _context.SaveChangesAsync(cancellationToken);
         }
 
-        public virtual IGenericRepository<TEntity> GetRepository<TEntity>(   ) where TEntity : class
+        public virtual IGenericRepository<TEntity, Key> GetRepository<TEntity, Key>(   ) where TEntity : class
         {
 
             if (Repositories == null)
@@ -55,9 +55,9 @@ namespace WalletPan.Framework.Data.Abstraction
 
             if (Repositories.ContainsKey(type))
             {
-                return (IGenericRepository<TEntity>)Repositories[type];
+                return (IGenericRepository<TEntity, Key>)Repositories[type];
             }
-           var newRepository = (IGenericRepository<TEntity>)_serviceProvider.GetService(typeof(IGenericRepository<TEntity>));
+           var newRepository = (IGenericRepository<TEntity, Key>)_serviceProvider.GetService(typeof(IGenericRepository<TEntity, Key>));
 
             Repositories.Add(type, newRepository);
 

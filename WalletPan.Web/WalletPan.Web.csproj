@@ -11,6 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\WalletPan.Data\WalletPan.Data.csproj" />
+    <ProjectReference Include="..\WalletPan.Framework.Resource\WalletPan.Framework.Resource.csproj" />
     <ProjectReference Include="..\WalletPan.ServiceContract\WalletPan.ServiceContract.csproj" />
   </ItemGroup>
 

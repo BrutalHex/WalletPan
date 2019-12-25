@@ -6,7 +6,7 @@ using WalletPan.RepositoryContract;
 
 namespace WalletPan.Repository
 {
-    public class CryptoCurrencyRepository : GenericRepository<CryptoCurrencyEntity>, ICryptoCurrencyRepository
+    public class CryptoCurrencyRepository : GenericRepository<CryptoCurrencyEntity,int>, ICryptoCurrencyRepository
     {
         public CryptoCurrencyRepository(DbContext context) : base(context)
         {
