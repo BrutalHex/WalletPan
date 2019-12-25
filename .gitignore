@@ -292,4 +292,4 @@ __pycache__/
 
 !SharedLibrary
 !
-/WalletPan.Web/ClientApp/node_modules
+#/WalletPan.Web/ClientApp/node_modules
