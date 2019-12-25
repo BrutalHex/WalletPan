@@ -8,7 +8,7 @@ namespace WalletPan.Framework.Dto
     {
         public bool Success { get; set; }
         public List<string> Message { get; set; } = new List<string>();
-
+        public dynamic Entity { get; set; }
         public dynamic ResultData { get; set; }
 
         public void UnsuccessfulValidation(string message)

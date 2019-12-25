@@ -26,7 +26,7 @@ namespace WalletPan.Framework.Data
             return _context.Set<T>();
         }
 
-        public virtual async Task<ICollection<T>> GetAllAsyn()
+        public virtual async Task<ICollection<T>> GetAllAsync()
         {
 
             return await _context.Set<T>().ToListAsync();
@@ -50,7 +50,7 @@ namespace WalletPan.Framework.Data
             return t;
         }
 
-        public virtual async Task<T> AddAsyn(T t)
+        public virtual async Task<T> AddAsync(T t)
         {
             _context.Set<T>().Add(t);
             await _context.SaveChangesAsync();
@@ -84,7 +84,7 @@ namespace WalletPan.Framework.Data
             _context.SaveChanges();
         }
 
-        public virtual async Task<int> DeleteAsyn(T entity)
+        public virtual async Task<int> DeleteAsync(T entity)
         {
             _context.Set<T>().Remove(entity);
             return await _context.SaveChangesAsync();
@@ -103,7 +103,7 @@ namespace WalletPan.Framework.Data
             return exist;
         }
 
-        public virtual async Task<T> UpdateAsyn(T t, object key)
+        public virtual async Task<T> UpdateAsync(T t, object key)
         {
             if (t == null)
                 return null;
@@ -151,14 +151,7 @@ namespace WalletPan.Framework.Data
             return queryable;
         }
 
-        public async Task<ICollection<T>> FindAll(IQueryable<T> query, ICollection<IFilterQuery> filterQueries)
-        {
-            foreach (var filter in filterQueries)
-            {
-                query = query.OrderBy(a => filter.Name);
-            }
-            return null;
-        }
+     
 
 
         private bool disposed = false;

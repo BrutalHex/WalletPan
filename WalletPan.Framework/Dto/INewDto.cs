@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WalletPan.ServiceContract
+namespace WalletPan.Framework.Dto
 {
-    public interface ICryptoCurrencyService
+    public interface INewDto
     {
     }
 }

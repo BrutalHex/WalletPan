@@ -1,5 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <ItemGroup>
+    <ProjectReference Include="..\WalletPan.Domain\WalletPan.Domain.csproj" />
+    <ProjectReference Include="..\WalletPan.Dto\WalletPan.Dto.csproj" />
+    <ProjectReference Include="..\WalletPan.RepositoryContract\WalletPan.RepositoryContract.csproj" />
+    <ProjectReference Include="..\WalletPan.ServiceContract\WalletPan.ServiceContract.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
