@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Localization;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WalletPan.Dto;
@@ -20,6 +21,9 @@ where EditDto : IEditDto<key>
         private readonly IGenericRepository<ITEntity, key> _repository;
 
         key _defaultKeyValue;
+
+        protected  IStringLocalizer Localizer { get; set; }
+
         public CrudService(IGenericRepository<ITEntity, key> repository, key defaultKeyValue)
         {
             _repository = repository;
@@ -31,11 +35,11 @@ where EditDto : IEditDto<key>
         /// </summary>
         /// <param name="searchRequestInfo"></param>
         /// <returns></returns>
-        public async Task<List<GetDto>> GetAll(QueryInfo searchRequestInfo)
+        public async Task<PagedData<GetDto>> GetAll(QueryInfo searchRequestInfo)
         {
 
 
-            var query = await _repository.GetAllAsync();
+            var query =   _repository.GetAll();
             return await CreateFilterableAndSortableQuery<ITEntity, GetDto>(query, searchRequestInfo);
         }
 
@@ -78,14 +82,14 @@ where EditDto : IEditDto<key>
 
             if (validationRes.Success)
             {
-                var cryptoCurrency = GetEntity(receivedItem.Key);
-                if (cryptoCurrency == null)
-                    return NotFoundEntity(Zagrostours.Resources.Entity.CryptoCurrencyEntity);
+                var entity = GetEntity(receivedItem.Key);
+                if (entity == null)
+                    return NotFoundEntity(Localizer[entity.GetType().Name]);
 
-                Mapper.Map(receivedItem, cryptoCurrency);
-                await _repository.UpdateAsync(cryptoCurrency, cryptoCurrency.Key);
-                var result = await SaveChanges(cryptoCurrency);
-                result.Entity = Mapper.Map<GetDto>((object)cryptoCurrency);
+                Mapper.Map(receivedItem, entity);
+                await _repository.UpdateAsync(entity, entity.Key);
+                var result = await SaveChanges(entity);
+                result.Entity = Mapper.Map<GetDto>((object)entity);
 
                 return result;
             }
@@ -108,7 +112,6 @@ where EditDto : IEditDto<key>
 
         public async Task<ValiditionMessage> Delete(key key)
         {
-
             var result = new ValiditionMessage()
             {
                 ResultData = 0,
@@ -120,15 +123,11 @@ where EditDto : IEditDto<key>
             {
                 await _repository.DeleteAsync(item);
                 result = await SaveChanges(item);
-
             }
             else
             {
-                result = NotFoundEntity(Zagrostours.Resources.Entity.CryptoCurrencyEntity);
+                result = NotFoundEntity(Localizer[item.GetType().Name]);
             }
-
-
-
             return result;
         }
     }

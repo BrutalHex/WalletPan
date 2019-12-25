@@ -8,6 +8,7 @@ using WalletPan.Framework.Dto;
 using WalletPan.Framework.Service;
 using WalletPan.RepositoryContract;
 using WalletPan.Service.Base;
+using WalletPan.ServiceContract;
 
 namespace WalletPan.Service
 {
@@ -36,7 +37,7 @@ namespace WalletPan.Service
                 {
                     res.Success = false;
 
-                    res.Message.Add(string.Format(Resources.Messages.RepeatedRecord, $"{Resources.Entity.Title}", Resources.Entity.CryptoCurrencyEntity));
+                    res.Message.Add(string.Format(Localizer["Messages.RepeatedRecord"], Localizer["Entity.Title"], Localizer["Entity.CryptoCurrencyEntity"]));
                 }
 
                 return res;         

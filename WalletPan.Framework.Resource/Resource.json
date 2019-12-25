@@ -1,0 +1,50 @@
+﻿[
+	{
+		"Key": "Hello",
+		"LocalizedValue": {
+			"fr-FR": "Bonjour",
+			"en-US": "Hello"
+		}
+
+	},
+	{
+		"Key": "CryptoCurrencyEntity",
+		"LocalizedValue": {
+			"fr-FR": "Crypt oCurrenc yEnti ty",
+			"en-US": "Cryp toCurre ncy Ent ity"
+		}
+	},
+	{
+		"Key": "Messages.RepeatedRecord",
+		"LocalizedValue": {
+			"fr-FR": "Messages            dRecord",
+			"en-US": "Messa      ges.Re               peatedRecord"
+		}
+	},
+
+	{
+		"Key": "Entity.Title",
+		"LocalizedValue": {
+			"fr-FR": "Entity            Title",
+			"en-US": "Entity            Title"
+		}
+
+	},
+	{
+		"Key": "Entity.CryptoCurrencyEntity",
+		"LocalizedValue": {
+			"fr-FR": "Entity ncyEntity",
+			"en-US": "CryptoCurrency"
+		}
+
+	},
+	{
+		"Key": "",
+		"LocalizedValue": {
+			"fr-FR": "Entity ncyEntity",
+			"en-US": "CryptoCurrency"
+		}
+
+	}
+
+]

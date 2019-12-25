@@ -7,7 +7,7 @@ namespace WalletPan.Data.Map
 {
     public class CryptoCurrencyMap: BaseMap<CryptoCurrencyEntity>
     {
-        public CryptoCurrencyMap():base("CurrencyType_")
+        public CryptoCurrencyMap():base("CurrencyType")
         {
 
         }

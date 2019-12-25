@@ -16,6 +16,8 @@ namespace WalletPan.Web
 {
     public class Startup
     {
+     
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -25,9 +27,20 @@ namespace WalletPan.Web
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
+        { 
+            //culture
+            services.AddJsonLocalization(options => options.ResourcesPath = "Resources");
+
             services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
+
+            services.AddSingleton<IStringLocalizerFactory, JsonStringLocalizerFactory>();
+            services.AddSingleton<IStringLocalizer, JsonStringLocalizer>();
+            services.AddLocalization(options => options.ResourcesPath = "");
+
+            services.AddDbContext<TravellerDataBaseContext>
+               (options => options.UseSqlServer(Configuration.GetConnectionString("WalletPanDataBaseContext"), x => x.MigrationsAssembly("WalletPan.Web")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WalletPan.Framework.Data.Filter
 {
-    public class FilterInfo
+   
      public class FilterInfo
     {
         public string Logic { get; set; }

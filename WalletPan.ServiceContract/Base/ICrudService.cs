@@ -16,7 +16,7 @@ namespace WalletPan.ServiceContract.Base
     {
         Task<ValiditionMessage> Add(nNewDto receivedItem);
         Task<ValiditionMessage> Delete(key key);
-        Task<List<GetDto>> GetAll(QueryInfo searchRequestInfo);
+        Task<PagedData<GetDto>> GetAll(QueryInfo searchRequestInfo);
         Task<IList<GetDto>> GetAll();
         GetDto GetById(key key);
         ITEntity GetEntity(object targetKey);
