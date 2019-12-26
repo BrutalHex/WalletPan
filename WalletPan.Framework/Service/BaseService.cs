@@ -17,6 +17,13 @@ namespace WalletPan.Framework.Service
 {
     public class BaseService
     {
+        public BaseService(IMapper mapper, IUnitOfWork unit, IStringLocalizer localizer)
+        {
+            Mapper = mapper;
+            UnitOfWork = unit;
+            Localizer = localizer;
+        }
+
 
         protected IStringLocalizer Localizer { get; set; }
         public IUnitOfWork UnitOfWork { get; set; }
@@ -43,7 +50,7 @@ namespace WalletPan.Framework.Service
         protected async Task<ValiditionMessage> SaveChanges<T>(T model, string message = null)
         {
             var result = await UnitOfWork.SaveChangesAsync();
-            if (result >= 1)
+            if (result == 0)
             {
                 return new ValiditionMessage { Success = true };
             }

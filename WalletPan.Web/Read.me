@@ -6,4 +6,10 @@ npm install --save react-redux
 
 dotnet tool install --global dotnet-ef
 
- dotnet ef migrations add InitialCreate --project traveller.data
+dotnet add WalletPan.Repository package Autofac.Extensions.DependencyInjection
+
+ dotnet ef migrations add InitialCreate2 --project WalletPan.Data
+ dotnet ef database update --project WalletPan.Data
+
+ dotnet add WalletPan.Web package Microsoft.AspNetCore.SpaServices
+  dotnet add WalletPan.Web package Microsoft.AspNetCore.SpaServices.Extensions

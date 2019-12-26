@@ -10,7 +10,7 @@ namespace WalletPan.Domain.Entity
         public string Title { get; set; }
         public string Address { get; set; }
 
-
+        public int CryptoCurrencyKey { get; set; }
         public virtual CryptoCurrencyEntity CryptoCurrencyEntity { get; set; }
     }
 }

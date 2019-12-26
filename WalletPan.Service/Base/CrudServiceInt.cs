@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AutoMapper;
+using Microsoft.Extensions.Localization;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using WalletPan.Framework.Data.Abstraction;
@@ -15,7 +17,7 @@ namespace WalletPan.Service.Base
            where EditDto : IEditDto<int>
     {
        
-        public CrudServiceInt(IGenericRepository<ITEntity, int> repository):base(repository,0)
+        public CrudServiceInt(IGenericRepository<ITEntity, int> repository, IMapper mapper, IUnitOfWork unit, IStringLocalizer localizer) :base(repository,0, mapper, unit, localizer)
         {
 
         }

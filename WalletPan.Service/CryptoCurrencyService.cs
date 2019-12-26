@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using AutoMapper;
+using Microsoft.Extensions.Localization;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WalletPan.Domain.Entity;
 using WalletPan.Dto;
+using WalletPan.Framework.Data.Abstraction;
 using WalletPan.Framework.Data.Filter;
 using WalletPan.Framework.Dto;
 using WalletPan.Framework.Service;
@@ -18,11 +21,15 @@ namespace WalletPan.Service
     {
 
         private readonly ICryptoCurrencyRepository _repository;
+     
 
-        public CryptoCurrencyService(ICryptoCurrencyRepository repository) :base(repository)
+        public CryptoCurrencyService(ICryptoCurrencyRepository repository,  IMapper mapper,IUnitOfWork unit, IStringLocalizer localizer ) :   base(repository, mapper, unit, localizer)
         {
+
+            
             _repository = repository;
-        }
+            
+       }
 
         protected override ValiditionMessage ValidateModel(INewDto newDto, int key)
         {
@@ -37,7 +44,7 @@ namespace WalletPan.Service
                 {
                     res.Success = false;
 
-                    res.Message.Add(string.Format(Localizer["Messages.RepeatedRecord"], Localizer["Entity.Title"], Localizer["Entity.CryptoCurrencyEntity"]));
+                    res.Message.Add(string.Format(Localizer["Messages.RepeatedRecord"], Localizer["Entity.Title"], Localizer["CryptoCurrencyEntity"]));
                 }
 
                 return res;         

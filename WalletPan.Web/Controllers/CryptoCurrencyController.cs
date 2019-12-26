@@ -11,7 +11,7 @@ using WalletPan.ServiceContract;
 
 namespace WalletPan.Web.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/{action}/{key?}")]
     [ApiController]
     public class CryptoCurrencyController : ControllerBase
     {
@@ -76,7 +76,7 @@ namespace WalletPan.Web.Controllers
 
         }
 
-        [HttpDelete]
+        [HttpPost, ActionName("Delete")]
         public async Task<JsonResult> Delete(int key)
         {
 
@@ -91,12 +91,12 @@ namespace WalletPan.Web.Controllers
         {
             if (validitionMessage.Success)
             {
-                return new JsonResult(new { resultCode = 0, data = validitionMessage.ResultData, Entity = validitionMessage.Entity, message =  validitionMessage.Message });
+                return new JsonResult(new { resultCode = 0, Success= validitionMessage.Success, data = validitionMessage.ResultData, Entity = validitionMessage.Entity, message =  validitionMessage.Message });
             }
             else
             {
 
-                return new JsonResult(new { resultCode = 1, message = validitionMessage.Message, Entity = validitionMessage.Entity });
+                return new JsonResult(new { resultCode = 1, Success = validitionMessage.Success, message = validitionMessage.Message, Entity = validitionMessage.Entity });
 
             }
         }

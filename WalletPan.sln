@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WalletPan.Domain", "WalletP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WalletPan.Data", "WalletPan.Data\WalletPan.Data.csproj", "{D7FB2F47-8E35-4050-917F-DF125A1786A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalletPan.Framework.Resource", "WalletPan.Framework.Resource\WalletPan.Framework.Resource.csproj", "{36FD4C99-1C6F-4C0C-AF4B-F1076276A42F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalletPan.Resource", "WalletPan.Resource\WalletPan.Resource.csproj", "{C10841A4-85A6-440A-8761-8C5A703FD791}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,10 +65,10 @@ Global
 		{D7FB2F47-8E35-4050-917F-DF125A1786A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7FB2F47-8E35-4050-917F-DF125A1786A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7FB2F47-8E35-4050-917F-DF125A1786A7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{36FD4C99-1C6F-4C0C-AF4B-F1076276A42F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{36FD4C99-1C6F-4C0C-AF4B-F1076276A42F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{36FD4C99-1C6F-4C0C-AF4B-F1076276A42F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{36FD4C99-1C6F-4C0C-AF4B-F1076276A42F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C10841A4-85A6-440A-8761-8C5A703FD791}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C10841A4-85A6-440A-8761-8C5A703FD791}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C10841A4-85A6-440A-8761-8C5A703FD791}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C10841A4-85A6-440A-8761-8C5A703FD791}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

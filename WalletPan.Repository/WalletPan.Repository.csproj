@@ -6,6 +6,10 @@
     <ProjectReference Include="..\WalletPan.RepositoryContract\WalletPan.RepositoryContract.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="5.0.1" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>

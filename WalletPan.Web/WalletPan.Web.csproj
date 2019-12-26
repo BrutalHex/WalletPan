@@ -5,15 +5,34 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Askmethat.Aspnet.JsonLocalizer" Version="2.1.2" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="5.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\WalletPan.Data\WalletPan.Data.csproj" />
-    <ProjectReference Include="..\WalletPan.Framework.Resource\WalletPan.Framework.Resource.csproj" />
     <ProjectReference Include="..\WalletPan.ServiceContract\WalletPan.ServiceContract.csproj" />
+    <ProjectReference Include="..\WalletPan.Repository\WalletPan.Repository.csproj" />
+    <ProjectReference Include="..\WalletPan.RepositoryContract\WalletPan.RepositoryContract.csproj" />
+    <ProjectReference Include="..\WalletPan.Service\WalletPan.Service.csproj" />
+    <ProjectReference Include="..\WalletPan.Resource\WalletPan.Resource.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Resource\Resource.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 

@@ -23,12 +23,19 @@ namespace WalletPan.Framework.Data.Abstraction
 
         private readonly IServiceProvider _serviceProvider;
 
-        public UnitOfWork(DbContext context, IServiceProvider serviceProvider )
+        //public UnitOfWork(DbContext context, IServiceProvider serviceProvider )
+        //{
+        //    _context = context;
+        //    Repositories = new Dictionary<string, dynamic>();
+        //    _serviceProvider = serviceProvider;
+        //}
+        public UnitOfWork(DbContext context)
         {
             _context = context;
             Repositories = new Dictionary<string, dynamic>();
-            _serviceProvider = serviceProvider;
+             
         }
+
 
 
         public virtual int SaveChanges() => _context.SaveChanges();

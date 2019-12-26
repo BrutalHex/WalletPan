@@ -19,7 +19,7 @@ namespace WalletPan.ServiceContract.Base
         Task<PagedData<GetDto>> GetAll(QueryInfo searchRequestInfo);
         Task<IList<GetDto>> GetAll();
         GetDto GetById(key key);
-        ITEntity GetEntity(object targetKey);
+        ITEntity GetEntity(key targetKey);
         Task<ValiditionMessage> Update(EditDto receivedItem);
     }
 

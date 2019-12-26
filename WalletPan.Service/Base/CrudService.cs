@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Localization;
+﻿using AutoMapper;
+using Microsoft.Extensions.Localization;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ where EditDto : IEditDto<key>
 
       
 
-        public CrudService(IGenericRepository<ITEntity, key> repository, key defaultKeyValue)
+        public CrudService(IGenericRepository<ITEntity, key> repository, key defaultKeyValue, IMapper mapper, IUnitOfWork unit, IStringLocalizer localizer):base(mapper, unit, localizer)
         {
             _repository = repository;
             _defaultKeyValue = defaultKeyValue;
@@ -84,7 +85,7 @@ where EditDto : IEditDto<key>
             {
                 var entity = GetEntity(receivedItem.Key);
                 if (entity == null)
-                    return NotFoundEntity(Localizer[entity.GetType().Name]);
+                    return NotFoundEntity(Localizer[typeof(ITEntity).Name]);
 
                 Mapper.Map(receivedItem, entity);
                 await _repository.UpdateAsync(entity, entity.Key);
@@ -97,9 +98,11 @@ where EditDto : IEditDto<key>
                 return validationRes;
         }
 
-        public ITEntity GetEntity(object targetKey)
+        public ITEntity GetEntity(key targetKey)
         {
-            var result = _repository.FindAll(a => (object)a.Key == targetKey).FirstOrDefault();
+            var result = _repository.Get(targetKey);
+
+          //  var result = _repository.FindAll(a => a.Key == targetKey).FirstOrDefault();
             return result;
         }
 
@@ -126,7 +129,7 @@ where EditDto : IEditDto<key>
             }
             else
             {
-                result = NotFoundEntity(Localizer[item.GetType().Name]);
+                result = NotFoundEntity(Localizer[typeof(ITEntity).Name]);
             }
             return result;
         }

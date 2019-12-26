@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.ComponentModel.DataAnnotations.Schema;
 using WalletPan.Domain.Entity;
 using WalletPan.Framework.Data;
 
@@ -7,7 +8,7 @@ namespace WalletPan.Data.Map
 {
     public class CryptoCurrencyMap: BaseMap<CryptoCurrencyEntity>
     {
-        public CryptoCurrencyMap():base("CurrencyType")
+        public CryptoCurrencyMap():base("CryptoCurrency")
         {
 
         }
@@ -18,6 +19,7 @@ namespace WalletPan.Data.Map
             builder.ToTable(TableName, "dbo") ;
 
             builder.HasKey(o => o.Key);
+
 
             builder.Property(t => t.Key).HasColumnName(FormatFieldName("Key"));
 

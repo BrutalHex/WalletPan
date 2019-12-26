@@ -22,6 +22,11 @@ namespace WalletPan.Data.Map
             builder.Property(t => t.Title).HasColumnName(FormatFieldName("Title"));
             builder.Property(t => t.Address).HasColumnName(FormatFieldName("Address"));
 
+            builder.Property(a => a.CryptoCurrencyKey).HasColumnName($"CryptoCurrency_Key");
+            builder.HasOne(a => a.CryptoCurrencyEntity).WithMany(a => a.CryptoCurrencyServerEntities).HasForeignKey(a => a.CryptoCurrencyKey);
+
+
+
         }
     }
 }

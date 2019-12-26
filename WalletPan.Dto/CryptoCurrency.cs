@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿ 
 using WalletPan.Framework.Dto;
 
 namespace WalletPan.Dto
