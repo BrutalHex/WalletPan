@@ -1,0 +1,30 @@
+﻿{
+  "Messages.EmptyInformationRecieved": {
+    "Values": {
+
+      "en-US": "Empty information recieved or json is not in correct format"
+    }
+  },
+  "Messages.SuccessEntityInsert": {
+
+    "Values": {
+    
+      "en-US": "Information saved for {0}"
+    }
+
+  },
+
+  "Messages.EntityNotFound": {
+    "Values": {
+     
+      "en-US": "we could not find this entity : {0}"
+    }
+  },
+  "Messages.RepeatedRecord": {
+    "Values": {
+      
+      "en-US": "you have created an entity with the same {1}.{0} value before"
+    }
+  }
+} 
+  

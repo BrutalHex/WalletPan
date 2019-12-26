@@ -1,0 +1,35 @@
+﻿{
+
+
+
+
+  "CryptoCurrencyEntity": {
+
+    "Values": {
+
+      "en-US": "'Crypto Currency'"
+    }
+  },
+
+
+
+
+  "Entity.Title": {
+    "Values": {
+
+      "en-US": "Title"
+    }
+  },
+
+  "CryptoCurrencyServerEntity": {
+
+    "Values": {
+
+      "en-US": "'Crypto Currency Server'"
+    }
+  }
+
+
+
+
+}
