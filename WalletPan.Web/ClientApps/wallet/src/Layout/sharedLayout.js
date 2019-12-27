@@ -1,11 +1,11 @@
 ﻿import React, { Component } from 'react';
- 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../Pages/landing.scss';
 
-const LandingLayout = ({ children }) => (
+const SharedLayout = ({ children }) => (
     <div>
-        <p>This is the Landing Layout</p>
-        {children}
+            {children}
     </div>
 );
 
-export default LoginPage;
+export default SharedLayout;

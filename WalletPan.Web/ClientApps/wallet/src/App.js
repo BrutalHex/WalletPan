@@ -4,18 +4,19 @@ import './App.css';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
 /** Layouts **/
+import SharedLayout from "./Layout/SharedLayout";
 import LandingLayoutRoute  from  "./Layout/LandingLayout";
 import DashboardLayoutRoute from "./Layout/DashboardLayout";
 
 /** Components **/
-import UserPage from './Pages/UserPage';
+import MAinLandingPage from './Pages/MAinLandingPage';
 import LoginPage from './Pages/LoginPage'  
 
 function App() {
   return (
     
 
- 
+      <SharedLayout>
       <Switch>
 
           <Route exact path="/">
@@ -25,7 +26,7 @@ function App() {
           <Route path={["/landing"]}>
               <LandingLayoutRoute>
                   <Switch>
-                      <Route path="/landing" component={UserPage} />
+                          <Route path="/landing" component={MAinLandingPage} />
                   </Switch>
               </LandingLayoutRoute>
           </Route>
@@ -43,7 +44,8 @@ function App() {
       
 
           
-      </Switch>  
+          </Switch>  
+          </SharedLayout>
   );
 }
 

@@ -1,0 +1,188 @@
+﻿
+
+@font-face {
+    font-family: 'MontserratBold';
+    src: url("/fonts/Montserrat-Bold.ttf") format("ttf");
+    font-style: normal;
+    font-weight: 800;
+}
+
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url("/fonts/Montserrat-Regular.ttf") format("ttf");
+    font-style: normal;
+}
+
+
+.wallet-pan-landing {
+    
+    background-color: #fff;
+  
+    .section-head {
+        height: 865px;
+
+        .left-part {
+            .logo-wrapper {
+                padding-top: 60px;
+
+                img {
+                    width: 69%;
+                    height: 25px;
+                }
+            }
+
+            .banner-Text {
+                margin: 135px 0 35px 0;
+
+                h2 {
+                    width: 400px;
+                    height: 276px;
+                    font-family: MontserratBold;
+                    font-size: 75px;
+                    font-weight: 800;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: normal;
+                    letter-spacing: normal;
+                    color: #2c2f32;
+                    margin-bottom: 37px;
+                }
+
+                p {
+                    width: 420px;
+                    height: 210px;
+                    font-family: Montserrat;
+                    font-size: 20px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: 1.75;
+                    letter-spacing: normal;
+                    color: #4a4d4f;
+                }
+            }
+        }
+
+        .right-part {
+            background: url(/landing_assets/picture-background.svg);
+            background-repeat: no-repeat;
+
+            .fixed-top {
+                left: unset;
+                right: unset;
+            }
+
+            .navbar {
+                padding-top: 35px;
+                font-family: Montserrat;
+                font-size: 14px;
+                font-weight: 500;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                color: #ffffff;
+
+                .navbar-nav {
+
+
+                    &:first-child {
+                        margin-left: 106px;
+                    }
+
+                    .nav-link {
+                        width: 47px;
+                        height: 18px;
+                        margin-right: 39px;
+                        color: white;
+                        top: -11px;
+                        position: relative;
+
+                        &:hover {
+                            text-decoration: none;
+                        }
+                    }
+                }
+
+                .diparted-nav-section {
+                    float: right;
+                    margin-left: 80px;
+
+                    .nav-link {
+                        top: 5px;
+                        position: relative;
+                    }
+
+                    Button {
+                        width: 120px;
+                        height: 45px;
+                        border-radius: 10px;
+                        border: solid 1px #2dbee4;
+                        color: #fff;
+                    }
+                }
+            }
+
+            .rigth-part-img {
+                width: 732px;
+                height: 739px;
+                left: 67px;
+                position: relative;
+                top: -24px;
+            }
+        }
+    }
+
+    .section-operation {
+        background: url(/landing_assets/section-operation-background.svg);
+        background-repeat: no-repeat;
+        height: 515px;
+     background-size:cover;
+     background-position-y:bottom;
+        padding:80px 0px 80px 0px;
+    }
+
+    .iconic-box {
+        width: 330px;
+        height: 290px;
+        border-radius: 20px;
+        box-shadow: 0 4px 55px 0 #20222319;
+        background-color: #ffffff;
+        margin: 30px;
+        text-align: center;
+
+        img {
+            width: 95px;
+            height: 85px;
+            margin: 40px auto 0 auto;
+            display: block;
+        }
+
+        .title {
+            padding: 0 30px;
+            height: 30px;
+            font-weight: 800;
+            font-size: 20px;
+            line-height: 1.5;
+            color: #2c2f32;
+            margin-top: 40px;
+        }
+
+        .subtitle {
+            padding: 0 30px;
+            height: 50px;
+            font-family: Montserrat;
+            font-size: 16px;
+            line-height: 1.56;
+            color: #4a4d4f;
+            margin-top: 15px;
+        }
+    }
+}
+
+.center{
+
+    margin:0 auto;
+   
+}
