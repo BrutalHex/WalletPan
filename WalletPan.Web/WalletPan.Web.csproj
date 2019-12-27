@@ -35,5 +35,10 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ClientApps\wallet\src\Errors\" />
+    <Folder Include="ClientApps\wallet\src\NewFolder\" />
+  </ItemGroup>
+
 
 </Project>

@@ -1,25 +1,49 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+
+/** Layouts **/
+import LandingLayoutRoute  from  "./Layout/LandingLayout";
+import DashboardLayoutRoute from "./Layout/DashboardLayout";
+
+/** Components **/
+import UserPage from './Pages/UserPage';
+import LoginPage from './Pages/LoginPage'  
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+
+ 
+      <Switch>
+
+          <Route exact path="/">
+              <Redirect to="/landing" />
+          </Route>  
+
+          <Route path={["/landing"]}>
+              <LandingLayoutRoute>
+                  <Switch>
+                      <Route path="/landing" component={UserPage} />
+                  </Switch>
+              </LandingLayoutRoute>
+          </Route>
+
+          <Route path={["/Dashboard"]}>
+              <DashboardLayoutRoute>
+                  <Switch>
+                      <Route path="/Dashboard" component={LoginPage} />
+                  </Switch>
+              </DashboardLayoutRoute>
+          </Route>
+
+
+
+      
+
+          
+      </Switch>  
   );
 }
 
