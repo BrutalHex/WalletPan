@@ -6,7 +6,7 @@ import NavbarToggle from 'react-bootstrap/NavbarToggle';
 import NavbarCollapse from 'react-bootstrap/NavbarCollapse';
 import Nav from 'react-bootstrap/Nav';
 import NavLink from 'react-bootstrap/NavLink';
-
+import Scrollspy from 'react-scrollspy';
 const MNav = ( ) => {
     return (
 

@@ -4,9 +4,9 @@ import './App.css';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
 /** Layouts **/
-import SharedLayout from "./Layout/sharedLayout";
-import LandingLayoutRoute  from  "./Layout/landingLayout";
-import DashboardLayoutRoute from "./Layout/dashboardLayout";
+import SharedLayout from "./Layout/SharedLayout";
+import LandingLayoutRoute  from  "./Layout/LandingLayout";
+import DashboardLayoutRoute from "./Layout/DashboardLayout";
 
 /** Components **/
 import MAinLandingPage from './Pages/MAinLandingPage';

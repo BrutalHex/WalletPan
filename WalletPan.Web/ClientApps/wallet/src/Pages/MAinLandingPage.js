@@ -3,6 +3,7 @@ import MNav from './MNav';
 import IconicBox from '../components/IconicBox';
 import VerticalIconicBox from '../components/VerticalIconicBox';
 import AccordionBox from '../components/AccordionBox';
+import Footer from './Footer';
 
 const MAinLandingPage = ({ classes }) => {
 
@@ -141,23 +142,35 @@ XPR wallet" />
                 </div>
 
             </div>
-            <div className="row section-faqs">
-                    <div className="col-12 landing-title center">
-                        FAQs
+            <div className="row section-faqs-one">
+                <div className="col-12 landing-title center">
+                    FAQs
                 </div>
-           
+            </div>
+            <div className="row section-faqs-two">
+                    
+                <div className="col-12">
 
-                    <div className="col-12">
+                    <AccordionBox defclass="col-12 accordion center" list={list} />
 
-                        <AccordionBox defclass="col-12" list={list} />
+                </div>
 
-                        </div>
+                   
+                <div className="col-12 foot-note text-center">
 
+                    <span>Have not found the question that you are looking for? </span><a href="#">See More…</a>
+
+                </div>
                     
                      
      
             </div>
-            <div className="row section ">footer</div>
+           
+                 
+                   <Footer      />
+
+
+         
 
 
 
