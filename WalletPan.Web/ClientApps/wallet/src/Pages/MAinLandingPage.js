@@ -34,7 +34,7 @@ const MAinLandingPage = ({ classes }) => {
     return (
         <div className="container-fluid wallet-pan-landing">
 
-            <div className="row section section-head ">
+            <div className="row section section-head" id="home">
                 <div className="col-5 left-part">
                     <div className="row">
                         <div className="col-12 logo-wrapper">
@@ -92,7 +92,7 @@ const MAinLandingPage = ({ classes }) => {
             </div>
 
 
-            <div className="row section section-operation d-flex justify-content-center">
+            <div className="row section section-operation d-flex justify-content-center" id="wallet">
 
                 <IconicBox defclass="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3" src={`${process.env.PUBLIC_URL}/landing_assets/create-wallet.svg`} title="Create a new wallet" subtitle="Generate your own unique
 XPR wallet" />
@@ -102,7 +102,7 @@ XPR wallet" />
 
 
             </div>
-            <div className="row section section-about">
+            <div className="row section section-about" id="about">
 
                 <div className="col-12 landing-title center">
                     About Walletpan
@@ -142,7 +142,7 @@ XPR wallet" />
                 </div>
 
             </div>
-            <div className="row section-faqs-one">
+            <div className="row section-faqs-one" id="FAQs">
                 <div className="col-12 landing-title center">
                     FAQs
                 </div>

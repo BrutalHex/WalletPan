@@ -13,14 +13,16 @@ const MNav = ( ) => {
         <Navbar bg="transparent" expand="lg" fixed="top" >
             <NavbarToggle aria-controls="basic-navbar-nav" />
             <NavbarCollapse id="basic-navbar-nav">
-                <Nav className="mr-auto">
-                    
+              
+            <Nav className="mr-auto">
+             
                     <NavLink href="#home">Home</NavLink>
-                    <NavLink href="#link">Wallet</NavLink>
-                    <NavLink href="#home">About</NavLink>
-                    <NavLink href="#link">FAQs</NavLink>
-
+                    <NavLink href="#wallet">Wallet</NavLink>
+                    <NavLink href="#about">About</NavLink>
+                    <NavLink href="#FAQs">FAQs</NavLink>
+            
                 </Nav>
+    
                 <Nav className="diparted-nav-section">
                     <NavLink href="/Login">Login</NavLink>
                     <Button variant="outline-primary">Register</Button>
