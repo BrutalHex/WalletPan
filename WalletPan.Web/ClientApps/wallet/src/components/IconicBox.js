@@ -9,7 +9,7 @@
      render() {
         
         return(
-            <div className="iconic-box {this.props.defclass}">
+            <div className={`iconic-box ${this.props.defclass}`}>
                 
                 <div className="img-wrapper">
                     <img src={this.props.src} />

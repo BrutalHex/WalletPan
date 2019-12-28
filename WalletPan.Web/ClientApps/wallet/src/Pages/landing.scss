@@ -16,9 +16,8 @@
 
 
 .wallet-pan-landing {
-    
     background-color: #fff;
-  
+
     .section-head {
         height: 865px;
 
@@ -138,18 +137,92 @@
         background: url(/landing_assets/section-operation-background.svg);
         background-repeat: no-repeat;
         height: 515px;
-     background-size:cover;
-     background-position-y:bottom;
-        padding:80px 0px 80px 0px;
+        background-size: cover;
+        background-position-y: bottom;
+        padding: 80px 0px 80px 0px;
+    }
+
+    .section-about {
+        margin-top: -1px;
+        padding: 100px 0 100px 0;
+        background-color: #eff3f9;
+
+        .landing-title {
+        }
+
+        .landing-subtitle {
+            margin: 60px auto 0 auto;
+        }
+
+        .section-about-boxes-wrapper {
+            margin-top: 100px;
+
+            & > div {
+                margin-bottom: 60px;
+            }
+        }
+    }
+
+    .section-faqs {
+        background: url(/landing_assets/faqs-background.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position-y: top;
+        padding: 80px 0px 80px 0px;
+        .landing-title{
+
+        }
+    }
+    /*general items*/
+    .landing-title {
+        font-size: 45px;
+        font-weight: 800;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: center;
+        color: #2c2f32;
+    }
+
+    .landing-subtitle, .landing-subtitle P {
+        font-family: Montserrat;
+        font-size: 20px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.5;
+        letter-spacing: normal;
+        text-align: center;
+        color: #4a4d4f;
+    }
+
+    .landing-subtitle P {
+        width: 70%;
+    }
+
+
+    @mixin box-titles {
+        font-weight: 800;
+        font-size: 20px;
+        line-height: 1.5;
+        color: #2c2f32;
+    }
+
+    @mixin box-subtitles {
+        font-family: Montserrat;
+        font-size: 16px;
+        line-height: 1.56;
+        color: #4a4d4f;
     }
 
     .iconic-box {
-        width: 330px;
+        max-width: 320px;
         height: 290px;
         border-radius: 20px;
         box-shadow: 0 4px 55px 0 #20222319;
         background-color: #ffffff;
-        margin: 30px;
+        margin: 35px;
         text-align: center;
 
         img {
@@ -162,24 +235,53 @@
         .title {
             padding: 0 30px;
             height: 30px;
-            font-weight: 800;
-            font-size: 20px;
-            line-height: 1.5;
-            color: #2c2f32;
             margin-top: 40px;
+            @include box-titles;
         }
 
         .subtitle {
             padding: 0 30px;
-            height: 50px;
-            font-family: Montserrat;
-            font-size: 16px;
-            line-height: 1.56;
-            color: #4a4d4f;
             margin-top: 15px;
+            height: 50px;
+            @include box-subtitles;
+        }
+    }
+
+
+
+
+    .vertical-iconic-box {
+        .vertical-iconic-box-img-wrapper {
+            display: inline-block;
+            margin: 0 30px 0 0;
+            width: 95px;
+            height: 85px;
+            vertical-align: top;
+        }
+
+        .vertical-iconic-box-text-wrapper {
+            display: inline-block;
+            width: 390px;
+
+            .title {
+                color: #2c2f32;
+                @include box-titles;
+            }
+
+            .subtitle {
+                margin-top: 10px;
+                font-family: Montserrat;
+                letter-spacing: -0.2px;
+                color: #4a4d4f;
+                @include box-subtitles;
+            }
         }
     }
 }
+
+
+
+
 
 .center{
 
