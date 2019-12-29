@@ -71,19 +71,36 @@ body {
     font-style: normal;
 }
 
+ 
+
+
 .wallet-pan-landing {
     background-color: #fff;
 
     .section-head {
-        height: 865px;
-
+        min-height: 865px;
+        @media (max-width: 600px)
+        {
+            display:flex;
+            flex-direction: column-reverse;
+        }
         .left-part {
+
+            @media (max-width: 600px) {
+                float:right;
+                position: relative;
+            }
+
             .logo-wrapper {
                 padding-top: 60px;
 
                 img {
                     width: 69%;
                     height: 25px;
+                    @media (max-width: 600px) 
+                    {
+                        width: 100%;
+                    }
                 }
             }
 
@@ -114,11 +131,12 @@ body {
         .right-part {
             background: url(/landing_assets/picture-background.svg);
             background-repeat: no-repeat;
+            min-height: 350px;
 
-            .fixed-top {
-                left: unset;
-                right: unset;
-            }
+     @media (max-width: 600px) {
+        float:left;
+        position: relative;
+     }
 
             .navbar {
                 padding-top: 35px;
@@ -170,21 +188,29 @@ body {
                     }
                 }
             }
-
-            .rigth-part-img {
-                width: 90.9%;
-                height: 86.9%;
-                left: 9.1%;
+             .img-wrapper{
+                margin-top: -10%;
+                   .rigth-part-img {
+                width: 70%;
+                height: 82%;
+             
+           
                 position: relative;
-                top: -24px;
+               
             }
+             }
+          
         }
     }
 
     .section-operation {
         background: url(/landing_assets/section-operation-background.svg);
+        @media (max-width: 600px) 
+        {
+            background:none;
+        }
         background-repeat: no-repeat;
-        height: 515px;
+        min-height: 515px;
         background-size: cover;
         background-position-y: bottom;
         padding: 80px 0px 80px 0px;
@@ -205,9 +231,7 @@ body {
         .section-about-boxes-wrapper {
             margin-top: 100px;
 
-            & > div {
-                margin-bottom: 60px;
-            }
+         
         }
     }
 
@@ -242,8 +266,7 @@ body {
     }
     /*general items*/
     .accordion {
-        width: 75%;
-
+        max-width: 1300px;
 
         .card-wrapper {
             border-top: solid 1px #dcddde;
@@ -252,6 +275,11 @@ body {
                 border: 0px solid transparent;
                 margin: 10px 0px;
                 padding: 30px 20px;
+                 
+  @media (max-width: 600px) 
+  {
+    padding: 30px 0px;
+  }
 
                 .card-header {
                     background-color: transparent;
@@ -260,6 +288,17 @@ body {
                     font-weight: 500;
                     line-height: 1.5;
                     color: #2c2f32;
+                    @media (max-width: 600px) {
+                        padding:0.75rem 0rem;
+                    }
+
+                     span{
+                        @media (max-width: 600px) {
+                              max-width: 90%;
+                        display: inline-block;
+                        }
+                      
+                     }
 
                     img {
                         float: right;
@@ -346,13 +385,14 @@ body {
 
     .iconic-box {
         max-width: 320px;
-        height: 290px;
+        max-height: 290px;
         border-radius: 20px;
         box-shadow: 0 4px 55px 0 #20222319;
         background-color: #ffffff;
         margin: 35px;
         text-align: center;
-
+        padding: 10px;
+      
         img {
             width: 95px;
             height: 85px;
@@ -379,6 +419,8 @@ body {
 
 
     .vertical-iconic-box {
+        margin-bottom: 60px;
+
         .vertical-iconic-box-img-wrapper {
             display: inline-block;
             margin: 0 30px 0 0;
@@ -389,8 +431,8 @@ body {
 
         .vertical-iconic-box-text-wrapper {
             display: inline-block;
-            width: 390px;
-
+            max-width: 390px;
+            padding:0 10px;
             .title {
                 color: #2c2f32;
                 @include box-titles;
@@ -408,21 +450,26 @@ body {
 }
 
 
-@media (max-width: 768px) {
-    padding-top: 0;
-}
 
 
 
 
 .section-footer
 {
+    
     padding: 80px 0 0px 0;
+   
     background-color: #2c2f32;
  font-size: 14px;
+ @media (max-width: 600px){
+    padding: 0px;
+}
 .footer-wrapper{
     padding : 80px 0 50px 0;
     border-bottom: solid 1px #bebebe;
+    @media (max-width: 600px){
+        padding : 30px 0 50px 0;
+    }
 }
  .footer-copy-right{
     color: #bebebe;
@@ -438,8 +485,19 @@ body {
        font-weight: 800;
    }
 
+   .footer-logo{
+   
+    img{
+        @media (max-width: 600px){
+            margin-top: 30px;
+            margin:0 auto;
+        }
+    }
+   }
+
    .footer-logo,.footer-links-header
    {
+  
        margin-bottom: 36px;
    }
 
@@ -474,3 +532,4 @@ body {
     margin:0 auto;
    
 }
+ 

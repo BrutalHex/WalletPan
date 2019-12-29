@@ -2,7 +2,7 @@
 
 
 const UniqueRoot = () => (
-    <div>
+    <div className="row">
          
     </div>
 );

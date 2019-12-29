@@ -16,27 +16,22 @@ class MNav extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { top: false };
+        this.state = { top: true };
     }
 
     componentDidMount() {
-        document.addEventListener('scroll', () => {
-            const top = window.scrollY < 300;
-
-            if (top !== this.state.top) {
-                this.setState({ top })
-            }
-        });
+        
     }
 
     render() {
         return (
 
-            <Navbar bg={this.state.selected ? 'transparent' : 'card-wrapper'} expand="lg" fixed="top" >
+            <Navbar bg="transparent"  
+               >
                 <NavbarToggle aria-controls="basic-navbar-nav" />
                 <NavbarCollapse id="basic-navbar-nav">
 
-                    <Nav className="mr-auto">
+                    <Nav  >
 
                         <NavLink href="#home">Home</NavLink>
                         <NavLink href="#wallet">Wallet</NavLink>

@@ -24,7 +24,7 @@ function App() {
           </Route>  
 
           <Route path={["/landing"]}>
-              <LandingLayoutRoute>
+                  <LandingLayoutRoute className="row">
                   <Switch>
                           <Route path="/landing" component={MAinLandingPage} />
                   </Switch>

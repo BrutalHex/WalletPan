@@ -24,8 +24,8 @@ const MAinLandingPage = ({ classes }) => {
             text: 'How can I send a transaction? v How can I send a transaction? How can I send a transaction? How can I send a transaction? How can I send a transaction?'
         },
         {
-            title:'I forgot my password/private key! What can I do?',
-            text: 'I forgot my password/private key! What can I do? vI forgot my password/private key! What can I do? I forgot my password/private key! What can I do? I forgot my password/private key! What can I do?'
+            title:'I forgot my password / private key! What can I do?',
+            text: 'I forgot my password/private key! What can I do? vI forgot my password / private key! What can I do? I forgot my password/private key! What can I do? I forgot my password/private key! What can I do?'
         }
     ];
 
@@ -35,7 +35,7 @@ const MAinLandingPage = ({ classes }) => {
         <div className="container-fluid wallet-pan-landing">
 
             <div className="row section section-head" id="home">
-                <div className="col-5 left-part">
+                <div className="col-sm-5 col-12 left-part">
                     <div className="row">
                         <div className="col-12 logo-wrapper">
                             <img src={`${process.env.PUBLIC_URL}/landing_assets/logo.svg`}
@@ -71,7 +71,7 @@ const MAinLandingPage = ({ classes }) => {
                         </div>
                     </div>
                 </div>
-                <div className="col-7 right-part">
+                <div className="col-sm-7 col-12 right-part">
 
                     <div className="row">
                         <div className="col-12">
@@ -81,10 +81,10 @@ const MAinLandingPage = ({ classes }) => {
                         </div>
 
                     </div>
-                    <div className="row">
+                    <div className="row img-wrapper ">
 
                         <img src={`${process.env.PUBLIC_URL}/landing_assets/wallet_pan_right_ripple.svg`}
-                            className="rigth-part-img" />
+                            className="rigth-part-img center" />
                     </div>
 
                 </div>

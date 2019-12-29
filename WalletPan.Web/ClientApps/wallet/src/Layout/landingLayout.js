@@ -3,8 +3,7 @@ import { Route } from 'react-router-dom';
 import '../Pages/style/landing.scss';
 
 const LandingLayout = ({ children }) => (
-    <div>
-        <p>This is the Landing Layout</p>
+    <div className="row">
         {children}
     </div>
 );

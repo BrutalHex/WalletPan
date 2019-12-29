@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const SharedLayout = ({ children }) => (
-    <div>
+    <div className="row">
             {children}
     </div>
 );
