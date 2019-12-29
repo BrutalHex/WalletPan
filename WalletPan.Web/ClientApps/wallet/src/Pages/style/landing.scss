@@ -139,6 +139,8 @@ body {
      }
 
             .navbar {
+                position: relative;
+                z-index: 5;
                 padding-top: 35px;
                 font-family: Montserrat;
                 font-size: 14px;
