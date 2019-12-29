@@ -33,7 +33,9 @@ class AccordionBoxItem extends React.Component {
             <div className={ this.state.selected ? 'card-wrapper fillblue' : 'card-wrapper'}   >
             <Card onClick={this.handleClick}>
             <AccordionToggle as={Card.Header} eventKey={index.toString()}>
-            {item.title} 
+                        <span>{item.title}</span>
+                        <img src={`${process.env.PUBLIC_URL}/landing_assets/plus.svg`} className="card-header-plus"/>
+                        <img src={`${process.env.PUBLIC_URL}/landing_assets/minus.svg`} className="card-header-minus"/>
             </AccordionToggle>
             <Accordion.Collapse eventKey={index.toString()}>
                    <Card.Body>{item.text}</Card.Body>
