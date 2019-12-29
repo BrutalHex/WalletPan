@@ -50,13 +50,13 @@ import React, { Component }  from 'react';
 
         const res=  list.map((item,index)=>{
                   return (
-            <div className="col-12 col-sm-6 col-md-3 col-lg-3 col-xl-3">
+                      <div key={'footer'+index.toString()}  className="col-12 col-sm-6 col-md-3 col-lg-3 col-xl-3">
                    <div className="col-12 footer-links-header"> {item.title}</div>
                 {
 
   item.links.map((inner,ind)=>{
 
-    return (  <div className="col-12 footer-links">
+      return (<div key={'footer' +index.toString() + ind.toString()}  className="col-12 footer-links">
         <a href={inner.href}>{inner.text}</a>   
      </div>);
     

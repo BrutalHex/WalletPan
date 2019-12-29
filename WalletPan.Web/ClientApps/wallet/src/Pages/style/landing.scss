@@ -13,6 +13,49 @@
     src: url("/fonts/Montserrat-Regular.ttf") format("ttf");
     font-style: normal;
 }
+
+
+ 
+@-webkit-keyframes rotation_anime_pattern {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(359deg);
+    }
+}
+@keyframes rotation_anime_pattern {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(359deg);
+    }
+}
+
+@mixin rotation_anime_duration {
+    -webkit-animation: rotation 5s linear;
+}
+
+@mixin rotation_anime {
+
+    $animation_name: rotation_anime_pattern;
+    $animation_duration:  0.7s;
+
+    -webkit-animation-name: $animation_name; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: $animation_duration; /* Safari 4.0 - 8.0 */
+    animation-name: $animation_name;
+    animation-duration: $animation_duration;
+}
+
+
+
+ 
+
+
+
 a {
     &:hover {
         text-decoration: none;
@@ -63,7 +106,6 @@ body {
                     font-family: Montserrat;
                     font-size: 20px;
                     line-height: 1.75;
-            
                     color: #4a4d4f;
                 }
             }
@@ -182,7 +224,8 @@ body {
 
     .section-faqs-two {
         min-height: 200px;
-        margin-bottom:110px;
+        margin-bottom: 110px;
+
         .foot-note {
             padding-top: 39px;
             font-family: Montserrat;
@@ -191,56 +234,78 @@ body {
             color: #2c2f32;
 
             a {
-                margin: 0  10px;
+                margin: 0 10px;
                 line-height: 1.88;
                 color: #2dbee4;
             }
         }
     }
     /*general items*/
-
-     .accordion{
+    .accordion {
         width: 75%;
- 
-       
-        .card-wrapper{
-            border-top: solid 1px #dcddde;  
 
-                    .card {
-            border: 0px solid transparent;
-         
-         
-            margin: 10px 0px;
-            padding: 30px 20px;
-          .card-header{
-            background-color: transparent;
-            border-bottom:none;
-            font-size: 20px;
-            font-weight: 500;
-            line-height: 1.5;
-            color: #2c2f32;
-          }
-         }
-        }
-         
-         &:last-child{
-            border-bottom: solid 1px #dcddde;
-         }
 
-         .fillblue{
-            .card
-            {
-                    background-color: #4ec8e80c;
-                    .card-header{
-                        font-size: 20px;
-                        font-weight: 800;
-                        
+        .card-wrapper {
+            border-top: solid 1px #dcddde;
+
+            .card {
+                border: 0px solid transparent;
+                margin: 10px 0px;
+                padding: 30px 20px;
+
+                .card-header {
+                    background-color: transparent;
+                    border-bottom: none;
+                    font-size: 20px;
+                    font-weight: 500;
+                    line-height: 1.5;
+                    color: #2c2f32;
+
+                    img {
+                        float: right;
                     }
+
+                    .card-header-plus {
+                        @include rotation_anime;
+                        display: block;
+                    }
+
+                    .card-header-minus {
+                        display: none;
+                    }
+
+                    .card-header-plus, .card-header-plus {
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
             }
-        
         }
 
-     }
+        &:last-child {
+            border-bottom: solid 1px #dcddde;
+        }
+
+        .fillblue {
+            .card {
+                background-color: #4ec8e80c;
+
+                .card-header {
+                    font-size: 20px;
+                    font-weight: 800;
+
+                    .card-header-plus {
+                        display: none;
+                    }
+
+                    .card-header-minus {
+                        @include rotation_anime;
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
 
 
 
@@ -341,6 +406,15 @@ body {
         }
     }
 }
+
+
+@media (max-width: 768px) {
+    padding-top: 0;
+}
+
+
+
+
 .section-footer
 {
     padding: 80px 0 0px 0;
