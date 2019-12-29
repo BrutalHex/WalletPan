@@ -31,7 +31,7 @@ class AccordionBoxItem extends React.Component {
         return (
 
             <div className={ this.state.selected ? 'card-wrapper fillblue' : 'card-wrapper'}   >
-            <Card key={index.toString()} onClick={this.handleClick}>
+            <Card onClick={this.handleClick}>
             <AccordionToggle as={Card.Header} eventKey={index.toString()}>
             {item.title} 
             </AccordionToggle>

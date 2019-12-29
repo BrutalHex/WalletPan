@@ -21,7 +21,7 @@ class AccordionBox extends React.Component {
       
         const listItems = items.map((item, index) => {
             return (
-                <AccordionBoxItem item={item} index={index} />
+                <AccordionBoxItem key={"accordion_key"+index.toString()}  item={item} index={index} />
                 );
         }
 
