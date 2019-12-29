@@ -16,15 +16,23 @@ class MNav extends React.Component {
 
     constructor(props) {
         super(props);
-
+        this.state = { top: false };
     }
 
+    componentDidMount() {
+        document.addEventListener('scroll', () => {
+            const top = window.scrollY < 300;
 
+            if (top !== this.state.top) {
+                this.setState({ top })
+            }
+        });
+    }
 
     render() {
         return (
 
-            <Navbar bg="transparent" expand="lg" fixed="top" >
+            <Navbar bg={this.state.selected ? 'transparent' : 'card-wrapper'} expand="lg" fixed="top" >
                 <NavbarToggle aria-controls="basic-navbar-nav" />
                 <NavbarCollapse id="basic-navbar-nav">
 
