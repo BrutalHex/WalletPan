@@ -135,13 +135,13 @@ body {
 
 
                     &:first-child {
-                       
+                        margin-left: 106px;
                     }
 
                     .nav-link {
                         width: 47px;
                         height: 18px;
-                     
+                        margin-right: 39px;
                         color: white;
                         top: -11px;
                         position: relative;
@@ -154,6 +154,7 @@ body {
 
                 .diparted-nav-section {
                     float: right;
+                    margin-left: 80px;
 
                     .nav-link {
                         top: 5px;
