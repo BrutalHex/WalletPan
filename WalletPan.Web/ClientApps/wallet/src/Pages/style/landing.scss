@@ -65,7 +65,7 @@ a {
 body {
     letter-spacing: normal;
     font-family: Montserrat;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
@@ -135,13 +135,13 @@ body {
 
 
                     &:first-child {
-                        margin-left: 106px;
+                       
                     }
 
                     .nav-link {
                         width: 47px;
                         height: 18px;
-                        margin-right: 39px;
+                     
                         color: white;
                         top: -11px;
                         position: relative;
@@ -154,7 +154,6 @@ body {
 
                 .diparted-nav-section {
                     float: right;
-                    margin-left: 80px;
 
                     .nav-link {
                         top: 5px;
@@ -172,9 +171,9 @@ body {
             }
 
             .rigth-part-img {
-                width: 732px;
-                height: 739px;
-                left: 67px;
+                width: 90.9%;
+                height: 86.9%;
+                left: 9.1%;
                 position: relative;
                 top: -24px;
             }
