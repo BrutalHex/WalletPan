@@ -26,9 +26,9 @@ class MNav extends React.Component {
     render() {
         return (
 
-            <Navbar bg="transparent"  
+            <Navbar bg="transparent"  collapseOnSelect expand="lg"
                >
-                <NavbarToggle aria-controls="basic-navbar-nav" />
+                <NavbarToggle  aria-controls="basic-navbar-nav"/>
                 <NavbarCollapse id="basic-navbar-nav">
 
                     <Nav  >
