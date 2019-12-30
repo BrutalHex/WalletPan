@@ -35,7 +35,7 @@ const MAinLandingPage = ({ classes }) => {
         <div className="container-fluid wallet-pan-landing">
 
             <div className="row section section-head" id="home">
-                <div className="col-sm-5 col-12 left-part">
+                <div className="col-12 col-md-5 left-part">
                     <div className="row">
                         <div className="col-12 logo-wrapper">
                             <img src={`${process.env.PUBLIC_URL}/landing_assets/logo.svg`}
@@ -71,7 +71,7 @@ const MAinLandingPage = ({ classes }) => {
                         </div>
                     </div>
                 </div>
-                <div className="col-sm-7 col-12 right-part">
+                <div className="col-12 col-md-7 right-part">
 
                     <div className="row">
                         <div className="col-12">
@@ -83,8 +83,7 @@ const MAinLandingPage = ({ classes }) => {
                     </div>
                     <div className="row img-wrapper ">
 
-                        <img src={`${process.env.PUBLIC_URL}/landing_assets/wallet_pan_right_ripple.svg`}
-                            className="rigth-part-img center" />
+                    
                     </div>
 
                 </div>

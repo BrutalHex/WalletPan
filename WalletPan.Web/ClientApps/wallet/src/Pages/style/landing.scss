@@ -78,14 +78,14 @@ body {
     .section-head {
         min-height: 865px;
 
-        @media (max-width: 600px) {
+        @media (max-width: 767px) {
             display: flex;
             flex-direction: column-reverse;
         }
 
         .left-part {
 
-            @media (max-width: 600px) {
+            @media (max-width: 767px) {
                 float: right;
                 position: relative;
             }
@@ -97,7 +97,7 @@ body {
                     width: 69%;
                     height: 25px;
 
-                    @media (max-width: 600px) {
+                    @media (max-width: 767px) {
                         width: 100%;
                     }
                 }
@@ -132,7 +132,7 @@ body {
             background-repeat: no-repeat;
             min-height: 400px;
 
-            @media (max-width: 600px) {
+            @media (max-width: 767px) {
                 float: left;
                 position: relative;
             }
@@ -144,10 +144,24 @@ body {
 
 
             .img-wrapper {
-                margin-top: -10%;
+                margin-top: -6%;
                 position: relative;
                 z-index: 0;
-                top: 10px;
+                top: 0px;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-image: url(/landing_assets/wallet_pan_right_ripple.svg);
+                height: 100%;
+                min-height: 359px;
+
+                @media (min-width: 900px) {
+                    background-size: 89%;
+                }
+
+                @media (min-width: 1440px) {
+                    background-size: 85%;
+                }
+
 
                 .rigth-part-img {
                     width: 70%;
