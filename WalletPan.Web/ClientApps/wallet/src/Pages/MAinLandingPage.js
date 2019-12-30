@@ -94,11 +94,11 @@ const MAinLandingPage = ({ classes }) => {
 
             <div className="row section section-operation d-flex justify-content-center" id="wallet">
 
-                <IconicBox defclass="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3" src={`${process.env.PUBLIC_URL}/landing_assets/create-wallet.svg`} title="Create a new wallet" subtitle="Generate your own unique
+                <IconicBox defclass="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-3" src={`${process.env.PUBLIC_URL}/landing_assets/create-wallet.svg`} title="Create a new wallet" subtitle="Generate your own unique
 XPR wallet" />
-                <IconicBox defclass="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3" src={`${process.env.PUBLIC_URL}/landing_assets/access-to-wallet.svg`} title="Explore your wallet" subtitle="Connect to the blockchain using the wallet of your choice" />
+                <IconicBox defclass="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-3" src={`${process.env.PUBLIC_URL}/landing_assets/access-to-wallet.svg`} title="Explore your wallet" subtitle="Connect to the blockchain using the wallet of your choice" />
                
-                <IconicBox defclass="col-12 col-sm-3 col-md-3 col-lg-3 col-xl-3" src={`${process.env.PUBLIC_URL}/landing_assets/send-xrp.svg`} title="Send XRP" subtitle="Send and Swap XRP & Tokens usign your own wallet" />
+                <IconicBox defclass="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-3" src={`${process.env.PUBLIC_URL}/landing_assets/send-xrp.svg`} title="Send XRP" subtitle="Send and Swap XRP & Tokens usign your own wallet" />
 
 
             </div>
@@ -115,7 +115,7 @@ XPR wallet" />
                         We're always here to help, and <span className="text-danegr">we're never giving away XRP</span>.</p>
                 </div>
                 <div className="col12 section-about-boxes-wrapper center">
-                    <div className="row d-flex justify-content-center" >
+                    <div className="row w-100 d-flex justify-content-center" >
 
                         <VerticalIconicBox defclass="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6"
                             src={`${process.env.PUBLIC_URL}/landing_assets/join-walletpan.svg`} 
@@ -127,7 +127,7 @@ XPR wallet" />
 
                     </div>
                     
-                      <div className="row d-flex justify-content-center">
+                      <div className="row w-100 d-flex justify-content-center">
 
                         <VerticalIconicBox defclass="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6" 
                             src={`${process.env.PUBLIC_URL}/landing_assets/swap.svg`} 

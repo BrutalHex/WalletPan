@@ -51,7 +51,7 @@
     animation-duration: $animation_duration;
 }
 
- 
+
 
 
 a {
@@ -118,7 +118,7 @@ body {
 
                 p {
                     max-width: 420px;
-                    display:block;
+                    display: block;
                     font-family: Montserrat;
                     font-size: 20px;
                     line-height: 1.75;
@@ -184,6 +184,10 @@ body {
 
                     &:first-child {
                         margin-left: 106px;
+
+                        @media (max-width: 1439px) {
+                            margin-left: 10px;
+                        }
                     }
 
                     .nav-link {
@@ -196,6 +200,10 @@ body {
 
                         &:hover {
                             text-decoration: none;
+                        }
+
+                        @media (max-width: 1439px) {
+                            margin-right: 20px;
                         }
                     }
                 }
@@ -217,6 +225,10 @@ body {
                         border-radius: 10px;
                         border: solid 1px #2dbee4;
                         color: #fff;
+                    }
+
+                    @media (max-width: 1439px) {
+                        margin-left: 40px;
                     }
                 }
 
@@ -266,6 +278,9 @@ body {
 
         @media (max-width: 600px) {
             background: none;
+            margin-top: 20px;
+            padding-top: 10px;
+            background-color: #eff3f9;
         }
 
         background-repeat: no-repeat;
@@ -289,6 +304,7 @@ body {
 
         .section-about-boxes-wrapper {
             margin-top: 100px;
+            padding-left: 10px;
         }
     }
 
@@ -440,14 +456,17 @@ body {
 
 
     .iconic-box {
-        max-width: 320px;
-        max-height: 290px;
         border-radius: 20px;
         box-shadow: 0 4px 55px 0 #20222319;
         background-color: #ffffff;
-        margin: 35px 35px 0px 35px;
+        margin: 15px auto;
         text-align: center;
         padding: 10px;
+
+        @media (max-width: 767px) {
+            margin: 10px;
+            transform: scale(0.9);
+        }
 
         img {
             width: 95px;
@@ -461,13 +480,21 @@ body {
             height: 30px;
             margin-top: 40px;
             @include box-titles;
+
+            @media (max-width: 1000px) {
+                padding: 0 5px;
+            }
         }
 
         .subtitle {
             padding: 0 30px;
             margin-top: 15px;
-            height: 50px;
+            min-height: 50px;
             @include box-subtitles;
+
+            @media (max-width: 1000px) {
+                padding: 0 5px;
+            }
         }
     }
 
@@ -512,7 +539,7 @@ body {
 
 
 .section-footer {
-    padding: 80px 0 0px 0;
+ 
     background-color: #2c2f32;
     font-size: 14px;
 
