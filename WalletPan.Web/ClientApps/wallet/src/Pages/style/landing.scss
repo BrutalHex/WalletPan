@@ -55,6 +55,15 @@
 
 
 a {
+
+    font-size: 14px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    color: #2dbee4;
+
     &:hover {
         text-decoration: none;
     }
@@ -75,215 +84,15 @@ body {
 .wallet-pan-landing {
     background-color: #fff;
 
-    .section-head {
-        min-height: 865px;
-
-        @media (max-width: 767px) {
-            display: flex;
-            flex-direction: column-reverse;
-        }
-
-        .left-part {
-
-            @media (max-width: 767px) {
-                float: right;
-                position: relative;
-            }
-
-            .logo-wrapper {
-                padding-top: 60px;
-
-                img {
-                    width: 69%;
-                    height: 25px;
-
-                    @media (max-width: 767px) {
-                        width: 100%;
-                    }
-                }
-            }
-
-            .banner-Text {
-                margin: 135px 0 35px 0;
-
-                h2 {
-                    width: 400px;
+    .section-head{
+        .left-part{
+            .banner-Text{
+                 
+                   h2{  width: 400px;
                     height: 276px;
-                    font-family: MontserratBold;
-                    font-size: 75px;
-                    font-weight: 800;
-                    color: #2c2f32;
-                    margin-bottom: 37px;
-                }
-
-                p {
-                    max-width: 420px;
-                    display: block;
-                    font-family: Montserrat;
-                    font-size: 20px;
-                    line-height: 1.75;
-                    color: #4a4d4f;
-                }
+                   }
             }
-        }
-
-        .right-part {
-            background: url(/landing_assets/picture-background.svg);
-            background-repeat: no-repeat;
-            min-height: 400px;
-
-            @media (max-width: 767px) {
-                float: left;
-                position: relative;
-            }
-
-            & > .row {
-                position: absolute;
-                z-index: 4;
-            }
-
-
-            .img-wrapper {
-                margin-top: -6%;
-                position: relative;
-                z-index: 0;
-                top: 0px;
-                background-repeat: no-repeat;
-                background-position: center;
-                background-image: url(/landing_assets/wallet_pan_right_ripple.svg);
-                height: 100%;
-                min-height: 359px;
-
-                @media (min-width: 900px) {
-                    background-size: 89%;
-                }
-
-                @media (min-width: 1440px) {
-                    background-size: 85%;
-                }
-
-
-                .rigth-part-img {
-                    width: 70%;
-                    height: 82%;
-                    position: relative;
-                    top: 40px;
-                }
-            }
-
-
-            .navbar {
-                position: relative;
-                z-index: 5;
-                padding-top: 35px;
-                font-family: Montserrat;
-                font-size: 14px;
-                font-weight: 500;
-                font-stretch: normal;
-                font-style: normal;
-                line-height: normal;
-                letter-spacing: normal;
-                color: #ffffff;
-
-                .navbar-toggler {
-                    &:focus {
-                        border: solid 1px #2dbee4;
-                        outline: 5px auto #2dbee4;
-                    }
-                }
-
-
-                .navbar-nav {
-
-
-                    &:first-child {
-                        margin-left: 106px;
-
-                        @media (max-width: 1439px) {
-                            margin-left: 10px;
-                        }
-                    }
-
-                    .nav-link {
-                        width: 47px;
-                        height: 18px;
-                        margin-right: 39px;
-                        color: white;
-                        top: -11px;
-                        position: relative;
-
-                        &:hover {
-                            text-decoration: none;
-                        }
-
-                        @media (max-width: 1439px) {
-                            margin-right: 20px;
-                        }
-                    }
-                }
-
-
-
-                .diparted-nav-section {
-                    float: right;
-                    margin-left: 80px;
-
-                    .nav-link {
-                        top: 5px;
-                        position: relative;
-                    }
-
-                    Button {
-                        width: 120px;
-                        height: 45px;
-                        border-radius: 10px;
-                        border: solid 1px #2dbee4;
-                        color: #fff;
-                    }
-
-                    @media (max-width: 1439px) {
-                        margin-left: 40px;
-                    }
-                }
-
-
-                .show {
-                    background-image: linear-gradient(238deg, rgba(48, 33, 150, 0) 135%, rgba(18, 168, 207, 0.5) -12%), linear-gradient(to bottom, #030a41, #030a41);
-                    padding: 10px;
-                    opacity: 0.8;
-                    border-radius: 10px;
-
-
-                    .navbar-nav {
-                        margin-top: 10px;
-
-                        &:first-child {
-                            margin-left: 0px;
-                        }
-
-                        a {
-                            margin-top: 10px;
-                            cursor: pointer;
-                        }
-                    }
-
-                    .diparted-nav-section {
-                        float: left;
-                        margin: 0px;
-                        width: 100%;
-
-                        a {
-                            top: 0px;
-                            margin-top: 0px;
-                        }
-
-                        Button {
-                            border: solid 1px #2dbee4;
-                            margin: 10px auto;
-                        }
-                    }
-                }
-            }
+         
         }
     }
 
@@ -550,7 +359,217 @@ body {
 
 
 
+.twin-section {
+    min-height: 865px;
 
+    @media (max-width: 767px) {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .left-part {
+
+        @media (max-width: 767px) {
+            float: right;
+            position: relative;
+        }
+
+        .logo-wrapper {
+            padding-top: 60px;
+
+            img {
+                width: 69%;
+                height: 25px;
+
+                @media (max-width: 767px) {
+                    width: 100%;
+                }
+            }
+        }
+
+        .banner-Text {
+            margin: 135px 0 35px 0;
+
+            h2 {
+              
+               
+                font-family: MontserratBold;
+                font-size: 75px;
+                font-weight: 800;
+                color: #2c2f32;
+                margin-bottom: 37px;
+            }
+
+            p {
+                max-width: 420px;
+                display: block;
+                font-family: Montserrat;
+                font-size: 20px;
+                line-height: 1.75;
+                color: #4a4d4f;
+            }
+        }
+    }
+
+    .right-part {
+        background: url(/landing_assets/picture-background.svg);
+        background-repeat: no-repeat;
+        min-height: 400px;
+
+        @media (max-width: 767px) {
+            float: left;
+            position: relative;
+        }
+
+        & > .row {
+            position: absolute;
+            z-index: 4;
+        }
+
+
+        .img-wrapper {
+            margin-top: -6%;
+            position: relative;
+            z-index: 0;
+            top: 0px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url(/landing_assets/wallet_pan_right_ripple.svg);
+            height: 100%;
+            min-height: 359px;
+
+            @media (min-width: 900px) {
+                background-size: 89%;
+            }
+
+            @media (min-width: 1440px) {
+                background-size: 85%;
+            }
+
+
+            .rigth-part-img {
+                width: 70%;
+                height: 82%;
+                position: relative;
+                top: 40px;
+            }
+        }
+
+
+        .navbar {
+            position: relative;
+            z-index: 5;
+            padding-top: 35px;
+            font-family: Montserrat;
+            font-size: 14px;
+            font-weight: 500;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: #ffffff;
+
+            .navbar-toggler {
+                &:focus {
+                    border: solid 1px #2dbee4;
+                    outline: 5px auto #2dbee4;
+                }
+            }
+
+
+            .navbar-nav {
+
+
+                &:first-child {
+                    margin-left: 106px;
+
+                    @media (max-width: 1439px) {
+                        margin-left: 10px;
+                    }
+                }
+
+                .nav-link {
+                    width: 47px;
+                    height: 18px;
+                    margin-right: 39px;
+                    color: white;
+                    top: -11px;
+                    position: relative;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+
+                    @media (max-width: 1439px) {
+                        margin-right: 20px;
+                    }
+                }
+            }
+
+
+
+            .diparted-nav-section {
+                float: right;
+                margin-left: 80px;
+
+                .nav-link {
+                    top: 5px;
+                    position: relative;
+                }
+
+                Button {
+                    width: 120px;
+                    height: 45px;
+                    border-radius: 10px;
+                    border: solid 1px #2dbee4;
+                    color: #fff;
+                }
+
+                @media (max-width: 1439px) {
+                    margin-left: 40px;
+                }
+            }
+
+
+            .show {
+                background-image: linear-gradient(238deg, rgba(48, 33, 150, 0) 135%, rgba(18, 168, 207, 0.5) -12%), linear-gradient(to bottom, #030a41, #030a41);
+                padding: 10px;
+                opacity: 0.8;
+                border-radius: 10px;
+
+
+                .navbar-nav {
+                    margin-top: 10px;
+
+                    &:first-child {
+                        margin-left: 0px;
+                    }
+
+                    a {
+                        margin-top: 10px;
+                        cursor: pointer;
+                    }
+                }
+
+                .diparted-nav-section {
+                    float: left;
+                    margin: 0px;
+                    width: 100%;
+
+                    a {
+                        top: 0px;
+                        margin-top: 0px;
+                    }
+
+                    Button {
+                        border: solid 1px #2dbee4;
+                        margin: 10px auto;
+                    }
+                }
+            }
+        }
+    }
+}
 
 .section-footer {
  
@@ -621,9 +640,128 @@ body {
     }
 }
 
+.login
+{
 
+    .left-part
+    {
+       
+        .banner-Text{
+            margin: 135px auto 35px auto;
+            max-width: 437px;
+   
+  h2,span{
+    
+ text-align: center;
+ font-family: Montserrat;
+  }
 
+    h2{
+       
+        font-size: 30px;
+        font-weight: bold;
+        color: #2c2f32;
+        text-align: left;
+margin-bottom:20px;
+       
+    }
+    .hint-bar{
+      
+        font-size: 20px;
+        line-height: 1.75;
+        color: #4a4d4f;
+        
+    }
+}
+        .custom-form{
+            max-width: 400px;
+         margin-bottom: 60px;
+
+           }
+    }
+
+}
+
+.general-background{
+    background-image :  url(/landing_assets/general_background.svg);
+
+}
+
+.custom-form{
+
+color: #4a4d4f;
+
+    .form-label{
+      
+  height: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.71;
+  color: #4a4d4f;
+    }
+    .form-group{
+        margin-bottom: 30px;
+    }
+    .form-input{
+        height: 45px;
+        border-radius: 10px;
+        border: solid 1px #dedede;
+    }
+   a{
+     margin:40px 0px 30px 10px;   
+   }
+   .form-footer
+   {
+      margin-top: 60px 0px 60px 0px;;
+   }
+   
+}
+.btn-primary{
+  
+    height: 45px;
+    border-radius: 10px;
+    background-color: #2dbee4;
+}
+.outline-primary
+{
+    border-radius: 10px;
+    border: solid 1px #2dbee4;
+    height: 45px;
+    padding: 14px;
+}
+
+.custom-divider{
+    border: solid 1px #dedede;
+    width:100%;
+    display: block;
+    height: 2px;
+    margin: 52px 0px 52px 0px;
+    span{
+        height: 24px;
+      
+        font-size: 16px;
+        line-height: 1.5;
+        color: #bebebf;
+        background-color: #fff;
+        top: -13px;
+        position: relative;
+        width: 40px;
+        display: block;
+       
+    }
+}
+
+Button{
+    img{
+         width: 20px;
+    height: 20px;
+  margin:0px 10px 0px 10px;
+    }
+   
+}
 
 .center {
     margin: 0 auto;
 }
+
+ 

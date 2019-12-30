@@ -41,7 +41,7 @@ class MNav extends React.Component {
                     </Nav>
 
                     <Nav className="diparted-nav-section">
-                        <NavLink href="/Login">Login</NavLink>
+                        <NavLink href="/login">Login</NavLink>
                         <Button variant="outline-primary">Register</Button>
                     </Nav>
                 </NavbarCollapse>

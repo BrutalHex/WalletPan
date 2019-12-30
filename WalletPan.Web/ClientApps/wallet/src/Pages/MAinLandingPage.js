@@ -34,7 +34,7 @@ const MAinLandingPage = ({ classes }) => {
     return (
         <div className="container-fluid wallet-pan-landing">
 
-            <div className="row section section-head" id="home">
+            <div className="row section section-head twin-section" id="home">
                 <div className="col-12 col-md-5 left-part">
                     <div className="row">
                         <div className="col-12 logo-wrapper">

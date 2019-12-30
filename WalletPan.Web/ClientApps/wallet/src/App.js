@@ -23,10 +23,11 @@ function App() {
               <Redirect to="/landing" />
           </Route>  
 
-          <Route path={["/landing"]}>
+          <Route path={["/landing","/login"]}>
                   <LandingLayoutRoute className="row">
                   <Switch>
                           <Route path="/landing" component={MAinLandingPage} />
+                          <Route path="/login" component={LoginPage} />
                   </Switch>
               </LandingLayoutRoute>
           </Route>
