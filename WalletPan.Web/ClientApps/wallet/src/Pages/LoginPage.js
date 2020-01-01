@@ -96,7 +96,7 @@ const LoginPage = ({ classes }) => {
             
             </div>
            <div className="row form-footer">
-                <div className="col-12">
+                <div className="col-8 col-sm-4 col-md-4">
 
                     New User? <a href="/RegisterPage" >Register</a>
 

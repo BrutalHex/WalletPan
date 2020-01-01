@@ -10,6 +10,7 @@ class PasswordField extends React.Component {
 
     constructor(props) {
         super(props);
+       
         this.showPassword = this.showPassword.bind(this);
         this.handleClick = this.handleClick.bind(this)
         this.state = { showPassword: false };
@@ -29,21 +30,19 @@ class PasswordField extends React.Component {
     }
 
     render() {
-
+        var { ...other } = this.props;
         return (
  
-                <div class="input-group mb-6 mt-6">
+                <div class="input-group input-group-password mb-6 mt-6">
                     <FormControl
-                        className="form-input"
-                        type={ this.state.showPassword ? 'text' :'password' } 
-                        placeholder={this.props.placeholder}
-                        name="password"
-                        aria-describedby="password-addon"
                         
+                        type={ this.state.showPassword ? 'text' :'password' } 
+                        {...other} 
+
                     />
 
                     <div class="input-group-append">
-                        <span class="input-group-text click-able" id="password-addon" onClick={this.handleClick}>   
+                        <span class="input-group-text click-able"   onClick={this.handleClick}>   
                           <img src={`${process.env.PUBLIC_URL}/landing_assets/show-password.svg`}/>
                         </span>
                     </div>

@@ -142,14 +142,17 @@ class RegistrationPage extends React.Component
 
                                                 <FormGroup controlId="formBasicPassword">
                                                     <FormLabel  >Password</FormLabel>
-                                                 <FormControl 
-                                                  type="password"
-                                                  name="password"
-                                                  required
-                                                  className="form-control form-input"
-                                                  value={values.password}
-                                                  onChange={handleChange}
-                                                  isInvalid={!!errors.password} />
+
+                                                    <PasswordField 
+                                                     
+                                                      name="password"
+                                                      required
+                                                      className="form-control form-input"
+                                                      value={values.password}
+                                                      onChange={handleChange}
+                                                      isInvalid={!!errors.password} 
+                                                    />
+                                               
 
                                                     <FormControlFeedback type="invalid">
                                                         {errors.password}
@@ -159,14 +162,16 @@ class RegistrationPage extends React.Component
 
                                                 <FormGroup controlId="formBasicPasswordConfirm">
                                                     <FormLabel  >Confirm Password</FormLabel>
-                                                   <FormControl 
-                                                    type="password"
-                                                    name="passwordConfirmation"
-                                                    required
-                                                    className="form-control form-input"
-                                                    value={values.passwordConfirmation}
+                                                
+                                                     <PasswordField 
+                                                     name="passwordConfirmation"
+                                                     required
+                                                     className="form-control form-input"
+                                                     value={values.passwordConfirmation}
                                                     onChange={handleChange}
-                                                    isInvalid={!!errors.passwordConfirmation}   />
+                                                    isInvalid={!!errors.passwordConfirmation} 
+                                                   />
+                                              
                                                   
                                                     <FormControlFeedback type="invalid">
                                                         {errors.passwordConfirmation}
@@ -213,7 +218,7 @@ class RegistrationPage extends React.Component
 
                 </div>
                 <div className="row form-footer">
-                    <div className="col-12">
+                    <div className="col-8 col-sm-4 col-md-4">
 
                         Already have account? <a href="/login" >Login</a>
 

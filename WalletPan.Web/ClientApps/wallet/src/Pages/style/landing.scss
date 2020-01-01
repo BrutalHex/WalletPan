@@ -720,11 +720,12 @@ body {
     .form-group {
         margin-bottom: 20px;
     }
-
+      .input-group-text, .form-input{
+            border-radius: 10px;
+             border: solid 1px #dedede;
+      }
     .form-input {
         height: 45px;
-        border-radius: 10px;
-        border: solid 1px #dedede;
     }
 
     a {
@@ -740,14 +741,23 @@ body {
     }
 
     .password-input{
-        background-color:#2dbee4;
+        background-color:#e6f2f5;
     }
+
+     
 }
 
+.input-group-password{
+    input{
+       border-right: 0px !important;
+    }
+}
+ 
 
 .click-able{
+    background-color:#fff;
     &:hover{
-        background-color:lighten(#e9ecef, 10%) ;
+        background-color:darken(#fff, 20%) ;
     }
     
     cursor: pointer;
@@ -757,10 +767,18 @@ div[type=invalid]
     color: red;
     margin-bottom: 0px;
 }
-.is-invalid{
-    border-color: #ed1515 !important;
-}
 
+
+@mixin erro_border{border-color: #ed1515 !important;}
+.is-invalid{
+   @include erro_border;
+}
+.is-invalid + .input-group-append{
+    .input-group-text{
+         @include erro_border ;
+    }
+   
+}
 
 .btn-primary{
   
