@@ -360,7 +360,7 @@ body {
 
 
 .twin-section {
-  
+
     @media (max-width: 767px) {
         display: flex;
         flex-direction: column-reverse;
@@ -390,8 +390,6 @@ body {
             margin: 125px 0 35px 0;
 
             h2 {
-              
-               
                 font-family: MontserratBold;
                 font-size: 75px;
                 font-weight: 800;
@@ -438,11 +436,9 @@ body {
             min-height: 359px;
 
             @media (min-width: 900px) {
-              
             }
 
             @media (min-width: 1440px) {
-              
             }
 
 
@@ -512,17 +508,18 @@ body {
                 margin-left: 80px;
 
                 .nav-link {
-                    top: 5px;
+                    top: -1px;
                     position: relative;
                 }
 
-                Button {
+                .btn-outline-primary {
                     width: 120px;
-                    height: 45px;
+                    height: 39px;
                     border-radius: 10px;
                     border: solid 1px #2dbee4;
-                    color: #fff;
+                    color: #fff !important;
                 }
+
 
                 @media (max-width: 1439px) {
                     margin-left: 40px;
@@ -709,34 +706,42 @@ body {
 
 }
 
-.custom-form{
+.custom-form {
+    color: #4a4d4f;
 
-color: #4a4d4f;
-
-    .form-label{
-      
-  height: 24px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.71;
-  color: #4a4d4f;
+    .form-label {
+        height: 24px;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.71;
+        color: #4a4d4f;
     }
-    .form-group{
+
+    .form-group {
         margin-bottom: 20px;
     }
-    .form-input{
+
+    .form-input {
         height: 45px;
         border-radius: 10px;
         border: solid 1px #dedede;
     }
-   a{
-     margin:40px 0px 30px 10px;   
-   }
-   .form-footer
-   {
-      margin: 20px 0px 60px 0px;
-   }
-   
+
+    a {
+        margin: 40px 0px 30px 10px;
+    }
+
+    .form-footer {
+        margin: 20px 0px 60px 0px;
+    }
+
+    input[type=password] {
+     
+    }
+
+    .password-input{
+        background-color:#2dbee4;
+    }
 }
 .btn-primary{
   

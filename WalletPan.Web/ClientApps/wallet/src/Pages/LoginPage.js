@@ -46,7 +46,7 @@ const LoginPage = ({ classes }) => {
                                     <Form className="custom-form center">
                                         <FormGroup className="form-group" controlId="formBasicEmail">
                                             <FormLabel className="form-label">Email address</FormLabel>
-                                            <FormControl  className="form-input"  required type="email" placeholder="Enter your Email address" />
+                                            <FormControl required className="form-input"  required type="email" placeholder="Enter your Email address" />
                                             <FormText className="text-muted">
                                                 We'll never share your email with anyone else
                                             </FormText>
@@ -54,7 +54,7 @@ const LoginPage = ({ classes }) => {
 
                                         <FormGroup className="form-group" controlId="formBasicPassword">
                                             <FormLabel className="form-label">Password</FormLabel>
-                                            <FormControl  className="form-input"  type="password" placeholder="Enter your password" />
+                                            <FormControl required className="form-input"  type="password" placeholder="Enter your password" />
                                         </FormGroup>
 
                                         <div className="col-12 mb-3">
@@ -98,7 +98,7 @@ const LoginPage = ({ classes }) => {
            <div className="row form-footer">
                 <div className="col-12">
 
-                    New User? <a href="#" >Register</a>
+                    New User? <a href="/RegisterPage" >Register</a>
 
                 </div>
             </div>

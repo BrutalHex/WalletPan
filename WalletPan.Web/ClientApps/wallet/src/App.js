@@ -11,6 +11,7 @@ import DashboardLayoutRoute from "./Layout/DashboardLayout";
 /** Components **/
 import MAinLandingPage from './Pages/MAinLandingPage';
 import LoginPage from './Pages/LoginPage'  
+import RegistrationPage from './Pages/RegistrationPage'  
 
 function App() {
   return (
@@ -23,11 +24,14 @@ function App() {
               <Redirect to="/landing" />
           </Route>  
 
-          <Route path={["/landing","/login"]}>
+              <Route path={["/landing", "/login","/RegisterPage"]}>
                   <LandingLayoutRoute className="row">
-                  <Switch>
+                      <Switch>
+
                           <Route path="/landing" component={MAinLandingPage} />
                           <Route path="/login" component={LoginPage} />
+                          <Route path="/RegisterPage" component={RegistrationPage} />
+
                   </Switch>
               </LandingLayoutRoute>
           </Route>
