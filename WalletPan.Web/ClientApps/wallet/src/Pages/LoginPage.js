@@ -44,16 +44,16 @@ const LoginPage = ({ classes }) => {
                     <div className="row">
                                 <div className="col-12">
                                     <Form className="custom-form center">
-                                        <FormGroup className="form-group" controlId="formBasicEmail">
-                                            <FormLabel className="form-label">Email address</FormLabel>
+                                        <FormGroup   controlId="formBasicEmail">
+                                            <FormLabel  >Email address</FormLabel>
                                             <FormControl required className="form-input"  required type="email" placeholder="Enter your Email address" />
                                             <FormText className="text-muted">
                                                 We'll never share your email with anyone else
                                             </FormText>
                                         </FormGroup>
 
-                                        <FormGroup className="form-group" controlId="formBasicPassword">
-                                            <FormLabel className="form-label">Password</FormLabel>
+                                        <FormGroup  controlId="formBasicPassword">
+                                            <FormLabel  >Password</FormLabel>
                                             <FormControl required className="form-input"  type="password" placeholder="Enter your password" />
                                         </FormGroup>
 
