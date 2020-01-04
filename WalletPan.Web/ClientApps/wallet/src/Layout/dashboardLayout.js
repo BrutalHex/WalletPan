@@ -31,7 +31,9 @@ export class DashboardLayout extends Component {
                 <div className="row menu-bar">
                     <Navbar bg="transparent" collapseOnSelect expand="lg" className="w-100"
                     >
-                        <NavbarBrand href="~/landing/#home" className="col-12 col-sm-3 pl-md-5 ml-md-5">
+                        <NavbarToggle aria-controls="basic-navbar-nav" />
+                        <NavbarBrand href="~/landing/#home" 
+                        className="col-9 col-sm-3 col-lg-3 col-xl-2 pl-lg-3 ml-lg-3 ml-md-1 ml-xl-5 pl-xl-5 navbar-brand navbar-brand mx-sm-auto align-self-sm-center navbar-brand navbar-brand navbar-brand">
                             <img
                                 src={`${process.env.PUBLIC_URL}/landing_assets/logo.svg`}
 
@@ -39,8 +41,8 @@ export class DashboardLayout extends Component {
                                 alt="React Bootstrap logo"
                             />
                         </NavbarBrand>
-                        <NavbarToggle aria-controls="basic-navbar-nav" />
-                        <NavbarCollapse className="col-12 col-sm-5 justify-content-end ml-md-5 pl-md-5" id="basic-navbar-nav">
+                        
+                        <NavbarCollapse className="col-12 col-sm-5 col-lg-6 justify-content-end ml-md-5 pl-md-5 ml-lg-2 navbar-collapse collapse" id="basic-navbar-nav">
 
                             <Nav className="" >
 
@@ -53,6 +55,7 @@ export class DashboardLayout extends Component {
 
                         </NavbarCollapse>
                         <NavbarCollapse className="col-12 col-sm-3 justify-content-end mr-md-5 pr-md-5">
+                        <NavDropdown.Divider className="d-block d-sm-none" />
                             <NavDropdown className="nav-bar-dropdown" title="Hi,Guest" id="collasible-nav-dropdown">
                                 <NavDropdown.Item href="#">Register</NavDropdown.Item>
                                 <NavDropdown.Divider />
@@ -63,7 +66,7 @@ export class DashboardLayout extends Component {
 
 
                 </div>
-                <div className="row children-area p-4 d-flex">
+                <div className="row children-area px-2 py-4 p-md-4 d-flex">
                     {this.props.children}
                 </div>
                 <Footer />

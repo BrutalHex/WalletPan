@@ -24,7 +24,7 @@ const CreateNewWallet = ({ classes }) => {
 
     return (
 
-        <div className="col-12 col-sm-12 col-md-10 col-lg-8  col-xl-5 single-well my-5 p-5 center">
+        <div className="col-12 col-sm-12 col-md-10 col-lg-8  col-xl-8 single-well my-md-5 my-sm-0 py-4 p-md-5 center">
 
               <div className="row"> <img className="center" src={`${process.env.PUBLIC_URL}/landing_assets/create-wallet.svg`} /></div>
               <div className="row  mt-4">
