@@ -40,6 +40,7 @@ namespace WalletPan.Web
         {
             Configuration = configuration;
         }
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
         public IConfiguration Configuration { get; }
         public ILifetimeScope AutofacContainer { get; private set; }
@@ -52,6 +53,17 @@ namespace WalletPan.Web
                 {
                         new CultureInfo("en-US")
                 };
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                builder =>
+                {
+                    builder.WithOrigins("http://localhost:5000",
+                                        "http://localhost:3000").AllowAnyHeader()
+                                .AllowAnyMethod();
+                });
+            });
 
             services.AddJsonLocalization(options =>
             {
@@ -123,9 +135,9 @@ namespace WalletPan.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-               // app.UseSpa(a => a.UseProxyToSpaDevelopmentServer("http://localhost:3000"));
+               
             }
-          
+            //app.UseSpa(a => a.UseProxyToSpaDevelopmentServer("http://localhost:3000"));
             app.UseHttpsRedirection();
 
             app.UseRouting();
@@ -133,6 +145,7 @@ namespace WalletPan.Web
             //  app.UseAuthorization();
             app.UseRequestLocalization();
             app.UseCors("default");
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseEndpoints(endpoints =>
             {

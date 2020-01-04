@@ -7,7 +7,9 @@
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
     "bootstrap": "^4.4.1",
-    "formik": "^2.1.0",
+    "cross-fetch": "^3.0.4",
+    "eslint": "^6.6.0",
+    "formik": "^2.1.1",
     "jquery": "^3.4.1",
     "node-sass": "^4.13.0",
     "popper.js": "^1.16.0",
@@ -19,6 +21,9 @@
     "react-scripts": "3.3.0",
     "react-scrollspy": "^3.4.2",
     "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "typescript": "^3.7.4",
     "yup": "^0.28.0"
   },
   "scripts": {

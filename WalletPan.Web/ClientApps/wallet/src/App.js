@@ -12,6 +12,7 @@ import DashboardLayoutRoute from "./Layout/DashboardLayout";
 import MAinLandingPage from './Pages/MAinLandingPage';
 import LoginPage from './Pages/LoginPage'  
 import RegistrationPage from './Pages/RegistrationPage'  
+import CryptoCurrencyView from './Pages/CryptoCurrencyView';
 
 function App() {
   return (
@@ -24,14 +25,14 @@ function App() {
               <Redirect to="/landing" />
           </Route>  
 
-              <Route path={["/landing", "/login","/RegisterPage"]}>
+              <Route path={["/landing", "/login","/RegisterPage","/CryptoCurrencyView"]}>
                   <LandingLayoutRoute className="row">
                       <Switch>
 
                           <Route path="/landing" component={MAinLandingPage} />
                           <Route path="/login" component={LoginPage} />
                           <Route path="/RegisterPage" component={RegistrationPage} />
-
+                          <Route path="/CryptoCurrencyView" component={CryptoCurrencyView} />
                   </Switch>
               </LandingLayoutRoute>
           </Route>

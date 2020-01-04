@@ -1,15 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
-import UniqueRoot from './base/UniqueRoot';
-
+import { createStore,applyMiddleware } from 'redux';
 import Root from './base/Root';
-
+import thunk from 'redux-thunk';
+import { combineReducers } from 'redux';
+import {initialState,productsReducer} from './base/Ajax/reducer';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
+const middlewares = [thunk];
+debugger;
+const store = createStore(combineReducers({
+    productsReducer
+}), initialState, applyMiddleware(...middlewares));
 
-const store = createStore(UniqueRoot);
 
 
 ReactDOM.render(
