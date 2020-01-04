@@ -28,4 +28,29 @@
        min-height: 500px;
    }
 
+   .single-well{
+    
+    min-height: 90%;
+    border-radius: 20px;
+    box-shadow: 0 4px 55px 0 #20222319;
+    background-color: #ffffff;
+
+        .title{
+        
+            font-family: Montserrat;
+            font-size: 45px;
+            font-weight: 800;
+            text-align: center;
+            color: #2c2f32;
+        }
+           .subtitle{
+
+            font-family: Montserrat;
+            font-size: 20px;
+            text-align: center;
+            color: #4a4d4f;
+           }
+
+   }
+
 }

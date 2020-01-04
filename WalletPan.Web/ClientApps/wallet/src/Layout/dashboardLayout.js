@@ -1,5 +1,6 @@
 ﻿import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
+import '../Pages/style/common.scss';
 import '../Pages/style/dashboard.scss';
 import Footer from '../Pages/Footer';
 
@@ -62,7 +63,7 @@ export class DashboardLayout extends Component {
 
 
                 </div>
-                <div className="row children-area p-4">
+                <div className="row children-area p-4 d-flex">
                     {this.props.children}
                 </div>
                 <Footer />

@@ -1,5 +1,6 @@
 ﻿import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
+import '../Pages/style/common.scss';
 import '../Pages/style/landing.scss';
 
 const LandingLayout = ({ children }) => (
