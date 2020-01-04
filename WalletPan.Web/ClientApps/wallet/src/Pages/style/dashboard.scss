@@ -1,0 +1,31 @@
+.dashboard
+{
+   .menu-bar{
+    box-shadow: 0 4px 55px 0 #20222319;
+    background-color: #ffffff;
+    min-height:70px ;
+
+        .nav-bar-dropdown
+        { 
+            
+
+            font-family: Montserrat;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            color: #2c2f32;
+            font-weight: 500;
+            a{
+                color: #2c2f32;
+            }
+         
+        }
+
+
+
+   }
+   .children-area{
+       min-height: 500px;
+   }
+
+}

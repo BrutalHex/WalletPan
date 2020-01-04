@@ -118,9 +118,7 @@ body {
         padding: 100px 0 100px 0;
         background-color: #eff3f9;
 
-        .landing-title {
-        }
-
+   
         .landing-subtitle {
             margin: 60px auto 0 auto;
         }
@@ -138,8 +136,7 @@ body {
         background-position-y: top;
         padding: 80px 0px 80px 0px;
 
-        .landing-title {
-        }
+        
     }
 
     .section-faqs-two {
@@ -424,31 +421,7 @@ body {
         }
 
 
-        .img-wrapper {
-            margin-top: -6%;
-            position: relative;
-            z-index: 0;
-            top: 0px;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-image: url(/landing_assets/wallet_pan_right_ripple.svg);
-            height: 91%;
-            min-height: 359px;
-
-            @media (min-width: 900px) {
-            }
-
-            @media (min-width: 1440px) {
-            }
-
-
-            .rigth-part-img {
-                width: 70%;
-                height: 82%;
-                position: relative;
-                top: 40px;
-            }
-        }
+  
 
 
         .navbar {
@@ -736,9 +709,7 @@ body {
         margin: 20px 0px 60px 0px;
     }
 
-    input[type=password] {
-     
-    }
+  
 
     .password-input{
         background-color:#e6f2f5;

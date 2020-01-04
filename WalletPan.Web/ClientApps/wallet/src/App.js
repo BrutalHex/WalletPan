@@ -6,13 +6,18 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-d
 /** Layouts **/
 import SharedLayout from "./Layout/SharedLayout";
 import LandingLayoutRoute  from  "./Layout/LandingLayout";
-import DashboardLayoutRoute from "./Layout/DashboardLayout";
+import {DashboardLayoutRoute,DashboardLayout} from "./Layout/DashboardLayout";
+
 
 /** Components **/
 import MAinLandingPage from './Pages/MAinLandingPage';
 import LoginPage from './Pages/LoginPage'  
 import RegistrationPage from './Pages/RegistrationPage'  
 import CryptoCurrencyView from './Pages/CryptoCurrencyView';
+
+/***dashboards* */
+import CreateNewWallet from './Pages/CreateNewWallet';
+
 
 function App() {
   return (
@@ -37,10 +42,10 @@ function App() {
               </LandingLayoutRoute>
           </Route>
 
-          <Route path={["/Dashboard"]}>
+          <Route path={["/Dashboard","/Dashboard/CreateNewWallet"]}>
               <DashboardLayoutRoute>
                   <Switch>
-                      <Route path="/Dashboard" component={LoginPage} />
+                      <Route   path="/Dashboard/CreateNewWallet" component={CreateNewWallet} />
                   </Switch>
               </DashboardLayoutRoute>
           </Route>
