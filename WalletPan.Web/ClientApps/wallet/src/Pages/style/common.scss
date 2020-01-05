@@ -209,8 +209,33 @@ Button{
     display:block;
     margin: 0 auto;
 }
-
+.img-text
+{
+    img{
+        margin: -5px 10px 0px 0px;
+    }
+   
+}
 .pager-box
 {
-    
+    .page-link{
+        border: none;
+        font-family: Montserrat;
+  font-size: 14px;
+  line-height: 2.08;
+  color: #2c2f32;
+
+    }
+    .active{
+        .page-link{
+     
+              border-radius: 10px;
+  background-color: #2dbee4;
+  color: #fff;
+        }
+      
+    }
+    .pagination{
+        margin:0 auto;
+    }
 }

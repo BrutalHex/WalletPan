@@ -10,7 +10,10 @@ class PagerBox extends React.Component {
         super(props);
         this.handleClick = this.handleClick.bind(this);
         this.handleClickThrottled = throttle(this.handleClick, 1000);
-        this.state = {current: 1};
+        this.state = {current: 1,pageSize:this.props.pageSize,pageFrame:1};
+
+
+       
       }
     
       componentWillUnmount() {
@@ -20,33 +23,48 @@ class PagerBox extends React.Component {
       handleClick(e,id) {
         e.preventDefault();
         this.setState(state => ({
-            current: id
+            current: id,
+            pageSize: this.state.pageSize
           }));
-        this.props.loadNext(id);
+        this.props.loadNext(id,this.state.pageSize);
       }
     
-
-    render() {
-
-       
+      
+      getWholeArray()
+      {
         let items = [];
-        for (let number = 1; number <= Math.ceil(this.props.recordCount/this.props.pageCount); number++) {
+
+        for (let number = 1; number <= Math.ceil(this.props.recordCount/this.props.pageSize); number++) {
           items.push(
+            
             <Pagination.Item key={number} active={number === this.state.current} onClick={ () => this.handleClickThrottled(this,number)}> 
               {number}
             </Pagination.Item>,
           );
-        }
+        }  
+        return items;
+      }
 
+    render() {
 
-
-
-
-
+       
+      
+     let items=this. getWholeArray();
+ 
+          let low=this.state.current-1;
+          
+          let bar=items.slice(low,5)
+           
 
         return(
             <div className="row pager-box">
-                  <Pagination>{items}</Pagination>
+                  <Pagination>
+                  <Pagination.First />
+                  <Pagination.Prev />
+                       {bar}
+                       <Pagination.Next />
+                       <Pagination.Last />
+                    </Pagination>
             </div>
           
            );

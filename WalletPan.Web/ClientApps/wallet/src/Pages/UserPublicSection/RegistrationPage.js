@@ -6,8 +6,8 @@ import FormControl from 'react-bootstrap/FormControl';
 import FormText from 'react-bootstrap/FormText';
 import Button from 'react-bootstrap/Button';
 import FormControlFeedback from 'react-bootstrap/FormGroup';
-import Divider from '../components/Divider';
-import PasswordField from '../components/Forms/PasswordField';
+import Divider from '../../components/Divider';
+import PasswordField from '../../components/Forms/PasswordField';
 import {Formik,Field} from 'formik';
 import * as yup from 'yup';
 
@@ -25,8 +25,7 @@ class RegistrationPage extends React.Component
 
         
 
-      //  let yup = require('yup');
-
+      
         const schema = yup.object({
 
             email: yup.string()
@@ -101,9 +100,9 @@ class RegistrationPage extends React.Component
                                            
                                         if(values.password != values.passwordConfirmation)
                                         {
-                                            debugger;
+                                           
                                         }
-                                        debugger;
+                                      
                                         // same shape as initial values
                                         console.log(values);
                                       }}
@@ -129,9 +128,6 @@ class RegistrationPage extends React.Component
                                                         required
                                                         onChange={handleChange}
                                                         isInvalid={!!errors.email} />
-
-
-                                                   
                                                     <FormControlFeedback type="invalid">
                                                         {errors.email}
                                                     </FormControlFeedback>

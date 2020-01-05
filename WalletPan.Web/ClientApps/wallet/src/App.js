@@ -10,15 +10,15 @@ import {DashboardLayoutRoute,DashboardLayout} from "./Layout/DashboardLayout";
 
 
 /** Components **/
-import MAinLandingPage from './Pages/MAinLandingPage';
-import LoginPage from './Pages/LoginPage'  
-import RegistrationPage from './Pages/RegistrationPage'  
+import MainLandingPage from './Pages/MainLandingPage';
+import LoginPage from './Pages/UserPublicSection/LoginPage'  
+import RegistrationPage from './Pages/UserPublicSection/RegistrationPage'  
 import CryptoCurrencyView from './Pages/CryptoCurrencyView';
 
 /***dashboards* */
-import CreateNewWallet from './Pages/CreateNewWallet';
-import ExploreWallet from './Pages/ExploreWallet';
-
+import CreateNewWallet from './Pages/CryptoOPeration/CreateNewWallet';
+import ExploreWallet from './Pages/CryptoOPeration/ExploreWallet';
+import SendCurrency from './Pages/CryptoOPeration/SendCurrency';
 
 function App() {
   return (
@@ -35,7 +35,7 @@ function App() {
                   <LandingLayoutRoute className="row">
                       <Switch>
 
-                          <Route path="/landing" component={MAinLandingPage} />
+                          <Route path="/landing" component={MainLandingPage} />
                           <Route path="/login" component={LoginPage} />
                           <Route path="/RegisterPage" component={RegistrationPage} />
                           <Route path="/CryptoCurrencyView" component={CryptoCurrencyView} />
@@ -52,6 +52,7 @@ function App() {
                   <Switch>
                       <Route   path="/Dashboard/CreateNewWallet" component={CreateNewWallet} />
                       <Route   path="/Dashboard/explore" component={ExploreWallet} />
+                      <Route   path="/Dashboard/SendXRP" component={SendCurrency} />
                   </Switch>
               </DashboardLayoutRoute>
           </Route>

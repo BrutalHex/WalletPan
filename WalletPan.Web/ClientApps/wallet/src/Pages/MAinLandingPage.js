@@ -5,7 +5,7 @@ import VerticalIconicBox from '../components/VerticalIconicBox';
 import AccordionBox from '../components/AccordionBox';
 import Footer from './Footer';
 
-const MAinLandingPage = ({ classes }) => {
+const MainLandingPage = ({ classes }) => {
 
 
     const list = [{
@@ -93,7 +93,10 @@ const MAinLandingPage = ({ classes }) => {
 
             <div className="row section section-operation d-flex justify-content-center" id="wallet">
 
-                <IconicBox defclass="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-3" src={`${process.env.PUBLIC_URL}/landing_assets/create-wallet.svg`} title="Create a new wallet" subtitle="Generate your own unique
+                  <a className="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-3" href="#">
+
+                  </a>
+                <IconicBox defclass="" src={`${process.env.PUBLIC_URL}/landing_assets/create-wallet.svg`} title="Create a new wallet" subtitle="Generate your own unique
 XPR wallet" />
                 <IconicBox defclass="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-3" src={`${process.env.PUBLIC_URL}/landing_assets/access-to-wallet.svg`} title="Explore your wallet" subtitle="Connect to the blockchain using the wallet of your choice" />
                
@@ -179,4 +182,4 @@ XPR wallet" />
     );
 };
 
-export default MAinLandingPage;
+export default MainLandingPage;
