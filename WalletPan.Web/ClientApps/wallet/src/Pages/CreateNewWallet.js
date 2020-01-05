@@ -62,7 +62,7 @@ const CreateNewWallet = ({ classes }) => {
                                         isValid,
                                         errors,
                                     }) =>  ( <Form className="custom-form center col-12 col-sm-11 col-md-8">
-                <FormGroup controlId="formBasicEmail">
+                <FormGroup controlId="formBasicAddress">
                     <FormLabel  >Address</FormLabel>
                     <FormControl disabled className="form-input"   type="text" placeholder="wait" />
                     <FormText className="text-muted">
@@ -70,7 +70,7 @@ const CreateNewWallet = ({ classes }) => {
                                             </FormText>
                 </FormGroup>
 
-                <FormGroup controlId="formBasicPassword">
+                <FormGroup controlId="formBasicPrivate">
                     <FormLabel  >Private Key</FormLabel>
             
                     <FormControl disabled as="textarea" className="form-input" type="text" rows="3" />

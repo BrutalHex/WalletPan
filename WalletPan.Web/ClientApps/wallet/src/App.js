@@ -17,6 +17,7 @@ import CryptoCurrencyView from './Pages/CryptoCurrencyView';
 
 /***dashboards* */
 import CreateNewWallet from './Pages/CreateNewWallet';
+import ExploreWallet from './Pages/ExploreWallet';
 
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
           <Route exact path="/">
               <Redirect to="/landing" />
           </Route>  
-
+        
               <Route path={["/landing", "/login","/RegisterPage","/CryptoCurrencyView"]}>
                   <LandingLayoutRoute className="row">
                       <Switch>
@@ -42,10 +43,15 @@ function App() {
               </LandingLayoutRoute>
           </Route>
 
+          <Route exact path="/dashboard">
+              <Redirect to="/explore" />
+          </Route>  
+
           <Route path={["/Dashboard","/Dashboard/CreateNewWallet"]}>
               <DashboardLayoutRoute>
                   <Switch>
                       <Route   path="/Dashboard/CreateNewWallet" component={CreateNewWallet} />
+                      <Route   path="/Dashboard/explore" component={ExploreWallet} />
                   </Switch>
               </DashboardLayoutRoute>
           </Route>

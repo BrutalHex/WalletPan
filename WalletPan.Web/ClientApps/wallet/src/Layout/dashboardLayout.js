@@ -38,7 +38,7 @@ export class DashboardLayout extends Component {
                                 src={`${process.env.PUBLIC_URL}/landing_assets/logo.svg`}
 
                                 className="d-inline-block align-top"
-                                alt="React Bootstrap logo"
+                                
                             />
                         </NavbarBrand>
                         
@@ -46,10 +46,10 @@ export class DashboardLayout extends Component {
 
                             <Nav className="" >
 
-                                <NavLink className="mr-md-4" href="~/landing/#home">Home</NavLink>
-                                <NavLink className="mr-md-4" href="~/Dashboard/CreateNewWallet">New wallet</NavLink>
-                                <NavLink className="mr-md-4" href="~/Dashboard/Explore">Explore</NavLink>
-                                <NavLink className="" href="~/Dashboard/SendXRP">Send XRP</NavLink>
+                                <NavLink className="mr-md-4" href="/landing/#home">Home</NavLink>
+                                <NavLink className="mr-md-4" href="/Dashboard/CreateNewWallet">New wallet</NavLink>
+                                <NavLink className="mr-md-4" href="/Dashboard/Explore">Explore</NavLink>
+                                <NavLink className="" href="/Dashboard/SendXRP">Send XRP</NavLink>
 
                             </Nav>
 
@@ -57,9 +57,9 @@ export class DashboardLayout extends Component {
                         <NavbarCollapse className="col-12 col-sm-3 justify-content-end mr-md-5 pr-md-5">
                         <NavDropdown.Divider className="d-block d-sm-none" />
                             <NavDropdown className="nav-bar-dropdown" title="Hi,Guest" id="collasible-nav-dropdown">
-                                <NavDropdown.Item href="#">Register</NavDropdown.Item>
+                               <NavDropdown.Item href="/login">Sign In</NavDropdown.Item>   
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item href="#">Sign In</NavDropdown.Item>
+                              <NavDropdown.Item href="/RegisterPage">Register</NavDropdown.Item>
                             </NavDropdown>
                         </NavbarCollapse>
                     </Navbar>

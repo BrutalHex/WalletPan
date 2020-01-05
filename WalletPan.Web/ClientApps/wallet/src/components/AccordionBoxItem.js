@@ -2,7 +2,7 @@ import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import AccordionToggle from 'react-bootstrap/AccordionToggle';
- 
+import throttle from 'lodash.throttle';
  
 
 class AccordionBoxItem extends React.Component {
@@ -12,6 +12,7 @@ class AccordionBoxItem extends React.Component {
         super(props);
         this.handleClick = this.handleClick.bind(this);
         this.state = {selected: false};
+        this.handleClickThrottled = throttle(this.handleClick, 1000);
     }
 
     handleClick(e) {
@@ -19,6 +20,10 @@ class AccordionBoxItem extends React.Component {
         this.setState(state => ({
             selected: !state.selected
           }));
+      }
+
+      componentWillUnmount() {
+        this.handleClickThrottled.cancel();
       }
 
     render() {
@@ -31,7 +36,7 @@ class AccordionBoxItem extends React.Component {
         return (
 
             <div className={ this.state.selected ? 'card-wrapper fillblue' : 'card-wrapper'}   >
-            <Card onClick={this.handleClick}>
+            <Card onClick={this.handleClickThrottled}>
             <AccordionToggle as={Card.Header} eventKey={index.toString()}>
                         <span>{item.title}</span>
                         <img src={`${process.env.PUBLIC_URL}/landing_assets/plus.svg`} className="card-header-plus"/>
