@@ -30,8 +30,9 @@ class ExploreWallet extends React.Component {
 
 
     }
-    getTransactions(typpe, amount, walletOwner, transactionDate, transactionTime, destTag, fee, transactionHash) {
+    getTransactions(index,typpe, amount, walletOwner, transactionDate, transactionTime, destTag, fee, transactionHash) {
         return {
+            index:index,
             typpe: typpe,
             amount: amount,
             walletOwner: walletOwner,
@@ -53,24 +54,25 @@ class ExploreWallet extends React.Component {
 
         const transactionList = [];
 
-        for (var i = 0; i <= 10; i++) {
+        for (var i = 0; i <= 30; i++) {
             if ((i % 2) == 0) {
-                transactionList.push(this.getTransactions('INCOME', 2000, 'OKEX', '2020-01-01', '03:10', 2105, 0.0000012, '25DA228BDE8107ACF543C7310BCAD07939F675BA2EC939BAF6AA3890A173C37D'));
+                transactionList.push(this.getTransactions(i+1,'INCOME', 2000, 'OKEX', '2020-01-01', '03:10', 2105, 0.0000012, '25DA228BDE8107ACF543C7310BCAD07939F675BA2EC939BAF6AA3890A173C37D'));
             }
             else {
-                transactionList.push(this.getTransactions('EXPENSE', 1000, 'Bitfinix', '2020-01-01', '01:10', 2105, 0.0000012, '25DA228BDE8107ACF543C7310BCAD07939F675BA2EC939BAF6AA3890A173C37D'),
+                transactionList.push(this.getTransactions(i+1,'EXPENSE', 1000, 'Bitfinix', '2020-01-01', '01:10', 2105, 0.0000012, '25DA228BDE8107ACF543C7310BCAD07939F675BA2EC939BAF6AA3890A173C37D'),
                 );
             }
 
         }
 
+       
+   let paged=transactionList.slice( (this.state.currentPage-1)* this.state.pagesize,((this.state.currentPage-1)* this.state.pagesize)+this.state.pagesize);
+
+        const listItems = paged.map((item, index) => {
 
 
-        const listItems = transactionList.map((item, index) => {
 
-
-
-            return <XrpTransactionBox key={"key" + index} item={item} index={index} />;
+            return <XrpTransactionBox key={"key" + item.index} item={item} index={item.index} />;
         });
 
         let from = (this.state.currentPage - 1) * (this.state.pagesize)

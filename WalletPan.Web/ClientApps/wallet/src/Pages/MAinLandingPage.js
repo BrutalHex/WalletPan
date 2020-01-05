@@ -93,14 +93,18 @@ const MainLandingPage = ({ classes }) => {
 
             <div className="row section section-operation d-flex justify-content-center" id="wallet">
 
-                  <a className="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-3" href="#">
+                  <a className="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-3" href="/Dashboard/CreateNewWallet">
+               <IconicBox defclass="" src={`${process.env.PUBLIC_URL}/landing_assets/create-wallet.svg`} title="Create a new wallet" subtitle="Generate your own unique XPR wallet" />
 
                   </a>
-                <IconicBox defclass="" src={`${process.env.PUBLIC_URL}/landing_assets/create-wallet.svg`} title="Create a new wallet" subtitle="Generate your own unique
-XPR wallet" />
-                <IconicBox defclass="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-3" src={`${process.env.PUBLIC_URL}/landing_assets/access-to-wallet.svg`} title="Explore your wallet" subtitle="Connect to the blockchain using the wallet of your choice" />
-               
-                <IconicBox defclass="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-3" src={`${process.env.PUBLIC_URL}/landing_assets/send-xrp.svg`} title="Send XRP" subtitle="Send and Swap XRP & Tokens usign your own wallet" />
+             <a href="/Dashboard/explore" className="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-3">
+             <IconicBox defclass="" src={`${process.env.PUBLIC_URL}/landing_assets/access-to-wallet.svg`} title="Explore your wallet" subtitle="Connect to the blockchain using the wallet of your choice" />
+             </a>
+              
+          <a className="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-3" href="/Dashboard/SendXRP">
+              <IconicBox defclass="" src={`${process.env.PUBLIC_URL}/landing_assets/send-xrp.svg`} title="Send XRP" subtitle="Send and Swap XRP & Tokens usign your own wallet" />       
+           </a> 
+           
 
 
             </div>

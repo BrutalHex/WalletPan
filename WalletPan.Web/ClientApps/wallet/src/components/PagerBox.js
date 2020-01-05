@@ -12,7 +12,7 @@ class PagerBox extends React.Component {
         this.handleClickThrottled = throttle(this.handleClick, 1000);
         this.state = {current: 1,pageSize:this.props.pageSize,pageFrame:1};
 
-
+      
        
       }
     
@@ -20,11 +20,27 @@ class PagerBox extends React.Component {
         this.handleClickThrottled.cancel();
       }
 
-      handleClick(e,id) {
-        e.preventDefault();
+      getMaxPagerNumber()
+      {
+       return Math.ceil(this.props.recordCount/this.props.pageSize);
+      }
+
+      handleClick( id) {
+         
+        if(id<=0)
+         id=1;
+
+         let max=this.getMaxPagerNumber();
+
+         if(id>max)
+             {
+              id=max;
+             }
+
         this.setState(state => ({
             current: id,
-            pageSize: this.state.pageSize
+            pageSize: this.state.pageSize,
+            pageFrame:1
           }));
         this.props.loadNext(id,this.state.pageSize);
       }
@@ -34,10 +50,12 @@ class PagerBox extends React.Component {
       {
         let items = [];
 
-        for (let number = 1; number <= Math.ceil(this.props.recordCount/this.props.pageSize); number++) {
+        let max=this.getMaxPagerNumber();
+console.log(this.props.recordCount);
+        for (let number = 1; number <= max; number++) {
           items.push(
             
-            <Pagination.Item key={number} active={number === this.state.current} onClick={ () => this.handleClickThrottled(this,number)}> 
+            <Pagination.Item key={number} active={number === this.state.current} onClick={ () => this.handleClickThrottled(number)}> 
               {number}
             </Pagination.Item>,
           );
@@ -52,18 +70,25 @@ class PagerBox extends React.Component {
      let items=this. getWholeArray();
  
           let low=this.state.current-1;
-          
-          let bar=items.slice(low,5)
+          if(low-2<2)
+            low=2;
+
+            if(low+2>items.length)
+            {
+              low=items.length-2;
+            }
+
+          let bar=items.slice(low-2,low+2)
            
 
         return(
             <div className="row pager-box">
                   <Pagination>
-                  <Pagination.First />
-                  <Pagination.Prev />
+                
+                  <Pagination.Prev  onClick={ () => this.handleClickThrottled(  this.state.current-1)}/>
                        {bar}
-                       <Pagination.Next />
-                       <Pagination.Last />
+                       <Pagination.Next  onClick={ () => this.handleClickThrottled(  this.state.current+1)}/>
+                   
                     </Pagination>
             </div>
           

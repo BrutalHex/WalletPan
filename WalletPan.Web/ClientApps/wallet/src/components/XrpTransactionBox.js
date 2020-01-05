@@ -17,7 +17,7 @@ class XrpTransactionBox extends React.Component {
 
 
         const item = this.props.item;
-         const index=this.props.index+1;
+         const index=this.props.index;
  
         return (
 

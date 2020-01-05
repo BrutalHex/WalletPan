@@ -99,6 +99,17 @@ body {
     .section-operation {
         background: url(/landing_assets/section-operation-background.svg);
 
+           a {
+              &:hover{
+                .iconic-box 
+                {
+                   border:solid 1px #2dbee4; 
+                }
+                       
+              } 
+           }
+
+
         @media (max-width: 600px) {
             background: none;
             margin-top: 20px;
