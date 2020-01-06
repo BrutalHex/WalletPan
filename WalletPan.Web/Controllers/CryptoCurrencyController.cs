@@ -33,8 +33,18 @@ namespace WalletPan.Web.Controllers
             });
         }
 
+        [HttpGet]
+        public   JsonResult Alive()
+        {
+            
 
+            return new JsonResult(new
+            {
+                 Title="service is up",
+                resultCode = 0
+            });
 
+        }
         [HttpGet]
         public async Task<JsonResult> GetAll()
         {

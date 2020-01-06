@@ -16,7 +16,7 @@ dotnet add WalletPan.Repository package Autofac.Extensions.DependencyInjection
 
  dotnet add WalletPan.Web package Microsoft.AspNetCore.SpaServices
   dotnet add WalletPan.Web package Microsoft.AspNetCore.SpaServices.Extensions
-
+  dotnet publish --configuration Release
 
   links
 
@@ -24,3 +24,21 @@ dotnet add WalletPan.Repository package Autofac.Extensions.DependencyInjection
   
   
   https://react-bootstrap.github.io/getting-started/introduction
+
+  dotnet WalletPan.Web.dll
+
+nginx -t
+  nginx -s reload
+  
+  /etc/nginx/sites-available/default
+
+
+  nginx config
+  server {
+   listen 80 default_server;
+   root /var/www/[Your repo name]/build;
+   server_name [your.domain.com] [your other domain if you want to];
+   index index.html index.htm;
+   location / {
+   }
+}

@@ -16,7 +16,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using WalletPan.Data;
-
+using Microsoft.AspNetCore.Builder.Extensions;
 using Microsoft.AspNetCore.SpaServices.Extensions;
 using WalletPan.Service;
 using WalletPan.ServiceContract;
@@ -29,6 +29,7 @@ using System.Reflection;
 using Askmethat.Aspnet.JsonLocalizer.Extensions;
 using System.Globalization;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace WalletPan.Web
 {
@@ -53,6 +54,7 @@ namespace WalletPan.Web
                 {
                         new CultureInfo("en-US")
                 };
+         
 
             services.AddCors(options =>
             {
@@ -79,6 +81,13 @@ namespace WalletPan.Web
                 options.DefaultRequestCulture = new RequestCulture(culture: "en-US", uiCulture: "en-US");
                 options.SupportedCultures = supportedCultures;
                 options.SupportedUICultures = supportedCultures;
+            
+            });
+
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders =
+                    ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
             });
 
             services.AddAutoMapper(typeof(Startup));
@@ -139,6 +148,11 @@ namespace WalletPan.Web
             }
             //app.UseSpa(a => a.UseProxyToSpaDevelopmentServer("http://localhost:3000"));
             app.UseHttpsRedirection();
+
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
 
             app.UseRouting();
 
