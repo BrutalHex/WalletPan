@@ -1,6 +1,5 @@
 
- import $ from 'jquery'; 
- import fetch from 'cross-fetch'
+import fetch from 'cross-fetch';
 
 
 const Method ={

@@ -1,30 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore,applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import Root from './base/Root';
 import thunk from 'redux-thunk';
 import { combineReducers } from 'redux';
 
-import {cryptoCurrencyReducer} from './containers/CryptoCurrency/reducer';
-import {initialState} from './base/BaseReducer';
+import { cryptoCurrencyReducer } from './containers/CryptoCurrency/reducer';
+import { initialState } from './base/BaseReducer';
 
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
 const middlewares = [thunk];
- 
+
 const store = createStore(
     cryptoCurrencyReducer
-, initialState, applyMiddleware(...middlewares));
+    , initialState, applyMiddleware(...middlewares));
 
 
 
 ReactDOM.render(
-     
-    
-        <Root store={store} />
- 
-   
+
+
+    <Root store={store} />
+
+
 
 
     , document.getElementById('root'));

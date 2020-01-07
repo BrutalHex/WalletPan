@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ClientApps\wallet\src\base\Ajax\**" />
+    <Content Remove="ClientApps\wallet\src\base\Ajax\**" />
+    <EmbeddedResource Remove="ClientApps\wallet\src\base\Ajax\**" />
+    <None Remove="ClientApps\wallet\src\base\Ajax\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Askmethat.Aspnet.JsonLocalizer" Version="2.1.2" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="5.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
@@ -37,8 +44,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApps\wallet\src\base\Ajax\" />
     <Folder Include="ClientApps\wallet\src\Errors\" />
+    <Folder Include="ClientApps\wallet\src\Pages\Walllets\" />
   </ItemGroup>
 
 

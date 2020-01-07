@@ -1,3 +1,5 @@
+
+'use strict';
 import React, { Component } from 'react';
 import Form from 'react-bootstrap/Form';
 import FormGroup from 'react-bootstrap/FormGroup';
@@ -11,14 +13,20 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import XrpTransactionBox from '../../components/XrpTransactionBox';
 import PagerBox from '../../components/PagerBox';
 
+
 class ExploreWallet extends React.Component {
 
+  
 
     constructor(props) {
 
         super(props);
-        this.state = { currentPage: 1, pagesize: 5 };
+        this.state = { currentPage: 1, pagesize: 5, WalletInformation: {},isFetching:false };
         this.pageChanged = this.pageChanged.bind(this);
+        
+        this.handleChange = this.handleChange.bind(this);
+
+
 
     }
     pageChanged(currentPageNumber, pagesize) {
@@ -30,6 +38,18 @@ class ExploreWallet extends React.Component {
 
 
     }
+
+
+
+    handleChange(e) {
+
+        this.fetchWalletInfo(this.state.Address);
+
+    }
+
+
+
+
     getTransactions(index,typpe, amount, walletOwner, transactionDate, transactionTime, destTag, fee, transactionHash) {
         return {
             index:index,
@@ -44,6 +64,53 @@ class ExploreWallet extends React.Component {
         }
 
     };
+
+
+    
+ fetchWalletInfo(address) {
+
+    this.setState(state => 
+    {
+        Object.assign({}, state, { isFetching: true, ...state });
+    }
+    );
+         
+        return this.getAccountInfo(address, (info) => {
+
+            this.setState(state => { Object.assign({}, state, { isFetching: false, WalletInformation:info, ...state }); }  );
+          
+            debugger;
+        });
+
+}
+
+  
+
+
+    getAccountInfo(myAddress, callback) {
+
+      const RippleAPI = require('ripple-lib').RippleAPI;
+
+   const   api = new RippleAPI({
+          server: 'wss://s.altnet.rippletest.net/' // Public rippled server
+      });
+
+    api.connect().then(() => {
+        console.log('getting account info for', myAddress);
+        return api.getAccountInfo(myAddress);
+
+    }).then(info => {
+        callback(info);
+
+
+    }).then(() => {
+        return api.disconnect();
+    }).then(() => {
+        console.log('done and disconnected.');
+    }).catch(console.error);
+
+}
+
 
 
     render() {
@@ -106,7 +173,17 @@ class ExploreWallet extends React.Component {
                                         My Wallet
                                    </div>
                                     <div className="col-12 mt-4 ">
-                                        <div className="col-12  wallet-bar p-2 text-break d-block">{wallet}</div>
+                                        <div className="col-12  wallet-bar p-2 text-break d-block">
+
+                                            <input type="text"
+                                                name="destWallet"
+                                                value={this.state.Address}
+                                                onChange={this.handleChange}
+                                          
+                                            
+                                                 />
+
+                                        </div>
                                     </div>
                                     <div className="col-12 mt-4 p-2">
                                         <div className="row d-flex justify-content-between">
