@@ -80,7 +80,7 @@
         .wallet-bar {
 
             input {
-                border-radius: 10px;
+                 
                 border: solid 1px #dedede;
                 background-color: #ffffff19;
                 @include dashboard-title-font;
@@ -89,6 +89,7 @@
                 text-align: center;
                 color: #ffffff;
             }
+
         }
 
         .left-section {

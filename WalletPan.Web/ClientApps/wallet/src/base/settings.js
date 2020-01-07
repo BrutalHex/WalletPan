@@ -3,8 +3,8 @@ export const apiUrl='http://localhost:5000/api/';
 export function settings()
 {
    const obj={
-           mainUrl:apiUrl
-
+           mainUrl:apiUrl,
+          Ripple:'wss://s1.ripple.com/'
     };
 
     return obj;

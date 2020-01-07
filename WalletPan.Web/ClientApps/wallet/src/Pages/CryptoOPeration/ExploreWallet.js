@@ -12,6 +12,7 @@ import * as yup from 'yup';
 import Dropdown from 'react-bootstrap/Dropdown';
 import XrpTransactionBox from '../../components/XrpTransactionBox';
 import PagerBox from '../../components/PagerBox';
+import settings from '../../base/settings';
 
 
 class ExploreWallet extends React.Component {
@@ -21,18 +22,21 @@ class ExploreWallet extends React.Component {
     constructor(props) {
 
         super(props);
-        this.state = { currentPage: 1, pagesize: 5, WalletInformation: {},isFetching:false };
+        this.state = { currentPage: 1, pagesize: 5, WalletInformation: {},isFetching:false,Address:"rMqUh9dPn6DJq6hzWX4EyMAZAxAf2vVcHd" };
+        this.handleClick = this.handleClick.bind(this)
+
         this.pageChanged = this.pageChanged.bind(this);
         
         this.handleChange = this.handleChange.bind(this);
 
 
-
+        this.input = React.createRef();
     }
     pageChanged(currentPageNumber, pagesize) {
         this.setState(state => ({
             currentPage: currentPageNumber,
-            pagesize: pagesize
+            pagesize: pagesize,
+            ...state
         }));
 
 
@@ -43,7 +47,10 @@ class ExploreWallet extends React.Component {
 
     handleChange(e) {
 
-        this.fetchWalletInfo(this.state.Address);
+      //  this.fetchWalletInfo(this.state.Address);
+     
+
+  this.setState(state=>({ Address: e.target.value , ...state}));
 
     }
 
@@ -84,30 +91,33 @@ class ExploreWallet extends React.Component {
 
 }
 
-  
+handleClick(e) {
+    e.preventDefault();
+   this.fetchWalletInfo(this.state.Address);
+}
 
-
+ 
     getAccountInfo(myAddress, callback) {
 
-      const RippleAPI = require('ripple-lib').RippleAPI;
+        const RippleAPI = require('ripple-lib').RippleAPI;
+        const   api = new RippleAPI({
+            server: settings().Ripple, // Public rippled server
+            timeout:8000
+        });
 
-   const   api = new RippleAPI({
-          server: 'wss://s.altnet.rippletest.net/' // Public rippled server
-      });
-
-    api.connect().then(() => {
-        console.log('getting account info for', myAddress);
-        return api.getAccountInfo(myAddress);
-
-    }).then(info => {
-        callback(info);
-
-
-    }).then(() => {
-        return api.disconnect();
-    }).then(() => {
-        console.log('done and disconnected.');
-    }).catch(console.error);
+      api.connect().then(() => {
+          console.log('getting account info for', myAddress);
+          return api.getAccountInfo(myAddress);
+  
+      }).then(info => {
+          callback(info);
+  
+  
+      }).then(() => {
+          return api.disconnect();
+      }).then(() => {
+          console.log('done and disconnected.');
+      }).catch(console.error);
 
 }
 
@@ -115,7 +125,7 @@ class ExploreWallet extends React.Component {
 
     render() {
 
-        const wallet = "ra6o6bQrreXzYEaTQmwk8pd1ZEfgExjHxf";
+      
         const userName = "sample name";
         const ActivationDate = "2019-JAN-01 18:40";
 
@@ -173,17 +183,23 @@ class ExploreWallet extends React.Component {
                                         My Wallet
                                    </div>
                                     <div className="col-12 mt-4 ">
-                                        <div className="col-12  wallet-bar p-2 text-break d-block">
-
-                                            <input type="text"
-                                                name="destWallet"
-                                                value={this.state.Address}
-                                                onChange={this.handleChange}
+                                    <div className="input-group col-12  wallet-bar p-2">
+                                        
+                                           <FormControl                                               
+                                               type="text"
+                                               name="destWallet"
+                                             defaultValue={this.state.Address}
+                                               className="w-100"    
+                                               ref={this.input}                                        
+                                           />
                                           
-                                            
-                                                 />
-
-                                        </div>
+                                           <div className="input-group-append">
+                                               <span className="input-group-text click-able"   onClick={this.handleClick}>   
+                                                 <img src={`${process.env.PUBLIC_URL}/landing_assets/refreshbutton.svg`}/>
+                                               </span>
+                                           </div>
+                                       </div>
+                                       <a href="https://xrpcharts.ripple.com/#/transactions" target="_blank"></a>
                                     </div>
                                     <div className="col-12 mt-4 p-2">
                                         <div className="row d-flex justify-content-between">
@@ -191,8 +207,8 @@ class ExploreWallet extends React.Component {
                                                 <div className="col-12">
                                                     <FormGroup controlId="formBasic">
                                                         <FormLabel  >Username:</FormLabel>
-                                                        <FormControl plaintext readOnly defaultValue={userName} />
-
+                                                        <FormControl plaintext readOnly defaultValue={this.state.WalletInformation.sequence} />
+                                                        
                                                     </FormGroup>
                                                 </div>
                                                 <div className="col-12 mt-4">
@@ -232,7 +248,7 @@ class ExploreWallet extends React.Component {
                                         <div className="col-5 text-left img-text">
                                             <img width="17" height="17" src={`${process.env.PUBLIC_URL}/landing_assets/small-xpr-icon.svg`} /> XRP
                             </div>
-                                        <div className="col-7 text-right">7000</div>
+        <div className="col-7 text-right">{this.state.WalletInformation.xrpBalance}</div>
                                     </div>
                                     <div className="row other mt-2">
                                         <div className="col-5 text-left">Reserved</div>
@@ -240,7 +256,7 @@ class ExploreWallet extends React.Component {
                                     </div>
                                     <div className="row other  mt-2">
                                         <div className="col-5 text-left">Available</div>
-                                        <div className="col-7  text-right">68000</div>
+        <div className="col-7  text-right">{this.state.WalletInformation.xrpBalance-20}}</div>
                                     </div>
                                 </div>
                             </div>
