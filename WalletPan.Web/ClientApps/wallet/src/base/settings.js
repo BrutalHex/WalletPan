@@ -4,7 +4,8 @@ export function settings()
 {
    const obj={
            mainUrl:apiUrl,
-          Ripple:'wss://s1.ripple.com/'
+          Ripple:'wss://s.altnet.rippletest.net/'
+         
     };
 
     return obj;

@@ -51,7 +51,10 @@
     animation-duration: $animation_duration;
 }
 
-
+.navbar-light .navbar-toggler-icon
+{
+    background-color: white;
+}
 
 
 a {

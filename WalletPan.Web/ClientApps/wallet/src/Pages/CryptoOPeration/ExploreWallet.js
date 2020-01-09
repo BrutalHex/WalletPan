@@ -12,7 +12,8 @@ import * as yup from 'yup';
 import Dropdown from 'react-bootstrap/Dropdown';
 import XrpTransactionBox from '../../components/XrpTransactionBox';
 import PagerBox from '../../components/PagerBox';
-import settings from '../../base/settings';
+import {getRippleAccountTransactions,getRippleAccountInfo} from '../../base/RippleManagement';
+import { getByDisplayValue } from '@testing-library/react';
 
 
 class ExploreWallet extends React.Component {
@@ -22,7 +23,14 @@ class ExploreWallet extends React.Component {
     constructor(props) {
 
         super(props);
-        this.state = { currentPage: 1, pagesize: 5, WalletInformation: {},isFetching:false,Address:"rMqUh9dPn6DJq6hzWX4EyMAZAxAf2vVcHd" };
+
+       
+        if(this.state==undefined)
+           this.state = { currentPage: 1, pagesize: 5, WalletInformation: {result:{account_data:{Sequence:0,Balance:0}}},transactionList:[],isFetching:false,
+
+
+
+        Address:"rHyUoMLtefJxVnrCsvDHFAynqQ6x4VzF8f" };
         this.handleClick = this.handleClick.bind(this)
 
         this.pageChanged = this.pageChanged.bind(this);
@@ -33,13 +41,8 @@ class ExploreWallet extends React.Component {
         this.input = React.createRef();
     }
     pageChanged(currentPageNumber, pagesize) {
-        this.setState(state => ({
-            currentPage: currentPageNumber,
-            pagesize: pagesize,
-            ...state
-        }));
 
-
+        this.setState((state) => { return Object.assign({}, state, { ...state, currentPage: currentPageNumber,pagesize: pagesize }); });
 
     }
 
@@ -47,103 +50,124 @@ class ExploreWallet extends React.Component {
 
     handleChange(e) {
 
-      //  this.fetchWalletInfo(this.state.Address);
-     
-
-  this.setState(state=>({ Address: e.target.value , ...state}));
-
+        this.setState((state) => { return Object.assign({}, state, { ...state,Address: e.target.value }); });
+   
     }
 
 
 
 
-    getTransactions(index,typpe, amount, walletOwner, transactionDate, transactionTime, destTag, fee, transactionHash) {
-        return {
+    getTransactions(index,type, amount, walletOwner, transactionDate, destTag, fee, transactionHash) {
+
+        let obj=
+          {
             index:index,
-            typpe: typpe,
+            type: type,
             amount: amount,
             walletOwner: walletOwner,
-            transactionDate: transactionDate,
-            transactionTime: transactionTime,
+            transactionDate: transactionDate.toDateString(),
+            transactionTime: transactionDate.toLocaleTimeString(),
             destTag: destTag,
             fee: fee,
             transactionHash: transactionHash
         }
 
+   
+   return obj;
+
     };
 
 
-    
- fetchWalletInfo(address) {
-
-    this.setState(state => 
-    {
-        Object.assign({}, state, { isFetching: true, ...state });
-    }
-    );
-         
-        return this.getAccountInfo(address, (info) => {
-
-            this.setState(state => { Object.assign({}, state, { isFetching: false, WalletInformation:info, ...state }); }  );
-          
-            debugger;
-        });
-
-}
+ 
 
 handleClick(e) {
     e.preventDefault();
-   this.fetchWalletInfo(this.state.Address);
+ 
+          this.getAccountInfo();
+
+}
+
+getAccountInfo()
+{
+
+
+   getRippleAccountInfo(this.state.Address).then(response=>{
+
+      
+        this.recievedAcountInfo(response);
+ });
+ 
+}
+
+getAccountTransactions(){
+     getRippleAccountTransactions(this.state.Address).then(response=>{
+
+
+  
+           
+        this.recievedTransactions(response);
+ });
+}
+
+recievedAcountInfo(info)
+{ 
+   
+    this.setState((state) => { return Object.assign({}, state, { ...state,isFetching: false, WalletInformation:info }); }  );
+  
+this.getAccountTransactions();
+}
+recievedTransactions(trx)
+{
+ 
+    const transactionList = [];
+ 
+    
+    trx.result.transactions.map((item,index)=>
+    {
+
+                     
+
+
+                        if(item.tx.TransactionType=='Payment')     
+                        {  
+                                transactionList.push(this.getTransactions(
+                                                      item.tx.ledger_index,
+                                                      item.tx.Destination==this.state.Address ? 'INCOME':'EXPENSE' ,
+                                                       item.tx.Amount.value != undefined ?  item.tx.Amount.value+'('+item.tx.Amount.currency+')' :  item.tx.Amount , 
+                                                       'OKEX', 
+                                                        new Date((item.tx.date+946684800) * 1000),
+                                                        0 , item.tx.Fee, item.tx.hash));  
+                        }                            
+            
+    }
+    );
+    
+
+    this.setState((state) => { return Object.assign({}, state, {...state,currentPage:1, isFetching: false,transactionList :transactionList   }); }  );
+
+
+
+}
+
+errorHappened(err)
+{
+  
 }
 
  
-    getAccountInfo(myAddress, callback) {
-
-        const RippleAPI = require('ripple-lib').RippleAPI;
-        const   api = new RippleAPI({
-            server: settings().Ripple, // Public rippled server
-            timeout:8000
-        });
-
-      api.connect().then(() => {
-          console.log('getting account info for', myAddress);
-          return api.getAccountInfo(myAddress);
-  
-      }).then(info => {
-          callback(info);
-  
-  
-      }).then(() => {
-          return api.disconnect();
-      }).then(() => {
-          console.log('done and disconnected.');
-      }).catch(console.error);
-
-}
+    
 
 
 
     render() {
 
       
-        const userName = "sample name";
-        const ActivationDate = "2019-JAN-01 18:40";
-
-        const transactionList = [];
-
-        for (var i = 0; i <= 30; i++) {
-            if ((i % 2) == 0) {
-                transactionList.push(this.getTransactions(i+1,'INCOME', 2000, 'OKEX', '2020-01-01', '03:10', 2105, 0.0000012, '25DA228BDE8107ACF543C7310BCAD07939F675BA2EC939BAF6AA3890A173C37D'));
-            }
-            else {
-                transactionList.push(this.getTransactions(i+1,'EXPENSE', 1000, 'Bitfinix', '2020-01-01', '01:10', 2105, 0.0000012, '25DA228BDE8107ACF543C7310BCAD07939F675BA2EC939BAF6AA3890A173C37D'),
-                );
-            }
-
-        }
+       
 
        
-   let paged=transactionList.slice( (this.state.currentPage-1)* this.state.pagesize,((this.state.currentPage-1)* this.state.pagesize)+this.state.pagesize);
+let currentState=this.state;
+       
+   let paged=currentState.transactionList.slice( (currentState.currentPage-1)* currentState.pagesize,((currentState.currentPage-1)* currentState.pagesize)+currentState.pagesize);
 
         const listItems = paged.map((item, index) => {
 
@@ -152,10 +176,10 @@ handleClick(e) {
             return <XrpTransactionBox key={"key" + item.index} item={item} index={item.index} />;
         });
 
-        let from = (this.state.currentPage - 1) * (this.state.pagesize)
+        let from = (currentState.currentPage - 1) * (currentState.pagesize)
         if (from == 0)
             from = 1;
-        const to = ((this.state.currentPage - 1) * (this.state.pagesize)) + this.state.pagesize;
+        const to = ((currentState.currentPage - 1) * (currentState.pagesize)) + currentState.pagesize;
 
 
         return (
@@ -180,7 +204,7 @@ handleClick(e) {
 
 
                                     <div className="col-12 title mt-2">
-                                        My Wallet
+                                        My Wallet (Ripple Test Net)
                                    </div>
                                     <div className="col-12 mt-4 ">
                                     <div className="input-group col-12  wallet-bar p-2">
@@ -206,15 +230,15 @@ handleClick(e) {
                                             <div className="col-12 col-sm-12 col-md-8 left-section">
                                                 <div className="col-12">
                                                     <FormGroup controlId="formBasic">
-                                                        <FormLabel  >Username:</FormLabel>
-                                                        <FormControl plaintext readOnly defaultValue={this.state.WalletInformation.sequence} />
+                                                        <FormLabel  >Squence :</FormLabel>
+                                                        <FormControl plaintext readOnly defaultValue={this.state.WalletInformation.result.account_data.Sequence} />
                                                         
                                                     </FormGroup>
                                                 </div>
                                                 <div className="col-12 mt-4">
                                                     <FormGroup controlId="formBasicDate">
                                                         <FormLabel  >Activation Date:</FormLabel>
-                                                        <FormControl plaintext readOnly defaultValue={ActivationDate} />
+                                                        <FormControl plaintext readOnly defaultValue={this.state.transactionList.length>0 ? this.state.transactionList[0].transactionDate +' '+this.state.transactionList[0].transactionTime : ''} />
                                                     </FormGroup>
                                                 </div>
                                             </div>
@@ -248,7 +272,7 @@ handleClick(e) {
                                         <div className="col-5 text-left img-text">
                                             <img width="17" height="17" src={`${process.env.PUBLIC_URL}/landing_assets/small-xpr-icon.svg`} /> XRP
                             </div>
-        <div className="col-7 text-right">{this.state.WalletInformation.xrpBalance}</div>
+        <div className="col-7 text-right">{this.state.WalletInformation.result.account_data.Balance}</div>
                                     </div>
                                     <div className="row other mt-2">
                                         <div className="col-5 text-left">Reserved</div>
@@ -256,7 +280,7 @@ handleClick(e) {
                                     </div>
                                     <div className="row other  mt-2">
                                         <div className="col-5 text-left">Available</div>
-        <div className="col-7  text-right">{this.state.WalletInformation.xrpBalance-20}}</div>
+        <div className="col-7  text-right">{(this.state.WalletInformation.result.account_data.Balance-20)}</div>
                                     </div>
                                 </div>
                             </div>
@@ -330,7 +354,7 @@ handleClick(e) {
 
 
                                         <b className="font-weight-bolder px-2">{from}-{to} </b>of
-                              <b className="font-weight-bolder px-2">{transactionList.length}</b> transactions
+                              <b className="font-weight-bolder px-2">{this.state.transactionList.length}</b> transactions
                         </div>
 
 
@@ -343,7 +367,7 @@ handleClick(e) {
                             </div>
                             <div className="col-11 col-sm-10 col-md-10 col-xl-10 center transaction-pager  mt-5 pt-5">
 
-                                <PagerBox recordCount={transactionList.length} pageSize={this.state.pagesize} loadNext={this.pageChanged}></PagerBox>
+                                <PagerBox recordCount={this.state.transactionList.length} pageSize={this.state.pagesize} loadNext={this.pageChanged}></PagerBox>
 
 
                             </div>

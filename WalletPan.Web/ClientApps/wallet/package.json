@@ -27,6 +27,7 @@
     "redux-thunk": "^2.3.0",
     "ripple-lib": "^1.6.0",
     "typescript": "^3.7.4",
+    "websocket-as-promised": "^1.0.1",
     "yup": "^0.28.0"
   },
   "scripts": {

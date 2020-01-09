@@ -26,14 +26,14 @@ class XrpTransactionBox extends React.Component {
                    <span className=""> {index}. </span>    
                     <span className="img-text">   
                         <img width="17" height="17" className="mr-2"
-                          src={item.typpe=='EXPENSE' ? `${process.env.PUBLIC_URL}/landing_assets/expense-icon.svg` :`${process.env.PUBLIC_URL}/landing_assets/income-icon.svg`}
+                          src={item.type=='EXPENSE' ? `${process.env.PUBLIC_URL}/landing_assets/expense-icon.svg` :`${process.env.PUBLIC_URL}/landing_assets/income-icon.svg`}
                         />  
                 
                       <img width="17" height="17" className="mx-2" src={`${process.env.PUBLIC_URL}/landing_assets/small-xpr-icon.svg`} /> XRP
                       
                       </span>     
                       
-                   <span className={item.typpe=='EXPENSE' ?  "text-danger" :"text-success"} >{item.amount}</span>   
+                   <span className={item.type=='EXPENSE' ?  "text-danger" :"text-success"} >{item.amount}</span>   
               </div>
               <div className="row body-part mt2">
                   <div className="col-12">
