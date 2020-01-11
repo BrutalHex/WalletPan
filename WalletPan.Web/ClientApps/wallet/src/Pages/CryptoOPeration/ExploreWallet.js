@@ -93,7 +93,7 @@ getAccountInfo()
 
    getRippleAccountInfo(this.state.Address).then(response=>{
 
-      
+
         this.recievedAcountInfo(response);
  });
  
