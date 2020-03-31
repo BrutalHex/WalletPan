@@ -1,26 +1,46 @@
-import React  from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+const Spinner = ({ show, children }) => (
 
 
- 
-class Spinner extends React.Component {
+
+    <div className="container-fluid p-0 overlayContainer">
+        <div className={"spinner-overlay " + (show ? "d-flex d-block" : "d-none")}>
+            <div className="spinner-border text-primary center align-self-center" role="status">
+                <span className="sr-only">Loading...</span>
+            </div>
+        </div>
+        {children}
+    </div>
 
 
-    constructor(props) {
-        super(props);
 
 
+
+
+);
+
+Spinner.propTypes = {
+
+    show: PropTypes.bool
+}
+
+
+const mapStateToProps = (state, ownProps) => {
+
+    return {
+        show: state.base.pending
     }
-
-    
-
-    render() {
-        return(
- 
-            <img  className="center" src={`${process.env.PUBLIC_URL}/landing_assets/grid_spinner.svg`}
-            />
-           );
+}
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
 
     }
 }
-
-export default Spinner;
+const SpinnerContainer = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Spinner)
+export default SpinnerContainer

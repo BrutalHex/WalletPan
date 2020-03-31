@@ -11,7 +11,7 @@ const Method ={
 
 const ContentType={
 
-    json:"aapplication/json; charset=utf-8",
+    json:"application/json; charset=utf-8",
    wwwform:"'application/x-www-form-urlencoded'"
 };
 
@@ -41,8 +41,7 @@ const Credentials=
      credentials , callback)
 {
 
-   
-  
+ 
     fetch(url, {
         method: method,  
         mode: mode, 
@@ -75,22 +74,22 @@ const Credentials=
 }
 
 
-export function postData(url,data  )
+export function postData(url,data,callback  )
 {
 
-
-   return 
-    baseFetch(url,JSON.stringify(data),ContentType.json,Method.POST,null,Mode.nocors,Cache.nochache,Credentials.omit);
+   
+             
+    baseFetch(url,JSON.stringify(data),ContentType.json,Method.POST,null,Mode.cors,Cache.nochache,Credentials.omit,callback);
 
     
 }
 
-export function putData(url,data  )
+export function putData(url,data , callback)
 {
 
-
-   return 
-    baseFetch(url,JSON.stringify(data),ContentType.json,Method.PUT,null,Mode.nocors,Cache.nochache,Credentials.omit);
+ 
+  
+    baseFetch(url,JSON.stringify(data),ContentType.json,Method.PUT,null,Mode.nocors,Cache.nochache,Credentials.omit,callback);
 
     
 }
@@ -99,7 +98,7 @@ export function deleteData(url,data  )
 {
 
 
-   return 
+  
     baseFetch(url,JSON.stringify(data),ContentType.json,Method.DELETE,null,Mode.nocors,Cache.nochache,Credentials.omit);
 
     

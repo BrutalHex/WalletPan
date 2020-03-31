@@ -1,6 +1,5 @@
 import React from 'react';
 
-import './App.css';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
 /** Layouts **/
@@ -16,8 +15,8 @@ import RegistrationPage from './Pages/UserPublicSection/RegistrationPage'
 import CryptoCurrencyView from './Pages/CryptoCurrencyView';
 
 /***dashboards* */
-import CreateNewWallet from './Pages/CryptoOPeration/CreateNewWallet';
-import ExploreWallet from './Pages/CryptoOPeration/ExploreWallet';
+import CreateNewWalletPageContainer from './Pages/CryptoOPeration/CreateWallet/CreateNewWalletPageContainer';
+import ExploreWalletPageContainer from './Pages/CryptoOPeration/ExploreWallet/ExploreWalletPageContainer';
 import SendCurrency from './Pages/CryptoOPeration/SendCurrency';
 
 function App() {
@@ -50,8 +49,8 @@ function App() {
           <Route path={["/Dashboard","/Dashboard/CreateNewWallet"]}>
               <DashboardLayoutRoute>
                   <Switch>
-                      <Route   path="/Dashboard/CreateNewWallet" component={CreateNewWallet} />
-                      <Route   path="/Dashboard/explore" component={ExploreWallet} />
+                      <Route   path="/Dashboard/CreateNewWallet" component={CreateNewWalletPageContainer} />
+                      <Route   path="/Dashboard/explore" component={ExploreWalletPageContainer} />
                       <Route   path="/Dashboard/SendXRP" component={SendCurrency} />
                   </Switch>
               </DashboardLayoutRoute>

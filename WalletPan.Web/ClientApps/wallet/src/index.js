@@ -1,22 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
 import Root from './base/Root';
-import thunk from 'redux-thunk';
-import { combineReducers } from 'redux';
-
-import { cryptoCurrencyReducer } from './containers/CryptoCurrency/reducer';
-import { initialState } from './base/BaseReducer';
-
-import './index.css';
+import configureStore from './base/configureStore'
 import * as serviceWorker from './serviceWorker';
+import initialState from './base/BaseReducer';
+ 
 
-const middlewares = [thunk];
-
-const store = createStore(
-    cryptoCurrencyReducer
-    , initialState, applyMiddleware(...middlewares));
-
+const store = configureStore(initialState);
 
 
 ReactDOM.render(
@@ -33,3 +23,4 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+

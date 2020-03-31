@@ -1,4 +1,4 @@
-import {entity} from './action';
+/*import {entity} from './action';
 import { combineReducers } from 'redux';
 import {BaseReducer,initialState} from '../../base/BaseReducer';
 import {fetchApiPending,fetchApiSuccess,fetchApiError} from '../../base/BaseApiAction';
@@ -41,4 +41,4 @@ export const     getRecordsPending = state => state.pending;
 export const      getRecordsError   = state => state.error;
  
 export default cryptoCurrencyReducer;
-
+*/

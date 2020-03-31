@@ -1,4 +1,7 @@
-import React, { Component } from 'react';
+
+'use strict';
+import React from 'react';
+import { connect } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import FormGroup from 'react-bootstrap/FormGroup';
 import FormLabel from 'react-bootstrap/FormLabel';
@@ -7,10 +10,21 @@ import FormText from 'react-bootstrap/FormText';
 import Button from 'react-bootstrap/Button';
 import {Formik,Field} from 'formik';
 import * as yup from 'yup';
+import settings from '../../../base/settings';
+import {generateKeys} from './CreateNewWalletPageAction'
+  
+const RippleAPI = require('ripple-lib').RippleAPI;
+
+const api = new RippleAPI();
 
 
 
-const CreateNewWallet = ({ classes }) => {
+
+
+
+
+
+const CreateNewWalletPage = ({ publickey,privatekey,doGenerateKeys }) => {
 
     const schema = yup.object({
 
@@ -35,8 +49,8 @@ const CreateNewWallet = ({ classes }) => {
               <Formik
                                     validationSchema={schema}
                                     initialValues={{
-                                        publickey: '',
-                                        privatekey:'',
+                                        publickey: publickey,
+                                        privatekey:privatekey,
                                        
                                       }}
                                       validate={values => {
@@ -47,9 +61,11 @@ const CreateNewWallet = ({ classes }) => {
                                         return errors;
                                       }}
                                     onSubmit={(values) => {
-                                           
+                                         
+                                                  
+                                        doGenerateKeys();
                                        
-                                        console.log(values);
+                                        
                                       }}
                                      
 
@@ -64,7 +80,10 @@ const CreateNewWallet = ({ classes }) => {
                                     }) =>  ( <Form className="custom-form center col-12 col-sm-11 col-md-8">
                 <FormGroup controlId="formBasicAddress">
                     <FormLabel  >Address</FormLabel>
-                    <FormControl disabled className="form-input"   type="text" placeholder="wait" />
+                    <FormControl disabled
+                      name="publickey"
+                      value={publickey}
+                    className="form-input"   type="text" placeholder="" />
                     <FormText className="text-muted">
                      this is your public address.
                                             </FormText>
@@ -73,7 +92,10 @@ const CreateNewWallet = ({ classes }) => {
                 <FormGroup controlId="formBasicPrivate">
                     <FormLabel  >Private Key</FormLabel>
             
-                    <FormControl disabled as="textarea" className="form-input" type="text" rows="3" />
+                    <FormControl
+                     name="privatekey"
+                     value={privatekey}
+                    disabled as="textarea" className="form-input" type="text" rows="3" />
                     <FormText className="text-muted">
                     this is your private key.do not share it with anyone.
                                             </FormText>
@@ -81,7 +103,7 @@ const CreateNewWallet = ({ classes }) => {
 
                 
 
-                <Button variant="primary" type="submit" className="w-100 mt-4"   >
+                <Button variant="primary" type="submit" className="w-100 mt-4"  onClick={handleSubmit} >
                     Generate
                                           </Button>
 
@@ -98,5 +120,41 @@ const CreateNewWallet = ({ classes }) => {
 
     );
 };
+const mapStateToProps = (state, ownProps) => {
+  
 
-export default CreateNewWallet;
+     if(state.CreateNewWallet.GenKey)
+{
+        var add=api.generateXAddress();
+    return {
+              privatekey:add.secret,
+        publickey:add.xAddress
+    }
+}
+
+return {
+    privatekey:'',
+publickey:''
+}
+
+
+}
+const mapDispatchToProps = (dispatch, ownProps) => {
+  
+   
+    return {
+ 
+
+         
+        doGenerateKeys:()=> {
+
+    dispatch( generateKeys());
+   
+    },
+    }
+}
+const CreateNewWalletPageContainer = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(CreateNewWalletPage)
+export default CreateNewWalletPageContainer

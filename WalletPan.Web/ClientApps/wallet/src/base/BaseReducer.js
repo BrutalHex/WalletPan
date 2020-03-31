@@ -1,34 +1,41 @@
+ 
+import * as actions from './actionTypes';
 
-import {fetchApiPending,fetchApiSuccess,fetchApiError} from './BaseApiAction';
 export const initialState = {
     pending: false,
-    records: [],
-    error: null
+    isInit:true,
+    transactionList:[],
+    walletInformation: {result:{account_data:{Sequence:0,
+        Balance:0}}},
+    error: null,
 }
 
-export function BaseReducer(state,action,entity,nextReducer)
+export function BaseReducer(state=initialState,action,entity)
 {
-    debugger;
-    switch(action.type) {
-        case fetchApiPending(entity).type: 
+    
+    
+    switch(action.baseType) {
+        case actions.fetchPendingType: 
             return {
                 ...state,
+                error:null,
+                records:null,
                 pending: true
             }
-        case fetchApiSuccess(entity):
+        case actions.fetchSuccessType:
             return {
                 ...state,
                 pending: false,
-                records: action.records.data.records
+                records: action.recievedData
             }
-        case fetchApiError(entity):
+        case actions.fetchErrorType:
             return {
                 ...state,
                 pending: false,
                 error: action.error
             }
         default: 
-            return nextReducer();
+            return  {   ...state};
     }
 }
 export default BaseReducer;

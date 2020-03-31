@@ -1,5 +1,5 @@
 
-
+/*
 import {postData,getData} from '../../base/fetchService';
 import {getApiUrl} from '../../base/settings';
 
@@ -27,4 +27,4 @@ import {fetchCryptoCurrencyPending, fetchCryptoCurrencySuccess, fetchCryptoCurre
     }
 }
 
-export default fetchCryptoCurrency;
+export default fetchCryptoCurrency;*/
