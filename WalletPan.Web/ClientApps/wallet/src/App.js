@@ -17,7 +17,7 @@ import CryptoCurrencyView from './Pages/CryptoCurrencyView';
 /***dashboards* */
 import CreateNewWalletPageContainer from './Pages/CryptoOPeration/CreateWallet/CreateNewWalletPageContainer';
 import ExploreWalletPageContainer from './Pages/CryptoOPeration/ExploreWallet/ExploreWalletPageContainer';
-import SendCurrency from './Pages/CryptoOPeration/SendCurrency';
+import SendXrpPageContainer from './Pages/CryptoOPeration/SendXrp/SendXrpPageContainer';
 
 function App() {
   return (
@@ -51,7 +51,7 @@ function App() {
                   <Switch>
                       <Route   path="/Dashboard/CreateNewWallet" component={CreateNewWalletPageContainer} />
                       <Route   path="/Dashboard/explore" component={ExploreWalletPageContainer} />
-                      <Route   path="/Dashboard/SendXRP" component={SendCurrency} />
+                      <Route   path="/Dashboard/SendXRP" component={SendXrpPageContainer} />
                   </Switch>
               </DashboardLayoutRoute>
           </Route>

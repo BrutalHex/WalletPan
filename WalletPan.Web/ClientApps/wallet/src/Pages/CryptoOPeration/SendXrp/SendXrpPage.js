@@ -8,19 +8,32 @@ import Button from 'react-bootstrap/Button';
 import FormControlFeedback from 'react-bootstrap/FormGroup';
 import {Formik,Field} from 'formik';
 import * as yup from 'yup';
+import React, { Component } from 'react';
+import Form from 'react-bootstrap/Form';
+import FormGroup from 'react-bootstrap/FormGroup';
+import FormLabel from 'react-bootstrap/FormLabel';
+import FormControl from 'react-bootstrap/FormControl';
+import Button from 'react-bootstrap/Button';
+import Dropdown from 'react-bootstrap/Dropdown';
+import XrpTransactionBox from '../../../components/XrpTransactionBox';
+import PagerBox from '../../../components/PagerBox';
+import PropTypes from 'prop-types'
+import { Formik } from 'formik';
+import * as yup from 'yup';
+import FormControlFeedback from 'react-bootstrap/FormGroup';
+import SpinnerContainer from '../../../components/spinner'
 
 
-
-const SendCurrency = ({ classes }) => {
+const SendXrpPage = ({ handleSendClick }) => {
 
     const schema = yup.object({
 
-
-
+        sourceAddress:yup.string().trim().required('source wallet is required'),
         privatekey: yup.string().trim().required('private key is required'),
         destWallet: yup.string().trim().required('Destination wallet is required'),
-        amount: yup.number().min(0).required('Amount is required'),
-        destTag: yup.string().trim()
+        amount: yup.number().min(0.0000000001).required('Amount is required'),
+        destTag: yup.number()
+
     });
 
 
@@ -34,10 +47,12 @@ const SendCurrency = ({ classes }) => {
                 <div className="col-12 center subtitle mt-3">Please fill the required fields, to send XRP:</div>
             </div>
             <div className="row  mt-5">
+            <SpinnerContainer >
                 <Formik
+
                     validationSchema={schema}
                     initialValues={{
-
+                        sourceAddress:'',
                         privatekey: '',
                         destWallet: '',
                         amount: 0,
@@ -52,8 +67,8 @@ const SendCurrency = ({ classes }) => {
                     }}
                     onSubmit={(values) => {
 
-
-                        console.log(values);
+                        handleSendClick(values);
+                    
                     }}
 
 
@@ -68,7 +83,24 @@ const SendCurrency = ({ classes }) => {
                     }) => (<Form noValidate onSubmit={handleSubmit}  className="custom-form center col-12 col-sm-11 col-md-8">
 
 
-                       
+{    error != null ?  (<div class="alert alert-danger" role="alert">
+                                                          {error}
+                                                       </div>):  null}
+                                                       <FormGroup controlId="validationFormikesourceAddress">
+                            <FormLabel>Your Wallet Address</FormLabel>
+                            <FormControl type="text"
+                                name="privatekey"
+                                className="form-control form-input"
+                                value={values.sourceAddress}
+                                
+                                rows="3"
+                                onChange={handleChange}
+                                isInvalid={!!errors.sourceAddress} />
+                            <FormControlFeedback type="invalid">
+                                {errors.sourceAddress}
+                            </FormControlFeedback>
+                           
+                        </FormGroup>
 
                         <FormGroup controlId="validationFormikePrivatekey">
                             <FormLabel>Private Key</FormLabel>
@@ -128,12 +160,12 @@ const SendCurrency = ({ classes }) => {
                                 name="destTag"
                                 className="form-control form-input"
                                 value={values.destTag}
-                                
                                 onChange={handleChange}
                                 isInvalid={!!errors.destTag} />
                             <FormControlFeedback type="invalid">
                                 {errors.destTag}
                             </FormControlFeedback>
+                       
                             <FormText className="text-muted">
                              becarefull about the destination tag
                                                      </FormText>
@@ -146,6 +178,7 @@ const SendCurrency = ({ classes }) => {
 
                     </Form>)}
                 </Formik>
+                </SpinnerContainer>
             </div>
 
         </div>
@@ -156,4 +189,4 @@ const SendCurrency = ({ classes }) => {
     );
 };
 
-export default SendCurrency;
+export default SendXrpPage;
