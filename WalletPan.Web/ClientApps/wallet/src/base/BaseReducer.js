@@ -7,7 +7,8 @@ export const initialState = {
     transactionList:[],
     walletInformation: {result:{account_data:{Sequence:0,
         Balance:0}}},
-    error: null,
+    error: null
+    
 }
 
 export function BaseReducer(state=initialState,action,entity)

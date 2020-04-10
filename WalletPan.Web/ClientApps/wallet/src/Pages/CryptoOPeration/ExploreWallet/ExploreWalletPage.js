@@ -72,7 +72,7 @@ const ExploreWalletPage = ({ transactionList,  walletInformation ,handleChange ,
                                 <Formik
                                         validationSchema={schema}
                                         initialValues={{
-                                            address: 'rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe',
+                                            address: 'rPKNyZZw8aRftQaMKXuFgN4wjiQiUQedun',
                                         
 
                                         }}

@@ -42,7 +42,10 @@ export class DashboardLayout extends Component {
                                 className="d-inline-block align-top"
                                 
                             />
-                           
+                            <br />
+                           <span className="col-12 pl-2 text-danger text-bold">
+                        Conected to Ripple TEST server !!!
+                    </span>
                         </NavbarBrand>
                         
                         <NavbarCollapse className="col-12 col-sm-5 col-lg-6 
@@ -70,6 +73,7 @@ export class DashboardLayout extends Component {
 
 
                 </div>
+                
                 <div className="row children-area px-2 py-4 p-md-4 d-flex">
                     {this.props.children}
                 </div>

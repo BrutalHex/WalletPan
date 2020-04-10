@@ -8,7 +8,15 @@ import WebSocketAsPromised from 'websocket-as-promised';
 
 
  
+export function submitTransaction(blob)
+{
+  return baseConnector({
+    "id":"1000",
+    "command": "submit",
+    "tx_blob": blob
 
+});
+}
 
 
 
@@ -46,7 +54,7 @@ return baseConnector({
       unpackMessage: message => JSON.parse(message),
       attachRequestId: (data, requestId) => Object.assign({id: requestId}, data), // attach requestId to message as `id` field
       extractRequestId: data => data && data.id,   
-        timeout:8000
+        timeout:6000
       });
      
     return  wsp.open()

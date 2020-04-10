@@ -8,7 +8,7 @@ import {sendTransaction} from './SendXrpPageAction'
 
 const mapStateToProps = (state, ownProps) => {
   
-    
+    return {};
 
  
 }

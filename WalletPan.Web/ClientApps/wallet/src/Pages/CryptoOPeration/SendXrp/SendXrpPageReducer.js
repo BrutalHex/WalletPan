@@ -1,28 +1,35 @@
 import {BaseReducer,initialState} from '../../../base/BaseReducer'
 import * as  actionType from '../../../base/actionTypes'
 import {xrpPayment} from './SendXrpPageAction';
-export function SendXrpPageReducer(state=initialState,action)
+export function SendXrpPageReducer(state={...initialState,globalSentCoinCounter:0,
+   SentCoins:[]},action)
 {
 
    
         var obj=BaseReducer(state,action);
-   
+        
+
+
      
            if(action.type.indexOf(actionType.fetchPendingType)>-1)
            {
             return {
-               ...obj 
-                 
+               ...obj ,
+               globalSentCoinCounter:obj.globalSentCoinCounter+1
               }
            }
 
            if(action.type== actionType.fetchSuccessType+'_'+xrpPayment)
-           {
-              
-            return {
-               ...obj ,
-               transactionList:action.recievedData
+           { 
+
+              var item={
+               ...obj 
               }
+              item.SentCoins.push({transactionLocalIdentifier:item.globalSentCoinCounter,...action.recievedData})
+
+
+            return item;
+
            }
 
 
@@ -41,4 +48,4 @@ export function SendXrpPageReducer(state=initialState,action)
 
 }
 
-export default exploreWalletReducer;
+export default SendXrpPageReducer;

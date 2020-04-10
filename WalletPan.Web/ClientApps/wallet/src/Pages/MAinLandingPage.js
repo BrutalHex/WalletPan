@@ -37,12 +37,14 @@ const MainLandingPage = ({ classes }) => {
             <div className="row section section-head twin-section vh-90 vw-90" id="home">
                 <div className="col-12 col-md-5 left-part">
                     <div className="row">
-                        <div className="col-12 logo-wrapper">
+                        <div className="col-12 logo-wrapper text-red">
                             <img src={`${process.env.PUBLIC_URL}/landing_assets/logo.svg`}
                             />
+                         
                         </div>
+                      
                     </div>
-
+                  
                     <div className="row">
                         <div className="col-12 banner-Text">
                             <div className="row">

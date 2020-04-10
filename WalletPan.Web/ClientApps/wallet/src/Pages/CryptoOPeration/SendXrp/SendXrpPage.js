@@ -1,30 +1,17 @@
 import React from 'react';
+import * as yup from 'yup';
 import Form from 'react-bootstrap/Form';
 import FormGroup from 'react-bootstrap/FormGroup';
 import FormLabel from 'react-bootstrap/FormLabel';
-import FormControl from 'react-bootstrap/FormControl';
 import FormText from 'react-bootstrap/FormText';
-import Button from 'react-bootstrap/Button';
-import FormControlFeedback from 'react-bootstrap/FormGroup';
-import {Formik,Field} from 'formik';
-import * as yup from 'yup';
-import React, { Component } from 'react';
-import Form from 'react-bootstrap/Form';
-import FormGroup from 'react-bootstrap/FormGroup';
-import FormLabel from 'react-bootstrap/FormLabel';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
-import Dropdown from 'react-bootstrap/Dropdown';
-import XrpTransactionBox from '../../../components/XrpTransactionBox';
-import PagerBox from '../../../components/PagerBox';
-import PropTypes from 'prop-types'
-import { Formik } from 'formik';
-import * as yup from 'yup';
+import { Formik } from 'formik'; 
 import FormControlFeedback from 'react-bootstrap/FormGroup';
 import SpinnerContainer from '../../../components/spinner'
 
 
-const SendXrpPage = ({ handleSendClick }) => {
+const SendXrpPage = ({ handleSendClick,error }) => {
 
     const schema = yup.object({
 
@@ -32,7 +19,7 @@ const SendXrpPage = ({ handleSendClick }) => {
         privatekey: yup.string().trim().required('private key is required'),
         destWallet: yup.string().trim().required('Destination wallet is required'),
         amount: yup.number().min(0.0000000001).required('Amount is required'),
-        destTag: yup.number()
+        destTag: yup.number().min(0).required('destTag')
 
     });
 
@@ -52,11 +39,11 @@ const SendXrpPage = ({ handleSendClick }) => {
 
                     validationSchema={schema}
                     initialValues={{
-                        sourceAddress:'',
-                        privatekey: '',
-                        destWallet: '',
-                        amount: 0,
-                        destTag: ''
+                        sourceAddress:'rPKNyZZw8aRftQaMKXuFgN4wjiQiUQedun',
+                        privatekey: 'ssaeobTUiychy1ZKThXenPvNApKeW',
+                        destWallet: 'rp7aJ1jEodogNeDdoFokzTg6quWe3sQ6BY',
+                        amount:15,
+                        destTag: 0
                     }}
                     validate={values => {
                         const errors = {};
@@ -89,7 +76,7 @@ const SendXrpPage = ({ handleSendClick }) => {
                                                        <FormGroup controlId="validationFormikesourceAddress">
                             <FormLabel>Your Wallet Address</FormLabel>
                             <FormControl type="text"
-                                name="privatekey"
+                                name="sourceAddress"
                                 className="form-control form-input"
                                 value={values.sourceAddress}
                                 
@@ -156,7 +143,7 @@ const SendXrpPage = ({ handleSendClick }) => {
 
                         <FormGroup controlId="validationFormikedestTag">
                             <FormLabel>Destination Tag</FormLabel>
-                            <FormControl type="text"
+                            <FormControl type="number"
                                 name="destTag"
                                 className="form-control form-input"
                                 value={values.destTag}
