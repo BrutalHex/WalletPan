@@ -89,9 +89,8 @@ import React, { Component }  from 'react';
                          <div className="row footer-logo">  <img src={`${process.env.PUBLIC_URL}/landing_assets/footer-logo.svg`}
                             /></div>
                <div className="row footer-text text-justify-left">  
-               
-               MyEtherWallet is open-source and free to the community. Your donations go a long way towards making that possible.
-               
+               Donate so we could keep up.
+               WalletPan is open-source and free.              
                 </div>
                 <div className="row footer-social d-flex justify-content-left">  
                

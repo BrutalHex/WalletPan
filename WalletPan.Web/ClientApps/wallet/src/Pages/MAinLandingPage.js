@@ -13,7 +13,7 @@ const MainLandingPage = ({ classes }) => {
         text:  'How do I create a new wallet ?How do I create a new wallet?H ow do I create a new wallet?Ho w do I create a new wallet?'
     }, {
             title:'What is Walletpan Connect?',
-            text: 'Walletpan Connect is our companion mobile app for MyEtherWallet. We call it a hardware wallet without all the hardware. Now available for all Android and iOS smartphones!'
+            text: 'Walletpan Connect is our companion mobile app for WalletPan. We call it a hardware wallet without all the hardware. Now available for all Android and iOS smartphones!'
         },
         {
             title:'Can Walletpan work with other wallets?',
