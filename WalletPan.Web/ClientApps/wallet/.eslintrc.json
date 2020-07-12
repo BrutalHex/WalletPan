@@ -1,0 +1,35 @@
+{
+    "env": {
+        "browser": true,
+        "es2020": true,
+		"jest": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 11,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint"
+    ],
+    "rules": {
+	  "react/jsx-uses-react": "error",   
+     "react/jsx-uses-vars": "error" 
+    },
+	   "extends": [
+       
+        "standard",  
+    "prettier",
+		 "prettier/standard",
+    "prettier/@typescript-eslint",
+    "prettier/babel",
+    "prettier/flowtype",
+    "prettier/react",
+ "plugin:react/recommended"
+  
+    ]
+}
