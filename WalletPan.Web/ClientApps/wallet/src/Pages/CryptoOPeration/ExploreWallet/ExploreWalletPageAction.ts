@@ -1,66 +1,21 @@
-import {fetchApiPending,fetchApiSuccess,fetchApiError} from '../../../base/BaseApiAction';
-import {postData} from '../../../base/fetchService';
-import {getApiUrl} from '../../../base/settings';
-import {getRippleAccountTransactions,getRippleAccountInfo} from '../../../base/RippleManagement';
+import { creatAction, New_Xrp_Wallet } from '../../Types/ActionTypes';
+import { WalletThunkResult, WalletTThunkDispatch } from '../../../base/BaseTypes';
+import { ActoinTypes } from '../../../Types/ActionTypes';
+import { Xrp_Wallet_Info } from '../../../Types/IXrpWalletInfoAction';
+import { Xrp_Transaction } from '../../../Types/IWalletTransactionsAction';
+import { getRippleAccountInfo, getRippleAccountTransactions } from '../../../base/RippleManagement';
 
-export const xrpTransaction = 'XrpTransaction';
-
-export const xrpWalletInfo = 'XrpWalletInfo';
-
-
-
-
-
-
-
-export  function  getwalletTransactions(obj) {
-    
-
-  return dispatch => {
-
-        dispatch(fetchApiPending(xrpTransaction));
-
-    getRippleAccountTransactions(obj.address).then(response=>{
-        
-      dispatch(fetchApiSuccess(xrpTransaction,response));
-
-    
- });
-
-  }
-
-
-
+export function GetwalletTransactions(address: string): WalletThunkResult<void> {
+  return (dispatch: WalletTThunkDispatch) => {
+    getRippleAccountTransactions(address).then((response) => {
+      dispatch(creatAction(Xrp_Transaction, response));
+    });
+  };
 }
 
-export function getAccountInfo(obj)
- {
- 
-
-  return dispatch =>{
-
-    dispatch(fetchApiPending(xrpWalletInfo));
-
-    getRippleAccountInfo(obj.address).then(response=>{
-    
-        dispatch(fetchApiSuccess(xrpWalletInfo,response));
-  
-      
-   });
-
-  }
-
-
-
-
-
- 
- }
-
-
-         
-     
-    
-
-
- 
+export function GetAccountInfo(address: string): WalletThunkResult<void> {
+  return (dispatch: WalletTThunkDispatch) =>
+    getRippleAccountInfo(address).then((response) =>
+      dispatch(creatAction(Xrp_Wallet_Info, response))
+    );
+}

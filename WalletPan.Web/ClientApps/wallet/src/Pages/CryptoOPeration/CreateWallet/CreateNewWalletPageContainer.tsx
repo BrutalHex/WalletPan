@@ -102,6 +102,7 @@ const CreateNewWalletPage: FunctionComponent<CreatNewWalletPageProps> = ({
     </div>
   );
 };
+
 const mapStateToProps = (state: RootState) => {
   if (state.genKey) {
     var add = api.generateXAddress();

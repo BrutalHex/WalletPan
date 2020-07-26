@@ -1,44 +1,18 @@
-import { connect } from 'react-redux'
-import SendXrpPage from './SendXrpPage'
-import {sendTransaction} from './SendXrpPageAction'
-
-
-   
-  
+import { connect } from 'react-redux';
+import SendXrpPage from './SendXrpPage';
+import { SendTransaction } from './SendXrpPageAction';
 
 const mapStateToProps = (state, ownProps) => {
-  
-    return {};
-
- 
-}
-
-
-
+  return {};
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    
-   
- 
-handleSendClick:(values)=> {
+    handleSendClick: (values) => {
+      dispatch(SendTransaction(values));
+    },
+  };
+};
 
-dispatch( sendTransaction(values));
- 
-}
-
-
-
-  }
-}
-
-
-
-
-
-
-const SendXrpPageContainer =  (connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SendXrpPage))
-export default SendXrpPageContainer
+const SendXrpPageContainer = connect(mapStateToProps, mapDispatchToProps)(SendXrpPage);
+export default SendXrpPageContainer;

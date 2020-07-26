@@ -1,51 +1,19 @@
-import {BaseReducer,initialState} from '../../../base/BaseReducer'
-import * as  actionType from '../../../base/actionTypes'
-import {xrpTransaction,xrpWalletInfo} from './ExploreWalletPageAction';
-export function exploreWalletReducer(state=initialState,action)
-{
+import { BaseReducer, initialState } from '../../../base/BaseReducer';
+import * as actionType from '../../../base/actionTypes';
+import { xrpTransaction, xrpWalletInfo } from './ExploreWalletPageAction';
 
-   
-        var obj=BaseReducer(state,action);
-   
-     
-           if(action.type.indexOf(actionType.fetchPendingType)>-1)
-           {
-            return {
-               ...obj 
-                 
-              }
-           }
+const walletInfo = (initstate: object, action: IXrpWalletInfoAction): boolean => {
+  return action.payload;
+};
 
-           if(action.type== actionType.fetchSuccessType+'_'+xrpTransaction)
-           {
-              
-            return {
-               ...obj ,
-               transactionList:action.recievedData
-              }
-           }
+export const walletInfoReducer = createReducer(null, {
+  Xrp_Wallet_Info: walletInfo,
+});
 
+const exploreWallet = (initstate: object, action: INewXrpWalletAction): boolean => {
+  return action.payload;
+};
 
-          
-
-           if(action.type== actionType.fetchSuccessType+'_'+xrpWalletInfo)
-           {
-            
-            return {
-               ...obj ,
-               walletInformation:action.recievedData
-              }
-           }
-
-    return {
-      ...obj
-    
-        
-     }
-
-        
-
-
-}
-
-export default exploreWalletReducer;
+export const exploreWalletReducer = createReducer(null, {
+  Xrp_Transaction: exploreWallet,
+});

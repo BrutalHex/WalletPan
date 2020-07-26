@@ -5,6 +5,6 @@ import { ActoinTypes } from '../../../Types/ActionTypes';
 export function NewXrpWallet(): WalletThunkResult<ActoinTypes> {
   return (dispatch: WalletTThunkDispatch) => {
     dispatch(creatAction(New_Xrp_Wallet, false));
-    dispatch(creatAction(New_Xrp_Wallet, true));
+    return dispatch(creatAction(New_Xrp_Wallet, true));
   };
 }
