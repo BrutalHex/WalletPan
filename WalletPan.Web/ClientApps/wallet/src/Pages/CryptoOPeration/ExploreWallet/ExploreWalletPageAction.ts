@@ -1,9 +1,8 @@
-import { creatAction, New_Xrp_Wallet } from '../../Types/ActionTypes';
 import { WalletThunkResult, WalletTThunkDispatch } from '../../../base/BaseTypes';
-import { ActoinTypes } from '../../../Types/ActionTypes';
 import { Xrp_Wallet_Info } from '../../../Types/IXrpWalletInfoAction';
 import { Xrp_Transaction } from '../../../Types/IWalletTransactionsAction';
 import { getRippleAccountInfo, getRippleAccountTransactions } from '../../../base/RippleManagement';
+import { creatAction } from '../../../Types/ActionTypes';
 
 export function GetwalletTransactions(address: string): WalletThunkResult<void> {
   return (dispatch: WalletTThunkDispatch) => {

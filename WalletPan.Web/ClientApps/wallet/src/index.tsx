@@ -1,26 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './base/Root';
-import configureStore from './base/configureStore'
+import configureStore from './base/configureStore';
 import * as serviceWorker from './serviceWorker';
-import initialState from './base/BaseReducer';
- 
 
-const store = configureStore(initialState);
-
+const store = configureStore(undefined);
 
 ReactDOM.render(
+  <Root store={store} />,
 
-
-    <Root store={store} />
-
-
-
-
-    , document.getElementById('root'));
+  document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
-

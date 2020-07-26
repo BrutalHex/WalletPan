@@ -9,8 +9,7 @@ import FormText from 'react-bootstrap/FormText';
 import Button from 'react-bootstrap/Button';
 import { Formik, Field } from 'formik';
 import * as yup from 'yup';
-import settings from '../../../base/settings';
-import { generateKeys } from './CreateNewWalletPageAction';
+import { NewXrpWallet } from './CreateNewWalletPageAction';
 import { RootState } from '../../../base/reducers';
 import { WalletTThunkDispatch } from '../../../base/BaseTypes';
 
@@ -18,11 +17,9 @@ const RippleAPI = require('ripple-lib').RippleAPI;
 
 const api = new RippleAPI();
 
-const CreateNewWalletPage: FunctionComponent<CreatNewWalletPageProps> = ({
-  publickey: string,
-  privatekey: string,
-  doGenerateKeys: any,
-}) => {
+const CreateNewWalletPage: FunctionComponent<CreatNewWalletPageProps> = (
+  props: CreatNewWalletPageProps
+) => {
   const schema = yup.object({
     publickey: yup.string(),
 
@@ -48,8 +45,8 @@ const CreateNewWalletPage: FunctionComponent<CreatNewWalletPageProps> = ({
         <Formik
           validationSchema={schema}
           initialValues={{
-            publickey: publickey,
-            privatekey: privatekey,
+            publickey: props.publickey,
+            privatekey: props.privatekey,
           }}
           validate={(values) => {
             const errors = {};
@@ -57,7 +54,7 @@ const CreateNewWalletPage: FunctionComponent<CreatNewWalletPageProps> = ({
             return errors;
           }}
           onSubmit={(values) => {
-            doGenerateKeys();
+            props.doGenerateKeys();
           }}
         >
           {({ handleSubmit, handleChange, handleBlur, values, isValid, errors }) => (
@@ -67,7 +64,7 @@ const CreateNewWalletPage: FunctionComponent<CreatNewWalletPageProps> = ({
                 <FormControl
                   disabled
                   name="publickey"
-                  value={publickey}
+                  value={props.publickey}
                   className="form-input"
                   type="text"
                   placeholder=""
@@ -80,12 +77,12 @@ const CreateNewWalletPage: FunctionComponent<CreatNewWalletPageProps> = ({
 
                 <FormControl
                   name="privatekey"
-                  value={privatekey}
+                  value={props.privatekey}
                   disabled
                   as="textarea"
                   className="form-input"
                   type="text"
-                  rows="3"
+                  rows={3}
                 />
                 <FormText className="text-muted">
                   this is your private key.do not share it with anyone.
@@ -120,7 +117,7 @@ const mapStateToProps = (state: RootState) => {
 const mapDispatchToProps = (dispatch: WalletTThunkDispatch) => {
   return {
     doGenerateKeys: () => {
-      dispatch(generateKeys());
+      dispatch(NewXrpWallet());
     },
   };
 };
@@ -129,7 +126,11 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
-export interface CreatNewWalletPageProps extends PropsFromRedux {}
+export interface CreatNewWalletPageProps extends PropsFromRedux {
+  publickey: string;
+  privatekey: string;
+  doGenerateKeys(): void;
+}
 
 const CreateNewWalletPageContainer = connector(CreateNewWalletPage);
 export default CreateNewWalletPageContainer;

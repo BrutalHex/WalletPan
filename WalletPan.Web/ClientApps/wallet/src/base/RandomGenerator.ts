@@ -1,5 +1,3 @@
-import { getShapeArray } from './baseService';
-
 export default class RandomGenerator {
   static getRndInteger = (min: number, max: number) =>
     Math.floor(Math.random() * (max - min)) + min;
@@ -11,15 +9,16 @@ export default class RandomGenerator {
       yield array.splice(Math.floor(Math.random() * (i + 1)), 1)[0];
     }
   }
+}
 
+/* 
   static shaffleDNums = RandomGenerator.shuffle(getShapeArray());
-
-  static getRndShape() {
+  static getRndShape<T>(array<T> arr) {
     var val = this.shaffleDNums.next().value;
     if (val === undefined) {
-      this.shaffleDNums = RandomGenerator.shuffle(getShapeArray());
+      this.shaffleDNums = RandomGenerator.shuffle(arr);
       val = this.shaffleDNums.next().value;
     }
     return val;
   }
-}
+}*/

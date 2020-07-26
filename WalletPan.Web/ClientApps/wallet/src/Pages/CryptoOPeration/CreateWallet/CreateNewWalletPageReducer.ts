@@ -1,6 +1,5 @@
-import { BaseReducer, initialState } from '../../../base/BaseReducer';
-import * as actionType from '../../../base/actionTypes';
 import { INewXrpWalletAction } from '../../../Types/INewXrpWalletAction';
+import { createReducer } from '../../../base/reducerUtils';
 
 const newXrpWallet = (initstate: boolean, action: INewXrpWalletAction): boolean => {
   return action.payload;

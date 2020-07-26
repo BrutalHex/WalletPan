@@ -1,14 +1,15 @@
 'use strict';
-import { creatAction } from '../../Types/ActionTypes';
-import { WalletThunkResult, WalletTThunkDispatch } from '../../../base/BaseTypes';
-import { ActoinTypes } from '../../../Types/ActionTypes';
-import { settings } from '../../../base/settings';
+
+import { Setting } from '../../../base/settings';
 import { submitTransaction } from '../../../base/RippleManagement';
+import { WalletThunkResult } from '../../../base/BaseTypes';
+import { creatAction } from '../../../Types/ActionTypes';
+import { Xrp_Payment } from '../../../Types/ISendXrpWalletAction';
 
 const RippleAPI = require('ripple-lib').RippleAPI;
-const api = new RippleAPI({ server: settings().Ripple });
+const api = new RippleAPI({ server: Setting.Ripple });
 
-export function SendTransaction(obj): WalletThunkResult<ActoinTypes> {
+export function SendTransaction(obj: any): WalletThunkResult<void> {
   return (dispatch: WalletTThunkDispatch) => {
     //  dispatch(fetchApiPending(Xrp_Payment));
     createTransaction(obj).then((response) => {
@@ -17,12 +18,12 @@ export function SendTransaction(obj): WalletThunkResult<ActoinTypes> {
   };
 }
 
-async function createTransaction(obj) {
+async function createTransaction(obj: any) {
   var amountM = obj.amount.toString();
 
   //"tag":obj.destTag,
 
-  var payement = {
+  let payement = {
     source: {
       address: obj.sourceAddress,
       maxAmount: {
@@ -49,7 +50,7 @@ async function createTransaction(obj) {
   });
 
   const response = api.sign(preparedTx.txJSON, obj.privatekey);
-  const txID = response.id;
+  //const txID = response.id;
   const txBlob = response.signedTransaction;
   debugger;
   // go for socket

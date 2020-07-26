@@ -1,7 +1,7 @@
 import { INewXrpWalletAction } from './INewXrpWalletAction';
-import { IGeneralAction } from './IGeneralAction';
 import { IWalletTransactionsAction } from './IWalletTransactionsAction';
-import { IXrpWalletInfo } from './IXrpWalletInfoAction';
+import { ISendXrpWalletAction } from './ISendXrpWalletAction';
+import { IGeneralAction } from './IGeneralAction';
 
 export const fetchPendingType = 'FETCH_PENDING';
 export const fetchSuccessType = 'FETCH_SUCCESS';
@@ -21,8 +21,4 @@ export function creatAction<TType, TPayload>(
   return result;
 }
 
-export type ActoinTypes =
-  | INewXrpWalletAction
-  | IWalletTransactionsAction
-  | IXrpWalletInfo
-  | ISendXrpWalletAction;
+export type ActoinTypes = INewXrpWalletAction | IWalletTransactionsAction | ISendXrpWalletAction;

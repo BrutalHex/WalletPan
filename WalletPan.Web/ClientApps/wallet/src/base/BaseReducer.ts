@@ -1,16 +1,11 @@
- 
-import * as actions from './actionTypes';
-
 export const initialState = {
-    pending: false,
-    isInit:true,
-    transactionList:[],
-    walletInformation: {result:{account_data:{Sequence:0,
-        Balance:0}}},
-    error: null
-    
-}
-
+  pending: false,
+  isInit: true,
+  transactionList: [],
+  walletInformation: { result: { account_data: { Sequence: 0, Balance: 0 } } },
+  error: null,
+};
+/*
 export function BaseReducer(state=initialState,action,entity)
 {
     
@@ -39,4 +34,4 @@ export function BaseReducer(state=initialState,action,entity)
             return  {   ...state};
     }
 }
-export default BaseReducer;
+export default BaseReducer; */

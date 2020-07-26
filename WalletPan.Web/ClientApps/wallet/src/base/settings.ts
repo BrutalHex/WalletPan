@@ -1,21 +1,8 @@
-export const apiUrl='http://localhost:5000/api/';
+export class Setting {
+  static mainUrl: string = 'http://localhost:5000/api/';
+  static Ripple: string = 'wss://s.altnet.rippletest.net/';
 
-export function settings()
-{
-   const obj={
-           mainUrl:apiUrl,
-          Ripple:'wss://s.altnet.rippletest.net/'
-         
-    };
-
-    return obj;
+  static GetApiUrl = (address: string): string => Setting.mainUrl + address;
 }
 
-
-export function getApiUrl(address)
-{
-    debugger;
-    return apiUrl+address;
-}
-
-export default settings;
+export default Setting;
