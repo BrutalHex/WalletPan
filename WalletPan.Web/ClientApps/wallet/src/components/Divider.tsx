@@ -1,25 +1,15 @@
-import React  from 'react';
+import React, { FunctionComponent } from 'react';
 
-
- 
-class Divider extends React.Component {
-
-
-    constructor(props) {
-        super(props);
-
-
-    }
-
-    
-
-    render() {
-        return(
-            <div className="row custom-divider">
-            <span className="center"> {this.props.title}</span>  
-          </div>);
-
-    }
+interface IDividerComponent {
+  title: string;
 }
+
+const Divider: FunctionComponent<IDividerComponent> = (props: IDividerComponent) => {
+  return (
+    <div className="row custom-divider">
+      <span className="center"> {props.title}</span>
+    </div>
+  );
+};
 
 export default Divider;

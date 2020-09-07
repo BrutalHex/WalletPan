@@ -1,100 +1,88 @@
-import React  from 'react';
+import React, { useState, FunctionComponent } from 'react';
+import PropTypes from 'prop-types';
 import Pagination from 'react-bootstrap/Pagination';
-import PageItem from 'react-bootstrap/PageItem';
-import throttle from 'lodash.throttle';
- 
-
-class PagerBox extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.handleClick = this.handleClick.bind(this);
-        this.handleClickThrottled = throttle(this.handleClick, 1000);
-        this.state = {current: 1,pageSize:this.props.pageSize,pageFrame:1};
-
-      
-       
-      }
-    
-      componentWillUnmount() {
-        this.handleClickThrottled.cancel();
-      }
-
-      getMaxPagerNumber()
-      {
-       return Math.ceil(this.props.recordCount/this.props.pageSize);
-      }
-
-      handleClick( id) {
-         
-        if(id<=0)
-         id=1;
-
-         let max=this.getMaxPagerNumber();
-
-         if(id>max)
-             {
-              id=max;
-             }
-
-        this.setState(state => ({
-            current: id,
-            pageSize: this.state.pageSize,
-            pageFrame:1
-          }));
-        this.props.loadNext(id,this.state.pageSize);
-      }
-    
-      
-      getWholeArray()
-      {
-        let items = [];
-
-        let max=this.getMaxPagerNumber();
-console.log(this.props.recordCount);
-        for (let number = 1; number <= max; number++) {
-          items.push(
-            
-            <Pagination.Item key={number} active={number === this.state.current} onClick={ () => this.handleClickThrottled(number)}> 
-              {number}
-            </Pagination.Item>,
-          );
-        }  
-        return items;
-      }
-
-    render() {
-
-       
-      
-     let items=this. getWholeArray();
- 
-          let low=this.state.current-1;
-          if(low-2<2)
-            low=2;
-
-            if(low+2>items.length)
-            {
-              low=items.length-2;
-            }
-
-          let bar=items.slice(low-2,low+2)
-           
-
-        return(
-            <div className="row pager-box">
-                  <Pagination>
-                
-                  <Pagination.Prev  onClick={ () => this.handleClickThrottled(  this.state.current-1)}/>
-                       {bar}
-                       <Pagination.Next  onClick={ () => this.handleClickThrottled(  this.state.current+1)}/>
-                   
-                    </Pagination>
-            </div>
-          
-           );
-
-    }
+import FormControl from 'react-bootstrap/FormControl';
+interface IPagerBox {
+  current: number;
+  pageSize: number;
+  pageFrame: number;
+  recordCount: number;
+  loadNext(id: number, pageSize: number): void;
 }
+
+const PagerBox: FunctionComponent<IPagerBox> = (props: IPagerBox) => {
+  props.current = 1;
+  props.pageFrame = 1;
+  const [data, setData] = useState(props);
+
+  const getMaxPagerNumber = () => {
+    return Math.ceil(props.recordCount / props.pageSize);
+  };
+
+  const handleClick = (id: number) => {
+    if (id <= 0) id = 1;
+
+    const max = getMaxPagerNumber();
+
+    if (id > max) {
+      id = max;
+    }
+
+    setData({
+      ...data,
+      current: id,
+      pageSize: data.pageSize,
+      pageFrame: 1,
+    });
+    props.loadNext(id, data.pageSize);
+  };
+
+  const getWholeArray = () => {
+    const items = [];
+
+    const max = getMaxPagerNumber();
+    console.log(props.recordCount);
+    for (let number = 1; number <= max; number++) {
+      items.push(
+        <Pagination.Item
+          key={number}
+          active={number === data.current}
+          onClick={() => handleClick(number)}
+        >
+          {number}
+        </Pagination.Item>
+      );
+    }
+    return items;
+  };
+
+  const renderInner = () => {
+    const items = getWholeArray();
+
+    let low = data.current - 1;
+    if (low - 2 < 2) low = 2;
+
+    if (low + 2 > items.length) {
+      low = items.length - 2;
+    }
+
+    const bar = items.slice(low - 2, low + 2);
+    return bar;
+  };
+
+  return (
+    <div className="row pager-box">
+      <Pagination>
+        <Pagination.Prev onClick={() => handleClick(data.current - 1)} />
+        {renderInner()}
+        <Pagination.Next onClick={() => handleClick(data.current + 1)} />
+      </Pagination>
+    </div>
+  );
+};
+
+PagerBox.propTypes = {
+  loadNext: PropTypes.func.isRequired,
+};
 
 export default PagerBox;

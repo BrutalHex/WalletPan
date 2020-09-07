@@ -1,64 +1,23 @@
-﻿import React from 'react';
-import InputGroup from 'react-bootstrap/InputGroup';
-import InputGroupAppend from 'react-bootstrap/InputGroup';
-import InputGroupText from 'react-bootstrap/InputGroup';
+﻿import React, { useState, FunctionComponent } from 'react';
 import FormControl from 'react-bootstrap/FormControl';
+const PasswordField: FunctionComponent<any> = (props: any) => {
+  const [showPassword, setShowPassword] = useState(false);
 
+  const handleClick = () => {
+    setShowPassword(!showPassword);
+  };
 
-class PasswordField extends React.Component {
+  var { ...other } = props;
+  return (
+    <div className="input-group input-group-password mb-6 mt-6">
+      <FormControl type={showPassword ? 'text' : 'password'} {...other} />
 
-
-    constructor(props) {
-        super(props);
-       
-        this.showPassword = this.showPassword.bind(this);
-        this.handleClick = this.handleClick.bind(this)
-        this.state = { showPassword: false };
-    }
-
-    showPassword(e) {
-
-        this.setState(state => ({
-            showPassword: !state.showPassword
-        }));
-
-    }
-
-    handleClick(e) {
-        e.preventDefault();
-        this.showPassword(e);
-    }
-
-    render() {
-        var { ...other } = this.props;
-        return (
- 
-                <div class="input-group input-group-password mb-6 mt-6">
-                    <FormControl
-                        
-                        type={ this.state.showPassword ? 'text' :'password' } 
-                        {...other} 
-
-                    />
-
-                    <div class="input-group-append">
-                        <span class="input-group-text click-able"   onClick={this.handleClick}>   
-                          <img src={`${process.env.PUBLIC_URL}/landing_assets/show-password.svg`}/>
-                        </span>
-                    </div>
-                </div>
-
-
-        
-
-
-        )
-            ;
-    }
-}
+      <div className="input-group-append">
+        <span className="input-group-text click-able" onClick={handleClick}>
+          <img src={`${process.env.PUBLIC_URL}/landing_assets/show-password.svg`} />
+        </span>
+      </div>
+    </div>
+  );
+};
 export default PasswordField;
-
-
-
-
-

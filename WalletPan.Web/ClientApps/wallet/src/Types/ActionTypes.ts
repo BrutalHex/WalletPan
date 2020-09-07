@@ -2,6 +2,7 @@ import { INewXrpWalletAction } from './INewXrpWalletAction';
 import { IWalletTransactionsAction } from './IWalletTransactionsAction';
 import { ISendXrpWalletAction } from './ISendXrpWalletAction';
 import { IGeneralAction } from './IGeneralAction';
+import { ISpinnerChangeAction } from './ISpinnerChangeAction';
 
 export const fetchPendingType = 'FETCH_PENDING';
 export const fetchSuccessType = 'FETCH_SUCCESS';
@@ -21,4 +22,8 @@ export function creatAction<TType, TPayload>(
   return result;
 }
 
-export type ActoinTypes = INewXrpWalletAction | IWalletTransactionsAction | ISendXrpWalletAction;
+export type ActoinTypes =
+  | INewXrpWalletAction
+  | IWalletTransactionsAction
+  | ISendXrpWalletAction
+  | ISpinnerChangeAction;

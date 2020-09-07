@@ -8,6 +8,8 @@ import {
 } from '../Pages/CryptoOPeration/ExploreWallet/ExploreWalletPageReducer';
 import sendXrpWalletReducer from '../Pages/CryptoOPeration/SendXrp/SendXrpPageReducer';
 
+import spinnerReducer from '../components/Spinner/spinnerReducer';
+
 /*
 const rootReducer = combineReducers({
     base:BaseReducer,
@@ -27,7 +29,7 @@ const rootReducer = combineReducers({
   walletInformation: walletInfoReducer,
   transactionList: exploreWalletReducer,
   SentPayments: sendXrpWalletReducer,
-
+  pending: spinnerReducer,
   router: connectRouter(history),
 });
 

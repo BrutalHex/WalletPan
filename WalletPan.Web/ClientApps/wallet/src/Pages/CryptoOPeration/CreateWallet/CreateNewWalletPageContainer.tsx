@@ -11,7 +11,7 @@ import { Formik, Field } from 'formik';
 import * as yup from 'yup';
 import { NewXrpWallet } from './CreateNewWalletPageAction';
 import { RootState } from '../../../base/reducers';
-import { WalletTThunkDispatch } from '../../../base/BaseTypes';
+import { WalletThunkDispatch } from '../../../base/BaseTypes';
 
 const RippleAPI = require('ripple-lib').RippleAPI;
 
@@ -89,7 +89,12 @@ const CreateNewWalletPage: FunctionComponent<CreatNewWalletPageProps> = (
                 </FormText>
               </FormGroup>
 
-              <Button variant="primary" type="submit" className="w-100 mt-4" onClick={handleSubmit}>
+              <Button
+                variant="primary"
+                type="submit"
+                className="w-100 mt-4"
+                onClick={() => handleSubmit(undefined)}
+              >
                 Generate
               </Button>
             </Form>
@@ -114,7 +119,7 @@ const mapStateToProps = (state: RootState) => {
     publickey: '',
   };
 };
-const mapDispatchToProps = (dispatch: WalletTThunkDispatch) => {
+const mapDispatchToProps = (dispatch: WalletThunkDispatch) => {
   return {
     doGenerateKeys: () => {
       dispatch(NewXrpWallet());

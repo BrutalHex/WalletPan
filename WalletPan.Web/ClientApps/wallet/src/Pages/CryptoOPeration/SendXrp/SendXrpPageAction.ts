@@ -10,7 +10,7 @@ const RippleAPI = require('ripple-lib').RippleAPI;
 const api = new RippleAPI({ server: Setting.Ripple });
 
 export function SendTransaction(obj: any): WalletThunkResult<void> {
-  return (dispatch: WalletTThunkDispatch) => {
+  return (dispatch: WalletThunkDispatch) => {
     //  dispatch(fetchApiPending(Xrp_Payment));
     createTransaction(obj).then((response) => {
       return dispatch(creatAction(Xrp_Payment, true));
