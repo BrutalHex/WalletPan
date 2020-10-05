@@ -1,3 +1,6 @@
+import { IGeneralAction } from '../Types/IGeneralAction';
+import { IGenericAction } from '../Types/IGenericAction';
+
 export function updateItemInArray<T, Key>(array: Array<T>, itemId: Key, updateItemCallback: any) {
   const updatedItems = array.map((item: any) => {
     if (item.id !== itemId) {
@@ -22,15 +25,15 @@ export function updateObject<T>(oldObject: T, newValues: T) {
   return Object.assign({}, oldObject, newValues);
 }
 
-export function createReducer(initialState: any, handlers: any) {
-  const result = function reducer(state = initialState, action: any) {
+export function createReducer<T>(initialState: T, handlers: any): (state: T, action: any) => T {
+  const result = function reducer(state: T = initialState, action: any): T {
     if (
       Object.prototype.hasOwnProperty.call(action, 'type') &&
       handlers[action.type] !== undefined
     ) {
-      return handlers[action.type](state, action);
+      return handlers[action.type](state, action) as T;
     } else {
-      return state;
+      return state as T;
     }
   };
 

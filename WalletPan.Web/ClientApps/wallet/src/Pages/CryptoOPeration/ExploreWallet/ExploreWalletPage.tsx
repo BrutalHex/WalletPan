@@ -1,5 +1,5 @@
 'use strict';
-import React, { Component } from 'react';
+import React, { FunctionComponent } from 'react';
 import Form from 'react-bootstrap/Form';
 import FormGroup from 'react-bootstrap/FormGroup';
 import FormLabel from 'react-bootstrap/FormLabel';
@@ -8,37 +8,42 @@ import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown';
 import XrpTransactionBox from '../../../components/XrpTransactionBox';
 import PagerBox from '../../../components/PagerBox';
-import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import FormControlFeedback from 'react-bootstrap/FormGroup';
 import SpinnerContainer from '../../../components/Spinner/Spinner';
+import { ExploreWalletPageProps } from './ExploreWalletPageContainer';
 
-const ExploreWalletPage = ({
-  transactionList,
-  walletInformation,
-  handleChange,
-  pageChanged,
-  error,
-  currentPage,
-  pagesize,
-}) => {
+const ExploreWalletPage: FunctionComponent<ExploreWalletPageProps> = (
+  props: ExploreWalletPageProps
+) => {
   const schema = yup.object({
     address: yup.string().required('Address is required!'),
   });
 
-  let paged = transactionList.slice(
-    (currentPage - 1) * pagesize,
-    (currentPage - 1) * pagesize + pagesize
+  const paged = props.transactionList.slice(
+    (props.currentPage - 1) * props.pagesize,
+    (props.currentPage - 1) * props.pagesize + props.pagesize
   );
+
+  const totalIncome = props.transactionList
+    .filter((tr) => tr.type === 'INCOME')
+    .reduce(function (result, item) {
+      return result + (item.amount as number);
+    }, 0);
+
+  const totalEXPENSE = props.transactionList
+    .filter((tr) => tr.type === 'EXPENSE')
+    .reduce(function (result, item) {
+      return result + (item.amount as number);
+    }, 0);
 
   const listItems = paged.map((item, index) => {
     return <XrpTransactionBox key={'key' + item.index} item={item} index={item.index} />;
   });
 
-  let from = (currentPage - 1) * pagesize;
-  if (from == 0) from = 1;
-  const to = (currentPage - 1) * pagesize + pagesize;
+  let from = (props.currentPage - 1) * props.pagesize;
+  if (from === 0) from = 1;
+  const to = (props.currentPage - 1) * props.pagesize + props.pagesize;
 
   return (
     <div className="col-12 wallet-explore">
@@ -60,8 +65,8 @@ const ExploreWalletPage = ({
 
                         return errors;
                       }}
-                      onSubmit={(values) => {
-                        handleChange(values);
+                      onSubmit={(values): void => {
+                        props.handleChange(values.address);
                         // same shape as initial values
                         console.log(values);
                       }}
@@ -72,9 +77,9 @@ const ExploreWalletPage = ({
                           onSubmit={handleSubmit}
                           className="custom-form center needs-validation"
                         >
-                          {error != null ? (
-                            <div class="alert alert-danger" role="alert">
-                              {error}
+                          {props.error != null ? (
+                            <div className="alert alert-danger" role="alert">
+                              {props.error}
                             </div>
                           ) : null}
 
@@ -82,18 +87,17 @@ const ExploreWalletPage = ({
                             <div
                               className={
                                 'input-group col-12  wallet-bar p-2 ' +
-                                (!!errors.email ? 'invalid-input' : '')
+                                (!errors.address ? 'invalid-input' : '')
                               }
                             >
                               <FormControl
                                 type="text"
-                                className="form-control form-input"
+                                className="form-control form-input w-100"
                                 name="address"
                                 value={values.address}
-                                className="w-100"
                                 required
                                 onChange={handleChange}
-                                isInvalid={!!errors.email}
+                                isInvalid={!!errors.address}
                                 placeholder="Wallet Address"
                               />
 
@@ -108,9 +112,9 @@ const ExploreWalletPage = ({
                                 </span>
                               </div>
                             </div>
-                            <FormControlFeedback type="invalid">
+                            <FormControl.Feedback type="invalid">
                               {errors.address}
-                            </FormControlFeedback>
+                            </FormControl.Feedback>
                           </FormGroup>
                         </Form>
                       )}
@@ -126,7 +130,7 @@ const ExploreWalletPage = ({
                           <FormControl
                             plaintext
                             readOnly
-                            defaultValue={walletInformation.result.account_data.Sequence}
+                            defaultValue={props.walletInformation.Sequence}
                           />
                         </FormGroup>
                       </div>
@@ -137,10 +141,10 @@ const ExploreWalletPage = ({
                             plaintext
                             readOnly
                             defaultValue={
-                              transactionList.length > 0
-                                ? transactionList[0].transactionDate +
+                              props.transactionList.length > 0
+                                ? props.transactionList[0].transactionDate +
                                   ' ' +
-                                  transactionList[0].transactionTime
+                                  props.transactionList[0].transactionTime
                                 : ''
                             }
                           />
@@ -181,7 +185,7 @@ const ExploreWalletPage = ({
                     XRP
                   </div>
                   <div className="col-7 text-right">
-                    {walletInformation.result.account_data.Balance / 1000000}
+                    {props.walletInformation.Balance / 1000000}
                   </div>
                 </div>
                 <div className="row other mt-2">
@@ -191,7 +195,7 @@ const ExploreWalletPage = ({
                 <div className="row other  mt-2">
                   <div className="col-5 text-left">Available</div>
                   <div className="col-7  text-right">
-                    {walletInformation.result.account_data.Balance / 1000000 - 20}
+                    {props.walletInformation.Balance / 1000000 - 20}
                   </div>
                 </div>
               </div>
@@ -219,7 +223,7 @@ const ExploreWalletPage = ({
                       />{' '}
                       XRP
                     </div>
-                    <div className="col-6">{walletInformation.income}</div>
+                    <div className="col-6">{totalIncome}</div>
                   </div>
                 </div>
                 <div className="col-12 col-md-5 mt-3 p-4 expense">
@@ -243,7 +247,7 @@ const ExploreWalletPage = ({
                       />{' '}
                       XRP
                     </div>
-                    <div className="col-6">{walletInformation.expense}</div>
+                    <div className="col-6">{totalEXPENSE}</div>
                   </div>
                 </div>
               </div>
@@ -274,7 +278,8 @@ const ExploreWalletPage = ({
                     {from}-{to}{' '}
                   </b>
                   of
-                  <b className="font-weight-bolder px-2">{transactionList.length}</b> transactions
+                  <b className="font-weight-bolder px-2">{props.transactionList.length}</b>{' '}
+                  transactions
                 </div>
               </div>
             </div>
@@ -283,9 +288,9 @@ const ExploreWalletPage = ({
             </div>
             <div className="col-11 col-sm-10 col-md-10 col-xl-10 center transaction-pager  mt-5 pt-5">
               <PagerBox
-                recordCount={transactionList.length}
-                pageSize={pagesize}
-                loadNext={pageChanged}
+                recordCount={props.transactionList.length}
+                pageSize={props.pagesize}
+                loadNext={props.pageChanged}
               ></PagerBox>
             </div>
           </div>
