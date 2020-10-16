@@ -1,4 +1,5 @@
-import { combineReducers, Reducer } from 'redux';
+import { combineReducers } from 'redux';
+
 import { createBrowserHistory } from 'history';
 import { connectRouter } from 'connected-react-router';
 import newXrpWalletReducer from '../Pages/CryptoOPeration/CreateWallet/CreateNewWalletPageReducer';
@@ -12,31 +13,14 @@ import spinnerReducer from '../components/Spinner/spinnerReducer';
 import XrpWalletInformation from '../Pages/CryptoOPeration/ExploreWallet/XrpWalletInformation';
 import XrpTransaction from '../Pages/CryptoOPeration/ExploreWallet/XrpTransaction';
 import { ActoinTypes } from '../Types/ActionTypes';
-import { IGeneralAction } from '../Types/IGeneralAction';
 import { ActionType } from 'typesafe-actions';
 
-/*
-const rootReducer = combineReducers({
-    base:BaseReducer,
-    exploreWallet:exploreWalletReducer,
-    CreateNewWallet:CreateNewWalletPageReducer,
-    
-    SendXrp: SendXrpPageReducer
-
-  })
-  export default rootReducer
-*/
-
 export const history = createBrowserHistory();
-/*
 
- 
-
-*/
 export type Act = ActionType<ActoinTypes>;
 
-export type RootState1 = {
-  genKey: Reducer<boolean>;
+export type RootState = {
+  genKey: boolean;
   walletInformation: XrpWalletInformation;
   transactionList: Array<XrpTransaction>;
   SentPayments: boolean;
@@ -44,17 +28,15 @@ export type RootState1 = {
   router: ReturnType<typeof connectRouter>;
 };
 
-const rootReducer = combineReducers({
-  genKey: newXrpWalletReducer,
+const rootReducer = combineReducers<RootState, Act>({
+  genKey: newXrpWalletReducer as any,
 
-  walletInformation: walletInfoReducer,
-  transactionList: exploreWalletReducer,
-  SentPayments: sendXrpWalletReducer,
-  pending: spinnerReducer,
+  walletInformation: walletInfoReducer as any,
+  transactionList: exploreWalletReducer as any,
+  SentPayments: sendXrpWalletReducer as any,
+  pending: spinnerReducer as any,
 
-  router: connectRouter(history),
+  router: connectRouter(history) as any,
 });
 
 export default rootReducer;
-
-export type RootState = ReturnType<typeof rootReducer>;

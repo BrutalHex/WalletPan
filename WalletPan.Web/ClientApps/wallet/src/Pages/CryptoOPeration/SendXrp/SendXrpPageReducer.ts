@@ -1,4 +1,5 @@
 import { createReducer } from '../../../base/reducerUtils';
+import { ISendXrpWalletAction } from '../../../Types/ISendXrpWalletAction';
 
 const sendXrp = (initstate: boolean, action: ISendXrpWalletAction): boolean => {
   return action.payload;

@@ -1,38 +1,24 @@
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import { RootState } from '../../../base/reducers';
 import ExploreWalletPage from './ExploreWalletPage';
 import { GetwalletTransactions, GetAccountInfo } from './ExploreWalletPageAction';
-export interface ExploreWalletPageProps extends PropsFromRedux {
-  walletInformation: XrpNewWalletInformation;
-  transactionList: Array<XrpTransaction>;
-  currentPage: number;
-  error: string;
-  pagesize: number;
-  handleChange(values: string): void;
-  pageChanged(currentPageNumber: number, pagesize: number): void;
-}
+import { WalletThunkDispatch } from '../../../base/BaseTypes';
+import XrpWalletInformation from './XrpWalletInformation';
+import XrpTransaction from './XrpTransaction';
 
 const mapStateToProps = (state: RootState, ownProps: any) => {
   return {
     walletInformation: state.walletInformation,
     transactionList: state.transactionList,
     currentPage: 1,
-    error: null,
+    error: '',
     pagesize: 5,
-  } as ExploreWalletPageProps;
+  };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch: WalletThunkDispatch, ownProps: any) => {
   return {
-    pageChanged: (currentPageNumber: number, pagesize: number) => {
-      this.setState((state) => {
-        return Object.assign({}, state, {
-          ...state,
-          currentPage: currentPageNumber,
-          pagesize: pagesize,
-        });
-      });
-    },
+    pageChanged: (currentPageNumber: number, pagesize: number) => {},
 
     handleChange: (values: string) => {
       dispatch(GetAccountInfo(values));
@@ -41,5 +27,21 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-const ExploreWalletPageContainer = connect(mapStateToProps, mapDispatchToProps)(ExploreWalletPage);
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+export interface ExploreWalletPageProps extends PropsFromRedux {
+  walletInformation: XrpWalletInformation;
+  transactionList: Array<XrpTransaction>;
+  currentPage: number;
+  error: string;
+  pagesize: number;
+  handleChange(values: string): void;
+
+  pageChanged(currentPageNumber: number, pagesize: number): void;
+}
+
+const ExploreWalletPageContainer = connector(ExploreWalletPage);
+
 export default ExploreWalletPageContainer;

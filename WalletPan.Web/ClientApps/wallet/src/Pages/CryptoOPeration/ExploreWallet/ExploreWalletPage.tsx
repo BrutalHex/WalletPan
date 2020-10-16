@@ -1,9 +1,7 @@
 'use strict';
 import React, { FunctionComponent } from 'react';
 import Form from 'react-bootstrap/Form';
-import FormGroup from 'react-bootstrap/FormGroup';
-import FormLabel from 'react-bootstrap/FormLabel';
-import FormControl from 'react-bootstrap/FormControl';
+
 import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown';
 import XrpTransactionBox from '../../../components/XrpTransactionBox';
@@ -67,14 +65,15 @@ const ExploreWalletPage: FunctionComponent<ExploreWalletPageProps> = (
                       }}
                       onSubmit={(values): void => {
                         props.handleChange(values.address);
-                        // same shape as initial values
-                        console.log(values);
                       }}
                     >
                       {({ handleSubmit, handleChange, handleBlur, values, isValid, errors }) => (
                         <Form
                           noValidate
-                          onSubmit={handleSubmit}
+                          onSubmit={(event: React.FormEvent<HTMLFormElement>): void => {
+                            event.preventDefault();
+                            handleSubmit(event);
+                          }}
                           className="custom-form center needs-validation"
                         >
                           {props.error != null ? (
@@ -83,14 +82,14 @@ const ExploreWalletPage: FunctionComponent<ExploreWalletPageProps> = (
                             </div>
                           ) : null}
 
-                          <FormGroup controlId="validationFormikaddress" className="mb-2">
+                          <Form.Group controlId="validationFormikaddress" className="mb-2">
                             <div
                               className={
                                 'input-group col-12  wallet-bar p-2 ' +
                                 (!errors.address ? 'invalid-input' : '')
                               }
                             >
-                              <FormControl
+                              <Form.Control
                                 type="text"
                                 className="form-control form-input w-100"
                                 name="address"
@@ -104,7 +103,9 @@ const ExploreWalletPage: FunctionComponent<ExploreWalletPageProps> = (
                               <div className="input-group-append">
                                 <span
                                   className="input-group-text click-able"
-                                  onClick={handleSubmit}
+                                  onClick={(e) => {
+                                    handleSubmit();
+                                  }}
                                 >
                                   <img
                                     src={`${process.env.PUBLIC_URL}/landing_assets/refreshbutton.svg`}
@@ -112,10 +113,10 @@ const ExploreWalletPage: FunctionComponent<ExploreWalletPageProps> = (
                                 </span>
                               </div>
                             </div>
-                            <FormControl.Feedback type="invalid">
+                            <Form.Control.Feedback type="invalid">
                               {errors.address}
-                            </FormControl.Feedback>
-                          </FormGroup>
+                            </Form.Control.Feedback>
+                          </Form.Group>
                         </Form>
                       )}
                     </Formik>
@@ -125,19 +126,19 @@ const ExploreWalletPage: FunctionComponent<ExploreWalletPageProps> = (
                   <div className="row d-flex justify-content-between">
                     <div className="col-12 col-sm-12 col-md-8 left-section">
                       <div className="col-12">
-                        <FormGroup controlId="formBasic">
-                          <FormLabel>Squence :</FormLabel>
-                          <FormControl
+                        <Form.Group controlId="formBasic">
+                          <Form.Label>Squence :</Form.Label>
+                          <Form.Control
                             plaintext
                             readOnly
                             defaultValue={props.walletInformation.Sequence}
                           />
-                        </FormGroup>
+                        </Form.Group>
                       </div>
                       <div className="col-12 mt-4">
-                        <FormGroup controlId="formBasicDate">
-                          <FormLabel>Activation Date:</FormLabel>
-                          <FormControl
+                        <Form.Group controlId="formBasicDate">
+                          <Form.Label>Activation Date:</Form.Label>
+                          <Form.Control
                             plaintext
                             readOnly
                             defaultValue={
@@ -148,7 +149,7 @@ const ExploreWalletPage: FunctionComponent<ExploreWalletPageProps> = (
                                 : ''
                             }
                           />
-                        </FormGroup>
+                        </Form.Group>
                       </div>
                     </div>
                     <div className="col-12 col-sm-12 col-md-2 right-section p-2 mr-xs-0 mr-sm-0 mr-md-3">

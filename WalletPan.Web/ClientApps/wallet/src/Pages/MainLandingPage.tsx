@@ -6,7 +6,7 @@ import AccordionBox from '../components/Accordion/AccordionBox';
 import Footer from './Footer';
 import AccordionItem from '../components/Accordion/AccordionItem';
 
-const MainLandingPage = ({ classes }) => {
+const MainLandingPage = (props: any) => {
   const list = [
     new AccordionItem(
       'How do I create a new wallet?',
@@ -66,7 +66,7 @@ const MainLandingPage = ({ classes }) => {
         <div className="col-12 col-md-7 right-part">
           <div className="row">
             <div className="col-12">
-              <MNav className="navbar" id="mainNav"></MNav>
+              <MNav />
             </div>
           </div>
           <div className="row img-wrapper "></div>

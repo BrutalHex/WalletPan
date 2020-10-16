@@ -5,7 +5,7 @@ import XrpTransaction from './XrpTransaction';
 import XrpWalletInformation from './XrpWalletInformation';
 
 const walletInfo = (
-  initstate: XrpNewWalletInformation,
+  initstate: XrpWalletInformation,
   action: IXrpWalletInfoAction
 ): XrpWalletInformation => {
   return action.payload;

@@ -1,15 +1,12 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import * as yup from 'yup';
 import Form from 'react-bootstrap/Form';
-import FormGroup from 'react-bootstrap/FormGroup';
-import FormLabel from 'react-bootstrap/FormLabel';
-import FormText from 'react-bootstrap/FormText';
-import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import { Formik } from 'formik';
-import FormControlFeedback from 'react-bootstrap/FormGroup';
 import SpinnerContainer from '../../../components/Spinner/Spinner';
-const SendXrpPage = ({ handleSendClick, error }) => {
+import { SendXrpPageProps } from './SendXrpPageContainer';
+
+const SendXrpPage: FunctionComponent<SendXrpPageProps> = (props: SendXrpPageProps) => {
   const schema = yup.object({
     sourceAddress: yup.string().trim().required('source wallet is required'),
     privatekey: yup.string().trim().required('private key is required'),
@@ -47,55 +44,58 @@ const SendXrpPage = ({ handleSendClick, error }) => {
               return errors;
             }}
             onSubmit={(values) => {
-              handleSendClick(values);
+              props.handleSendClick(values);
             }}
           >
             {({ handleSubmit, handleChange, handleBlur, values, isValid, errors }) => (
               <Form
                 noValidate
-                onSubmit={handleSubmit}
+                onSubmit={(event: React.FormEvent<HTMLFormElement>): void => {
+                  event.preventDefault();
+                  handleSubmit(event);
+                }}
                 className="custom-form center col-12 col-sm-11 col-md-8"
               >
-                {error != null ? (
-                  <div class="alert alert-danger" role="alert">
-                    {error}
+                {props.error != null ? (
+                  <div className="alert alert-danger" role="alert">
+                    {props.error}
                   </div>
                 ) : null}
-                <FormGroup controlId="validationFormikesourceAddress">
-                  <FormLabel>Your Wallet Address</FormLabel>
-                  <FormControl
+                <Form.Group controlId="validationFormikesourceAddress">
+                  <Form.Label>Your Wallet Address</Form.Label>
+                  <Form.Control
                     type="text"
                     name="sourceAddress"
                     className="form-control form-input"
                     value={values.sourceAddress}
-                    rows="3"
                     onChange={handleChange}
                     isInvalid={!!errors.sourceAddress}
                   />
-                  <FormControlFeedback type="invalid">{errors.sourceAddress}</FormControlFeedback>
-                </FormGroup>
+                  <Form.Control.Feedback type="invalid">
+                    {errors.sourceAddress}
+                  </Form.Control.Feedback>
+                </Form.Group>
 
-                <FormGroup controlId="validationFormikePrivatekey">
-                  <FormLabel>Private Key</FormLabel>
-                  <FormControl
+                <Form.Group controlId="validationFormikePrivatekey">
+                  <Form.Label>Private Key</Form.Label>
+                  <Form.Control
                     type="text"
                     name="privatekey"
                     className="form-control form-input"
                     value={values.privatekey}
                     as="textarea"
-                    rows="3"
                     onChange={handleChange}
                     isInvalid={!!errors.privatekey}
                   />
-                  <FormControlFeedback type="invalid">{errors.privatekey}</FormControlFeedback>
-                  <FormText className="text-muted">
+                  <Form.Control.Feedback type="invalid">{errors.privatekey}</Form.Control.Feedback>
+                  <Form.Text className="text-muted">
                     this is your private key.do not share it with anyone.
-                  </FormText>
-                </FormGroup>
+                  </Form.Text>
+                </Form.Group>
 
-                <FormGroup controlId="validationFormikedstWallet">
-                  <FormLabel>Destination wallet</FormLabel>
-                  <FormControl
+                <Form.Group controlId="validationFormikedstWallet">
+                  <Form.Label>Destination wallet</Form.Label>
+                  <Form.Control
                     type="text"
                     name="destWallet"
                     className="form-control form-input"
@@ -104,13 +104,15 @@ const SendXrpPage = ({ handleSendClick, error }) => {
                     onChange={handleChange}
                     isInvalid={!!errors.destWallet}
                   />
-                  <FormControlFeedback type="invalid">{errors.destWallet}</FormControlFeedback>
-                  <FormText className="text-muted">this is the recievers wallet address.</FormText>
-                </FormGroup>
+                  <Form.Control.Feedback type="invalid">{errors.destWallet}</Form.Control.Feedback>
+                  <Form.Text className="text-muted">
+                    this is the recievers wallet address.
+                  </Form.Text>
+                </Form.Group>
 
-                <FormGroup controlId="validationFormikeAmount">
-                  <FormLabel>Amount</FormLabel>
-                  <FormControl
+                <Form.Group controlId="validationFormikeAmount">
+                  <Form.Label>Amount</Form.Label>
+                  <Form.Control
                     type="text"
                     name="amount"
                     className="form-control form-input"
@@ -119,13 +121,13 @@ const SendXrpPage = ({ handleSendClick, error }) => {
                     onChange={handleChange}
                     isInvalid={!!errors.amount}
                   />
-                  <FormControlFeedback type="invalid">{errors.amount}</FormControlFeedback>
-                  <FormText className="text-muted">this is the amount of XRP to send</FormText>
-                </FormGroup>
+                  <Form.Control.Feedback type="invalid">{errors.amount}</Form.Control.Feedback>
+                  <Form.Text className="text-muted">this is the amount of XRP to send</Form.Text>
+                </Form.Group>
 
-                <FormGroup controlId="validationFormikedestTag">
-                  <FormLabel>Destination Tag</FormLabel>
-                  <FormControl
+                <Form.Group controlId="validationFormikedestTag">
+                  <Form.Label>Destination Tag</Form.Label>
+                  <Form.Control
                     type="number"
                     name="destTag"
                     className="form-control form-input"
@@ -133,10 +135,10 @@ const SendXrpPage = ({ handleSendClick, error }) => {
                     onChange={handleChange}
                     isInvalid={!!errors.destTag}
                   />
-                  <FormControlFeedback type="invalid">{errors.destTag}</FormControlFeedback>
+                  <Form.Control.Feedback type="invalid">{errors.destTag}</Form.Control.Feedback>
 
-                  <FormText className="text-muted">becarefull about the destination tag</FormText>
-                </FormGroup>
+                  <Form.Text className="text-muted">becarefull about the destination tag</Form.Text>
+                </Form.Group>
                 <Button variant="primary" type="submit" className="w-100 mt-4">
                   Send XRP
                 </Button>

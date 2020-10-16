@@ -1,5 +1,5 @@
-import { IGeneralAction } from '../Types/IGeneralAction';
-import { IGenericAction } from '../Types/IGenericAction';
+import { Reducer } from 'typesafe-actions';
+import { combineReducers, AnyAction } from 'redux';
 
 export function updateItemInArray<T, Key>(array: Array<T>, itemId: Key, updateItemCallback: any) {
   const updatedItems = array.map((item: any) => {
@@ -26,14 +26,14 @@ export function updateObject<T>(oldObject: T, newValues: T) {
 }
 
 export function createReducer<T>(initialState: T, handlers: any): (state: T, action: any) => T {
-  const result = function reducer(state: T = initialState, action: any): T {
+  const result = (state: T = initialState, action: any): T => {
     if (
       Object.prototype.hasOwnProperty.call(action, 'type') &&
       handlers[action.type] !== undefined
     ) {
-      return handlers[action.type](state, action) as T;
+      return handlers[action.type](state, action) as any;
     } else {
-      return state as T;
+      return state as any;
     }
   };
 

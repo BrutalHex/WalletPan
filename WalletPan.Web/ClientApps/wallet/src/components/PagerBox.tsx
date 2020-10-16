@@ -1,19 +1,18 @@
 import React, { useState, FunctionComponent } from 'react';
 import PropTypes from 'prop-types';
 import Pagination from 'react-bootstrap/Pagination';
-import FormControl from 'react-bootstrap/FormControl';
 interface IPagerBox {
-  current: number;
   pageSize: number;
-  pageFrame: number;
+
   recordCount: number;
   loadNext(id: number, pageSize: number): void;
 }
 
 const PagerBox: FunctionComponent<IPagerBox> = (props: IPagerBox) => {
-  props.current = 1;
-  props.pageFrame = 1;
-  const [data, setData] = useState(props);
+  const current = 1;
+  const pageFrame = 1;
+
+  const [data, setData] = useState({ ...props, current, pageFrame });
 
   const getMaxPagerNumber = () => {
     return Math.ceil(props.recordCount / props.pageSize);

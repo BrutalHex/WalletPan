@@ -2,12 +2,9 @@
 import React, { FunctionComponent } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
 import Form from 'react-bootstrap/Form';
-import FormGroup from 'react-bootstrap/FormGroup';
-import FormLabel from 'react-bootstrap/FormLabel';
-import FormControl from 'react-bootstrap/FormControl';
-import FormText from 'react-bootstrap/FormText';
+
 import Button from 'react-bootstrap/Button';
-import { Formik, Field } from 'formik';
+import { Formik } from 'formik';
 import * as yup from 'yup';
 import { NewXrpWallet } from './CreateNewWalletPageAction';
 import { RootState } from '../../../base/reducers';
@@ -58,10 +55,16 @@ const CreateNewWalletPage: FunctionComponent<CreatNewWalletPageProps> = (
           }}
         >
           {({ handleSubmit, handleChange, handleBlur, values, isValid, errors }) => (
-            <Form className="custom-form center col-12 col-sm-11 col-md-8">
-              <FormGroup controlId="formBasicAddress">
-                <FormLabel>Address</FormLabel>
-                <FormControl
+            <Form
+              className="custom-form center col-12 col-sm-11 col-md-8"
+              onSubmit={(event: React.FormEvent<HTMLFormElement>): void => {
+                event.preventDefault();
+                handleSubmit(event);
+              }}
+            >
+              <Form.Group controlId="formBasicAddress">
+                <Form.Label>Address</Form.Label>
+                <Form.Control
                   disabled
                   name="publickey"
                   value={props.publickey}
@@ -69,13 +72,13 @@ const CreateNewWalletPage: FunctionComponent<CreatNewWalletPageProps> = (
                   type="text"
                   placeholder=""
                 />
-                <FormText className="text-muted">this is your public address.</FormText>
-              </FormGroup>
+                <Form.Text className="text-muted">this is your public address.</Form.Text>
+              </Form.Group>
 
-              <FormGroup controlId="formBasicPrivate">
-                <FormLabel>Private Key</FormLabel>
+              <Form.Group controlId="formBasicPrivate">
+                <Form.Label>Private Key</Form.Label>
 
-                <FormControl
+                <Form.Control
                   name="privatekey"
                   value={props.privatekey}
                   disabled
@@ -84,17 +87,12 @@ const CreateNewWalletPage: FunctionComponent<CreatNewWalletPageProps> = (
                   type="text"
                   rows={3}
                 />
-                <FormText className="text-muted">
+                <Form.Text className="text-muted">
                   this is your private key.do not share it with anyone.
-                </FormText>
-              </FormGroup>
+                </Form.Text>
+              </Form.Group>
 
-              <Button
-                variant="primary"
-                type="submit"
-                className="w-100 mt-4"
-                onClick={() => handleSubmit(undefined)}
-              >
+              <Button variant="primary" type="submit" className="w-100 mt-4">
                 Generate
               </Button>
             </Form>
