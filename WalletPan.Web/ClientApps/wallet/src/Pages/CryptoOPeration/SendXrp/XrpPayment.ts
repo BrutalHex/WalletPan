@@ -3,5 +3,5 @@ export default class XrpPayment {
   privatekey: string = 'ssaeobTUiychy1ZKThXenPvNApKeW';
   destWallet: string = 'rp7aJ1jEodogNeDdoFokzTg6quWe3sQ6BY';
   amount: number = 0;
-  destTag: number = 0;
+  destTag: number | string = '';
 }

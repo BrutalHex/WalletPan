@@ -7,7 +7,7 @@ export interface ISpinner extends PropsFromRedux {
   children: any;
 }
 
-const Spinner: FunctionComponent<ISpinner> = (props: ISpinner) => {
+export const Spinner: FunctionComponent<ISpinner> = (props: ISpinner) => {
   return (
     <div className="container-fluid p-0 overlayContainer">
       <div className={'spinner-overlay ' + (props.show ? 'd-flex d-block' : 'd-none')}>

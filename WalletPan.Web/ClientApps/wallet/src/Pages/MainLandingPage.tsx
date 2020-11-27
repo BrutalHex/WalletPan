@@ -74,6 +74,14 @@ const MainLandingPage = (props: any) => {
       </div>
 
       <div className="row section section-operation d-flex justify-content-center" id="wallet">
+        <a className="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-3" href="/Dashboard/Spark">
+          <IconicBox
+            defclass=""
+            src={`${process.env.PUBLIC_URL}/landing_assets/Flare-Logo.png`}
+            title="Spark Token"
+            subtitle="claim your spark tokens by including  a message key in your xrp wallet"
+          />
+        </a>
         <a
           className="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-3"
           href="/Dashboard/CreateNewWallet"

@@ -12,7 +12,7 @@ const SendXrpPage: FunctionComponent<SendXrpPageProps> = (props: SendXrpPageProp
     privatekey: yup.string().trim().required('private key is required'),
     destWallet: yup.string().trim().required('Destination wallet is required'),
     amount: yup.number().min(0.0000000001).required('Amount is required'),
-    destTag: yup.number().min(0).required('destTag'),
+    destTag: yup.number().min(0),
   });
 
   return (
@@ -24,7 +24,7 @@ const SendXrpPage: FunctionComponent<SendXrpPageProps> = (props: SendXrpPageProp
       <div className="row  mt-4">
         <div className="col-12 center title">Send XRP</div>
         <div className="col-12 center subtitle mt-3">
-          Please fill the required fields, to send XRP:
+          (Not Ready yet) Please fill the required fields, to send XRP:
         </div>
       </div>
       <div className="row  mt-5">
@@ -36,7 +36,7 @@ const SendXrpPage: FunctionComponent<SendXrpPageProps> = (props: SendXrpPageProp
               privatekey: 'ssaeobTUiychy1ZKThXenPvNApKeW',
               destWallet: 'rp7aJ1jEodogNeDdoFokzTg6quWe3sQ6BY',
               amount: 15,
-              destTag: 0,
+              destTag: '',
             }}
             validate={(values) => {
               const errors = {};
@@ -139,9 +139,6 @@ const SendXrpPage: FunctionComponent<SendXrpPageProps> = (props: SendXrpPageProp
 
                   <Form.Text className="text-muted">becarefull about the destination tag</Form.Text>
                 </Form.Group>
-                <Button variant="primary" type="submit" className="w-100 mt-4">
-                  Send XRP
-                </Button>
               </Form>
             )}
           </Formik>

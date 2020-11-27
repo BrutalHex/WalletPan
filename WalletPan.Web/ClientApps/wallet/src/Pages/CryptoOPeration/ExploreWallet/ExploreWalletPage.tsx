@@ -50,13 +50,13 @@ const ExploreWalletPage: FunctionComponent<ExploreWalletPageProps> = (
           <div className="row">
             <div className="col-12 top-part p-xs-1 p-sm-4 p-md-5">
               <div className="row">
-                <div className="col-12 title mt-2">My Wallet (Ripple Test Net)</div>
+                <div className="col-12 title mt-2">My Wallet </div>
                 <div className="col-12 mt-4 ">
                   <SpinnerContainer>
                     <Formik
                       validationSchema={schema}
                       initialValues={{
-                        address: 'rPKNyZZw8aRftQaMKXuFgN4wjiQiUQedun',
+                        address: '',
                       }}
                       validate={(values) => {
                         const errors = {};
@@ -91,7 +91,7 @@ const ExploreWalletPage: FunctionComponent<ExploreWalletPageProps> = (
                             >
                               <Form.Control
                                 type="text"
-                                className="form-control form-input w-100"
+                                className="form-control form-input"
                                 name="address"
                                 value={values.address}
                                 required

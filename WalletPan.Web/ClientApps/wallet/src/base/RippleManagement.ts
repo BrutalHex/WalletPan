@@ -8,7 +8,9 @@ export function submitTransaction(blob: any) {
     tx_blob: blob,
   });
 }
-
+export function directSubmitTransaction(blob: any) {
+  return baseConnector(blob);
+}
 export async function getRippleAccountTransactions(address: string) {
   return baseConnector({
     command: 'account_tx',
@@ -26,13 +28,13 @@ export function getRippleAccountInfo(address: string) {
 }
 
 export function baseConnector(objectToSend: any) {
-  const wsp = new WebSocketAsPromised(Setting.Ripple, {
+  let wsp: WebSocketAsPromised = new WebSocketAsPromised(Setting.Ripple, {
     packMessage: (data) => JSON.stringify(data),
     unpackMessage: (message: string | ArrayBuffer | Blob): any =>
       JSON.parse(message as string) as object,
     attachRequestId: (data, requestId) => Object.assign({ id: requestId }, data), // attach requestId to message as `id` field
     extractRequestId: (data) => data && data.id,
-    timeout: 6000,
+    timeout: 12000,
   });
 
   return wsp

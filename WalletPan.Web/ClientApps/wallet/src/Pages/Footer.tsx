@@ -7,29 +7,16 @@ class Footer extends React.Component {
         title: 'Discover',
         links: [
           { text: 'Convert Units', href: '#' },
-          { text: 'XRP Connect', href: '#' },
-          { text: 'XRP CX', href: '#' },
-          { text: 'Buy a Hardware wallet', href: '#' },
-          { text: 'Send Offline Helper', href: '#' },
+          { text: 'XRP', href: '#' },
+          { text: 'Spark', href: '#' },
           { text: 'Verify Message', href: '#' },
-          { text: 'View Wallet Info', href: '#' },
-          { text: 'Submit Dapp', href: '#' },
+          { text: 'Explore Wallet', href: '#' },
         ],
       },
 
       {
         title: 'Affiliates',
-        links: [
-          { text: 'XRP Card', href: '#' },
-          { text: 'Bity', href: '#' },
-          { text: 'Billfodl', href: '#' },
-          { text: 'Finney', href: '#' },
-          { text: 'BitBox', href: '#' },
-          { text: 'Trezor', href: '#' },
-          { text: 'Secalot', href: '#' },
-          { text: 'KeepKey', href: '#' },
-          { text: 'State of the Dapps', href: '#' },
-        ],
+        links: [{ text: ' ', href: '#' }],
       },
 
       {
@@ -76,7 +63,7 @@ class Footer extends React.Component {
                 <img src={`${process.env.PUBLIC_URL}/landing_assets/footer-logo.svg`} />
               </div>
               <div className="row footer-text text-justify-left">
-                Donate so we could keep up. WalletPan is open-source and free.
+                WalletPan is open-source and free.
               </div>
               <div className="row footer-social d-flex justify-content-left">
                 <a href="#">

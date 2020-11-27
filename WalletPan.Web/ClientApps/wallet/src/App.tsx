@@ -16,6 +16,7 @@ import RegistrationPage from './Pages/UserPublicSection/RegistrationPage';
 import CreateNewWalletPageContainer from './Pages/CryptoOPeration/CreateWallet/CreateNewWalletPageContainer';
 import ExploreWalletPageContainer from './Pages/CryptoOPeration/ExploreWallet/ExploreWalletPageContainer';
 import SendXrpPageContainer from './Pages/CryptoOPeration/SendXrp/SendXrpPageContainer';
+import SparkPageContainer from './Pages/CryptoOPeration/SparkToken/SparkPageContainer';
 
 function App() {
   return (
@@ -39,12 +40,13 @@ function App() {
           <Redirect to="/explore" />
         </Route>
 
-        <Route path={['/Dashboard', '/Dashboard/CreateNewWallet']}>
+        <Route path={['/Dashboard', '/Dashboard/CreateNewWallet', '/Dashboard/Spark']}>
           <DashboardLayoutRoute>
             <Switch>
               <Route path="/Dashboard/CreateNewWallet" component={CreateNewWalletPageContainer} />
               <Route path="/Dashboard/explore" component={ExploreWalletPageContainer} />
               <Route path="/Dashboard/SendXRP" component={SendXrpPageContainer} />
+              <Route path="/Dashboard/Spark" component={SparkPageContainer} />
             </Switch>
           </DashboardLayoutRoute>
         </Route>

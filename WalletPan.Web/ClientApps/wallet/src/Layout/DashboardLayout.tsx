@@ -27,9 +27,7 @@ export const DashboardLayout: FunctionComponent<any> = ({ children }) => (
             className="d-inline-block align-top"
           />
           <br />
-          <span className="col-12 pl-2 text-danger text-bold">
-            Conected to Ripple TEST server !!!
-          </span>
+          <span className="col-12 pl-2 text-danger text-bold"></span>
         </NavbarBrand>
 
         <NavbarCollapse
@@ -41,6 +39,11 @@ export const DashboardLayout: FunctionComponent<any> = ({ children }) => (
             <NavLink className="mr-md-4" href="/landing/#home">
               Home
             </NavLink>
+
+            <NavLink className="mr-md-4" href="/Dashboard/Spark">
+              Flare Spark
+            </NavLink>
+
             <NavLink className="mr-md-4" href="/Dashboard/CreateNewWallet">
               New wallet
             </NavLink>

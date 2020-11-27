@@ -8,7 +8,7 @@ const titterTooterReducerEnhancer = (createStore: any) => (
     const newState = reducer(state, action);
     const end = performance.now();
     const diff = Math.round(end - start);
-    console.log('reducer process time:', diff);
+
     return newState;
   };
   return createStore(calculateTimeCost, initialState, enhancer);
